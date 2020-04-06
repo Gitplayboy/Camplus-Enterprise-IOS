@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,9 @@
 		457E5046243B902800F40694 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 457E5044243B902800F40694 /* Main.storyboard */; };
 		457E5048243B902A00F40694 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 457E5047243B902A00F40694 /* Assets.xcassets */; };
 		457E504B243B902A00F40694 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 457E5049243B902A00F40694 /* LaunchScreen.storyboard */; };
+		457E5055243BA10F00F40694 /* pt-sans-caption-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 457E5054243BA10F00F40694 /* pt-sans-caption-bold.ttf */; };
+		457E5057243BB25500F40694 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E5056243BB25500F40694 /* LoginVC.swift */; };
+		457E5059243BBF1600F40694 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 457E5058243BBF1600F40694 /* Montserrat-Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +28,9 @@
 		457E5047243B902A00F40694 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		457E504A243B902A00F40694 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		457E504C243B902A00F40694 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		457E5054243BA10F00F40694 /* pt-sans-caption-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pt-sans-caption-bold.ttf"; sourceTree = "<group>"; };
+		457E5056243BB25500F40694 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		457E5058243BBF1600F40694 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		8C423D205949767900D92C7C /* Pods_Camplus_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Camplus_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A36551E18A88233C92A518 /* Pods-Camplus-IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camplus-IOS.debug.xcconfig"; path = "Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E8DF366D97E8DED604987869 /* Pods-Camplus-IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camplus-IOS.release.xcconfig"; path = "Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -71,15 +77,26 @@
 		457E503D243B902800F40694 /* Camplus-IOS */ = {
 			isa = PBXGroup;
 			children = (
+				457E505A243BC44E00F40694 /* Fonts */,
 				457E503E243B902800F40694 /* AppDelegate.swift */,
 				457E5040243B902800F40694 /* SceneDelegate.swift */,
 				457E5042243B902800F40694 /* ViewController.swift */,
 				457E5044243B902800F40694 /* Main.storyboard */,
+				457E5056243BB25500F40694 /* LoginVC.swift */,
 				457E5047243B902A00F40694 /* Assets.xcassets */,
 				457E5049243B902A00F40694 /* LaunchScreen.storyboard */,
 				457E504C243B902A00F40694 /* Info.plist */,
 			);
 			path = "Camplus-IOS";
+			sourceTree = "<group>";
+		};
+		457E505A243BC44E00F40694 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				457E5058243BBF1600F40694 /* Montserrat-Medium.ttf */,
+				457E5054243BA10F00F40694 /* pt-sans-caption-bold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		956CEF9FE374CBA8BEDAF414 /* Pods */ = {
@@ -88,7 +105,6 @@
 				90A36551E18A88233C92A518 /* Pods-Camplus-IOS.debug.xcconfig */,
 				E8DF366D97E8DED604987869 /* Pods-Camplus-IOS.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -153,8 +169,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				457E504B243B902A00F40694 /* LaunchScreen.storyboard in Resources */,
+				457E5059243BBF1600F40694 /* Montserrat-Medium.ttf in Resources */,
 				457E5048243B902A00F40694 /* Assets.xcassets in Resources */,
 				457E5046243B902800F40694 /* Main.storyboard in Resources */,
+				457E5055243BA10F00F40694 /* pt-sans-caption-bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +227,7 @@
 			files = (
 				457E5043243B902800F40694 /* ViewController.swift in Sources */,
 				457E503F243B902800F40694 /* AppDelegate.swift in Sources */,
+				457E5057243BB25500F40694 /* LoginVC.swift in Sources */,
 				457E5041243B902800F40694 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
