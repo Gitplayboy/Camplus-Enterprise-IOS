@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3CD7E4EE07EA27695D4205F8 /* Pods_Camplus_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C423D205949767900D92C7C /* Pods_Camplus_IOS.framework */; };
 		457E503F243B902800F40694 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E503E243B902800F40694 /* AppDelegate.swift */; };
 		457E5041243B902800F40694 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E5040243B902800F40694 /* SceneDelegate.swift */; };
 		457E5043243B902800F40694 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E5042243B902800F40694 /* ViewController.swift */; };
@@ -24,6 +25,9 @@
 		457E5047243B902A00F40694 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		457E504A243B902A00F40694 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		457E504C243B902A00F40694 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C423D205949767900D92C7C /* Pods_Camplus_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Camplus_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90A36551E18A88233C92A518 /* Pods-Camplus-IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camplus-IOS.debug.xcconfig"; path = "Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS.debug.xcconfig"; sourceTree = "<group>"; };
+		E8DF366D97E8DED604987869 /* Pods-Camplus-IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camplus-IOS.release.xcconfig"; path = "Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CD7E4EE07EA27695D4205F8 /* Pods_Camplus_IOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13A7C47A1CEED0D640C62F5B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C423D205949767900D92C7C /* Pods_Camplus_IOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		457E5032243B902800F40694 = {
 			isa = PBXGroup;
 			children = (
 				457E503D243B902800F40694 /* Camplus-IOS */,
 				457E503C243B902800F40694 /* Products */,
+				956CEF9FE374CBA8BEDAF414 /* Pods */,
+				13A7C47A1CEED0D640C62F5B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +82,16 @@
 			path = "Camplus-IOS";
 			sourceTree = "<group>";
 		};
+		956CEF9FE374CBA8BEDAF414 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				90A36551E18A88233C92A518 /* Pods-Camplus-IOS.debug.xcconfig */,
+				E8DF366D97E8DED604987869 /* Pods-Camplus-IOS.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 457E504F243B902A00F40694 /* Build configuration list for PBXNativeTarget "Camplus-IOS" */;
 			buildPhases = (
+				6616F06D6B14FBBE48FF6580 /* [CP] Check Pods Manifest.lock */,
 				457E5037243B902800F40694 /* Sources */,
 				457E5038243B902800F40694 /* Frameworks */,
 				457E5039243B902800F40694 /* Resources */,
+				2DBF3D818352224FAB37E84C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2DBF3D818352224FAB37E84C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6616F06D6B14FBBE48FF6580 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Camplus-IOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		457E5037243B902800F40694 /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		457E5050243B902A00F40694 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90A36551E18A88233C92A518 /* Pods-Camplus-IOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +370,7 @@
 		};
 		457E5051243B902A00F40694 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8DF366D97E8DED604987869 /* Pods-Camplus-IOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

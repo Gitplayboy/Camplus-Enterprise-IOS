@@ -1,0 +1,20 @@
+PODS:
+  - lottie-ios (3.1.6)
+  - paper-onboarding (6.1.4)
+
+DEPENDENCIES:
+  - lottie-ios
+  - paper-onboarding
+
+SPEC REPOS:
+  trunk:
+    - lottie-ios
+    - paper-onboarding
+
+SPEC CHECKSUMS:
+  lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
+  paper-onboarding: d3f16416e6f42add686117e8b32bfffaad899a79
+
+PODFILE CHECKSUM: 8b989948c12ddecf1cb00add07d5d423408375d0
+
+COCOAPODS: 1.8.4
