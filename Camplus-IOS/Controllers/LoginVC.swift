@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Lottie
 
 class LoginVC: UIViewController {
-
+    
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
     override func viewDidLoad() {
@@ -22,5 +23,4 @@ class LoginVC: UIViewController {
         password.layer.borderWidth = 0.7
         password.layer.masksToBounds = true
     }
-
 }

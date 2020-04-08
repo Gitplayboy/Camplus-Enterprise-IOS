@@ -8,5 +8,6 @@ target 'Camplus-IOS' do
   # Pods for Camplus-IOS
 pod 'paper-onboarding'
 pod 'lottie-ios'
+pod 'ReadMoreTextView'
 
 end
