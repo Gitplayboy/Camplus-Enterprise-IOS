@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3CD7E4EE07EA27695D4205F8 /* Pods_Camplus_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C423D205949767900D92C7C /* Pods_Camplus_IOS.framework */; };
+		4569AE5B24414541009C8CD6 /* ChatMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE5A24414541009C8CD6 /* ChatMessages.swift */; };
+		4569AE5D2441A1A8009C8CD6 /* ChatGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE5C2441A1A8009C8CD6 /* ChatGroupVC.swift */; };
+		4569AE612441A409009C8CD6 /* FeedsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE602441A409009C8CD6 /* FeedsData.swift */; };
+		4569AE63244214EB009C8CD6 /* ChatGroupMembersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE62244214EB009C8CD6 /* ChatGroupMembersVC.swift */; };
 		457E503F243B902800F40694 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E503E243B902800F40694 /* AppDelegate.swift */; };
 		457E5041243B902800F40694 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E5040243B902800F40694 /* SceneDelegate.swift */; };
 		457E5046243B902800F40694 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 457E5044243B902800F40694 /* Main.storyboard */; };
@@ -15,18 +19,39 @@
 		457E504B243B902A00F40694 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 457E5049243B902A00F40694 /* LaunchScreen.storyboard */; };
 		457E5055243BA10F00F40694 /* pt-sans-caption-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 457E5054243BA10F00F40694 /* pt-sans-caption-bold.ttf */; };
 		457E5059243BBF1600F40694 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 457E5058243BBF1600F40694 /* Montserrat-Medium.ttf */; };
+		459A9532243E825300794C98 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 459A952A243E825200794C98 /* ProximaNova-Regular.otf */; };
+		459A9533243E825300794C98 /* Proxima Nova Alt Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 459A952B243E825200794C98 /* Proxima Nova Alt Bold.otf */; };
+		459A9534243E825300794C98 /* Proxima Nova Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 459A952C243E825200794C98 /* Proxima Nova Black.otf */; };
+		459A9535243E825300794C98 /* Proxima Nova Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 459A952D243E825200794C98 /* Proxima Nova Bold.otf */; };
+		459A9536243E825300794C98 /* Proxima Nova Alt Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 459A952E243E825200794C98 /* Proxima Nova Alt Light.otf */; };
+		459A9537243E825300794C98 /* Proxima Nova Extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 459A952F243E825200794C98 /* Proxima Nova Extrabold.otf */; };
+		459A9538243E825300794C98 /* Proxima Nova Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 459A9530243E825200794C98 /* Proxima Nova Thin.otf */; };
+		459A9539243E825300794C98 /* Proxima Nova Alt Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 459A9531243E825300794C98 /* Proxima Nova Alt Thin.otf */; };
+		459A953B243E830200794C98 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459A953A243E830200794C98 /* ChatVC.swift */; };
+		459A9541243E86B000794C98 /* FeedsDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459A953F243E86AF00794C98 /* FeedsDataCell.swift */; };
+		459A9542243E86B000794C98 /* ChatsDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459A9540243E86AF00794C98 /* ChatsDataCell.swift */; };
+		459A9546243EF46500794C98 /* ChatMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459A9545243EF46400794C98 /* ChatMessageVC.swift */; };
+		459A9548244025B200794C98 /* LeftChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459A9547244025B200794C98 /* LeftChatCell.swift */; };
+		459A954A244025C400794C98 /* RightChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459A9549244025C400794C98 /* RightChatCell.swift */; };
 		45C1FEBE243BD97E00C7C523 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 45C1FEBD243BD97E00C7C523 /* loading.json */; };
 		45C1FEC0243CC31100C7C523 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C1FEBF243CC31100C7C523 /* HomeVC.swift */; };
-		45C1FEC2243CCE6200C7C523 /* FeedsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C1FEC1243CCE6200C7C523 /* FeedsCell.swift */; };
-		45C5F313243D823A00D30406 /* FeedsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5F312243D823A00D30406 /* FeedsData.swift */; };
 		45C5F315243D8D9800D30406 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45C5F314243D8D9800D30406 /* Montserrat-Bold.ttf */; };
 		45C5F317243D8DF900D30406 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45C5F316243D8DF900D30406 /* Montserrat-Regular.ttf */; };
 		45C5F31C243D944400D30406 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5F31B243D944300D30406 /* LoginVC.swift */; };
 		45C5F31E243D945B00D30406 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5F31D243D945B00D30406 /* ViewController.swift */; };
 		45C5F320243DA28F00D30406 /* FeedsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5F31F243DA28F00D30406 /* FeedsVC.swift */; };
+		45C5F322243E2BA800D30406 /* AddPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5F321243E2BA800D30406 /* AddPostVC.swift */; };
+		45C5F324243E2EF700D30406 /* SFProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45C5F323243E2EF700D30406 /* SFProDisplay-Bold.ttf */; };
+		45C5F327243E304300D30406 /* SF Pro Text-semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45C5F325243E304300D30406 /* SF Pro Text-semibold.ttf */; };
+		45C5F328243E304300D30406 /* SF Pro Text medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45C5F326243E304300D30406 /* SF Pro Text medium.ttf */; };
+		45C5F32A243E33AE00D30406 /* Proxima Nova Reg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45C5F329243E33AE00D30406 /* Proxima Nova Reg.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4569AE5A24414541009C8CD6 /* ChatMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessages.swift; sourceTree = "<group>"; };
+		4569AE5C2441A1A8009C8CD6 /* ChatGroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroupVC.swift; sourceTree = "<group>"; };
+		4569AE602441A409009C8CD6 /* FeedsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsData.swift; sourceTree = "<group>"; };
+		4569AE62244214EB009C8CD6 /* ChatGroupMembersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroupMembersVC.swift; sourceTree = "<group>"; };
 		457E503B243B902800F40694 /* Camplus-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Camplus-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		457E503E243B902800F40694 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		457E5040243B902800F40694 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,15 +61,32 @@
 		457E504C243B902A00F40694 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		457E5054243BA10F00F40694 /* pt-sans-caption-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pt-sans-caption-bold.ttf"; sourceTree = "<group>"; };
 		457E5058243BBF1600F40694 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		459A952A243E825200794C98 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
+		459A952B243E825200794C98 /* Proxima Nova Alt Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Bold.otf"; sourceTree = "<group>"; };
+		459A952C243E825200794C98 /* Proxima Nova Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Black.otf"; sourceTree = "<group>"; };
+		459A952D243E825200794C98 /* Proxima Nova Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Bold.otf"; sourceTree = "<group>"; };
+		459A952E243E825200794C98 /* Proxima Nova Alt Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Light.otf"; sourceTree = "<group>"; };
+		459A952F243E825200794C98 /* Proxima Nova Extrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Extrabold.otf"; sourceTree = "<group>"; };
+		459A9530243E825200794C98 /* Proxima Nova Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Thin.otf"; sourceTree = "<group>"; };
+		459A9531243E825300794C98 /* Proxima Nova Alt Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Thin.otf"; sourceTree = "<group>"; };
+		459A953A243E830200794C98 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		459A953F243E86AF00794C98 /* FeedsDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsDataCell.swift; sourceTree = "<group>"; };
+		459A9540243E86AF00794C98 /* ChatsDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsDataCell.swift; sourceTree = "<group>"; };
+		459A9545243EF46400794C98 /* ChatMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageVC.swift; sourceTree = "<group>"; };
+		459A9547244025B200794C98 /* LeftChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftChatCell.swift; sourceTree = "<group>"; };
+		459A9549244025C400794C98 /* RightChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightChatCell.swift; sourceTree = "<group>"; };
 		45C1FEBD243BD97E00C7C523 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		45C1FEBF243CC31100C7C523 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
-		45C1FEC1243CCE6200C7C523 /* FeedsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsCell.swift; sourceTree = "<group>"; };
-		45C5F312243D823A00D30406 /* FeedsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsData.swift; sourceTree = "<group>"; };
 		45C5F314243D8D9800D30406 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		45C5F316243D8DF900D30406 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		45C5F31B243D944300D30406 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		45C5F31D243D945B00D30406 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		45C5F31F243DA28F00D30406 /* FeedsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsVC.swift; sourceTree = "<group>"; };
+		45C5F321243E2BA800D30406 /* AddPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostVC.swift; sourceTree = "<group>"; };
+		45C5F323243E2EF700D30406 /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.ttf"; sourceTree = "<group>"; };
+		45C5F325243E304300D30406 /* SF Pro Text-semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF Pro Text-semibold.ttf"; sourceTree = "<group>"; };
+		45C5F326243E304300D30406 /* SF Pro Text medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF Pro Text medium.ttf"; sourceTree = "<group>"; };
+		45C5F329243E33AE00D30406 /* Proxima Nova Reg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Reg.ttf"; sourceTree = "<group>"; };
 		8C423D205949767900D92C7C /* Pods_Camplus_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Camplus_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A36551E18A88233C92A518 /* Pods-Camplus-IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camplus-IOS.debug.xcconfig"; path = "Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E8DF366D97E8DED604987869 /* Pods-Camplus-IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camplus-IOS.release.xcconfig"; path = "Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -70,6 +112,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4569AE592441452E009C8CD6 /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				4569AE602441A409009C8CD6 /* FeedsData.swift */,
+				4569AE5A24414541009C8CD6 /* ChatMessages.swift */,
+			);
+			path = "Data Models";
+			sourceTree = "<group>";
+		};
 		457E5032243B902800F40694 = {
 			isa = PBXGroup;
 			children = (
@@ -92,12 +143,12 @@
 			isa = PBXGroup;
 			children = (
 				45C1FEBD243BD97E00C7C523 /* loading.json */,
+				4569AE592441452E009C8CD6 /* Data Models */,
+				459A953E243E83E000794C98 /* Custom Cells */,
 				45C5F318243D91AA00D30406 /* Controllers */,
 				457E505A243BC44E00F40694 /* Fonts */,
 				457E503E243B902800F40694 /* AppDelegate.swift */,
 				457E5040243B902800F40694 /* SceneDelegate.swift */,
-				45C1FEC1243CCE6200C7C523 /* FeedsCell.swift */,
-				45C5F312243D823A00D30406 /* FeedsData.swift */,
 				457E5044243B902800F40694 /* Main.storyboard */,
 				457E5047243B902A00F40694 /* Assets.xcassets */,
 				457E5049243B902A00F40694 /* LaunchScreen.storyboard */,
@@ -109,12 +160,35 @@
 		457E505A243BC44E00F40694 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				459A952B243E825200794C98 /* Proxima Nova Alt Bold.otf */,
+				459A952E243E825200794C98 /* Proxima Nova Alt Light.otf */,
+				459A9531243E825300794C98 /* Proxima Nova Alt Thin.otf */,
+				459A952C243E825200794C98 /* Proxima Nova Black.otf */,
+				459A952D243E825200794C98 /* Proxima Nova Bold.otf */,
+				459A952F243E825200794C98 /* Proxima Nova Extrabold.otf */,
+				459A9530243E825200794C98 /* Proxima Nova Thin.otf */,
+				459A952A243E825200794C98 /* ProximaNova-Regular.otf */,
+				45C5F329243E33AE00D30406 /* Proxima Nova Reg.ttf */,
+				45C5F326243E304300D30406 /* SF Pro Text medium.ttf */,
+				45C5F325243E304300D30406 /* SF Pro Text-semibold.ttf */,
+				45C5F323243E2EF700D30406 /* SFProDisplay-Bold.ttf */,
 				45C5F316243D8DF900D30406 /* Montserrat-Regular.ttf */,
 				45C5F314243D8D9800D30406 /* Montserrat-Bold.ttf */,
 				457E5058243BBF1600F40694 /* Montserrat-Medium.ttf */,
 				457E5054243BA10F00F40694 /* pt-sans-caption-bold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		459A953E243E83E000794C98 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				459A9540243E86AF00794C98 /* ChatsDataCell.swift */,
+				459A953F243E86AF00794C98 /* FeedsDataCell.swift */,
+				459A9547244025B200794C98 /* LeftChatCell.swift */,
+				459A9549244025C400794C98 /* RightChatCell.swift */,
+			);
+			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
 		45C5F318243D91AA00D30406 /* Controllers */ = {
@@ -124,6 +198,11 @@
 				45C5F31D243D945B00D30406 /* ViewController.swift */,
 				45C1FEBF243CC31100C7C523 /* HomeVC.swift */,
 				45C5F31F243DA28F00D30406 /* FeedsVC.swift */,
+				45C5F321243E2BA800D30406 /* AddPostVC.swift */,
+				459A953A243E830200794C98 /* ChatVC.swift */,
+				459A9545243EF46400794C98 /* ChatMessageVC.swift */,
+				4569AE5C2441A1A8009C8CD6 /* ChatGroupVC.swift */,
+				4569AE62244214EB009C8CD6 /* ChatGroupMembersVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -197,14 +276,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				459A9536243E825300794C98 /* Proxima Nova Alt Light.otf in Resources */,
+				45C5F324243E2EF700D30406 /* SFProDisplay-Bold.ttf in Resources */,
+				459A9535243E825300794C98 /* Proxima Nova Bold.otf in Resources */,
 				45C5F317243D8DF900D30406 /* Montserrat-Regular.ttf in Resources */,
+				459A9539243E825300794C98 /* Proxima Nova Alt Thin.otf in Resources */,
 				457E504B243B902A00F40694 /* LaunchScreen.storyboard in Resources */,
 				457E5059243BBF1600F40694 /* Montserrat-Medium.ttf in Resources */,
 				45C1FEBE243BD97E00C7C523 /* loading.json in Resources */,
+				45C5F327243E304300D30406 /* SF Pro Text-semibold.ttf in Resources */,
 				457E5048243B902A00F40694 /* Assets.xcassets in Resources */,
 				457E5046243B902800F40694 /* Main.storyboard in Resources */,
 				457E5055243BA10F00F40694 /* pt-sans-caption-bold.ttf in Resources */,
 				45C5F315243D8D9800D30406 /* Montserrat-Bold.ttf in Resources */,
+				459A9533243E825300794C98 /* Proxima Nova Alt Bold.otf in Resources */,
+				459A9538243E825300794C98 /* Proxima Nova Thin.otf in Resources */,
+				45C5F32A243E33AE00D30406 /* Proxima Nova Reg.ttf in Resources */,
+				459A9532243E825300794C98 /* ProximaNova-Regular.otf in Resources */,
+				45C5F328243E304300D30406 /* SF Pro Text medium.ttf in Resources */,
+				459A9537243E825300794C98 /* Proxima Nova Extrabold.otf in Resources */,
+				459A9534243E825300794C98 /* Proxima Nova Black.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,13 +348,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4569AE612441A409009C8CD6 /* FeedsData.swift in Sources */,
+				459A954A244025C400794C98 /* RightChatCell.swift in Sources */,
+				459A9546243EF46500794C98 /* ChatMessageVC.swift in Sources */,
+				4569AE5D2441A1A8009C8CD6 /* ChatGroupVC.swift in Sources */,
+				4569AE63244214EB009C8CD6 /* ChatGroupMembersVC.swift in Sources */,
+				459A9541243E86B000794C98 /* FeedsDataCell.swift in Sources */,
+				459A9542243E86B000794C98 /* ChatsDataCell.swift in Sources */,
 				45C5F320243DA28F00D30406 /* FeedsVC.swift in Sources */,
 				45C5F31E243D945B00D30406 /* ViewController.swift in Sources */,
 				45C5F31C243D944400D30406 /* LoginVC.swift in Sources */,
 				45C1FEC0243CC31100C7C523 /* HomeVC.swift in Sources */,
-				45C5F313243D823A00D30406 /* FeedsData.swift in Sources */,
+				459A953B243E830200794C98 /* ChatVC.swift in Sources */,
+				459A9548244025B200794C98 /* LeftChatCell.swift in Sources */,
+				4569AE5B24414541009C8CD6 /* ChatMessages.swift in Sources */,
+				45C5F322243E2BA800D30406 /* AddPostVC.swift in Sources */,
 				457E503F243B902800F40694 /* AppDelegate.swift in Sources */,
-				45C1FEC2243CCE6200C7C523 /* FeedsCell.swift in Sources */,
 				457E5041243B902800F40694 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

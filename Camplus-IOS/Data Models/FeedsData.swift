@@ -2,7 +2,7 @@
 //  FeedsData.swift
 //  Camplus-IOS
 //
-//  Created by vibin joby on 2020-04-07.
+//  Created by vibin joby on 2020-04-08.
 //  Copyright © 2020 vibin joby. All rights reserved.
 //
 
