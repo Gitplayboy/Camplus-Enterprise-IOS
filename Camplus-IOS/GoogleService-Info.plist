@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>22393039161-3uuun73o20p4rd3mvembp3r36heks86p.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.22393039161-3uuun73o20p4rd3mvembp3r36heks86p</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCaPn762PkujwzRJQ_vynGT9ObMkhM6bM8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>22393039161</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ios.Camplus-IOS</string>
+	<key>PROJECT_ID</key>
+	<string>first-ios-firebase-e7c73</string>
+	<key>STORAGE_BUCKET</key>
+	<string>first-ios-firebase-e7c73.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:22393039161:ios:f5ee004ea5abb4beb360e8</string>
+	<key>DATABASE_URL</key>
+	<string>https://first-ios-firebase-e7c73.firebaseio.com</string>
+</dict>
+</plist>

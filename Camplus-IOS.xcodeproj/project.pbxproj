@@ -12,6 +12,10 @@
 		4569AE5D2441A1A8009C8CD6 /* ChatGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE5C2441A1A8009C8CD6 /* ChatGroupVC.swift */; };
 		4569AE612441A409009C8CD6 /* FeedsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE602441A409009C8CD6 /* FeedsData.swift */; };
 		4569AE63244214EB009C8CD6 /* ChatGroupMembersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE62244214EB009C8CD6 /* ChatGroupMembersVC.swift */; };
+		4569AE6624438C0B009C8CD6 /* LoginSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE6524438C0B009C8CD6 /* LoginSvc.swift */; };
+		4569AE6824438C47009C8CD6 /* FeedsSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE6724438C47009C8CD6 /* FeedsSvc.swift */; };
+		4569AE6C24438C9D009C8CD6 /* ChatsSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE6B24438C9D009C8CD6 /* ChatsSvc.swift */; };
+		4569AE6E24439FF2009C8CD6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4569AE6D24439FF2009C8CD6 /* GoogleService-Info.plist */; };
 		457E503F243B902800F40694 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E503E243B902800F40694 /* AppDelegate.swift */; };
 		457E5041243B902800F40694 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E5040243B902800F40694 /* SceneDelegate.swift */; };
 		457E5046243B902800F40694 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 457E5044243B902800F40694 /* Main.storyboard */; };
@@ -52,6 +56,10 @@
 		4569AE5C2441A1A8009C8CD6 /* ChatGroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroupVC.swift; sourceTree = "<group>"; };
 		4569AE602441A409009C8CD6 /* FeedsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsData.swift; sourceTree = "<group>"; };
 		4569AE62244214EB009C8CD6 /* ChatGroupMembersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroupMembersVC.swift; sourceTree = "<group>"; };
+		4569AE6524438C0B009C8CD6 /* LoginSvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginSvc.swift; path = "Camplus-IOS/Controllers/LoginSvc.swift"; sourceTree = SOURCE_ROOT; };
+		4569AE6724438C47009C8CD6 /* FeedsSvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedsSvc.swift; path = "Camplus-IOS/Controllers/FeedsSvc.swift"; sourceTree = SOURCE_ROOT; };
+		4569AE6B24438C9D009C8CD6 /* ChatsSvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatsSvc.swift; path = "Camplus-IOS/Controllers/ChatsSvc.swift"; sourceTree = SOURCE_ROOT; };
+		4569AE6D24439FF2009C8CD6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		457E503B243B902800F40694 /* Camplus-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Camplus-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		457E503E243B902800F40694 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		457E5040243B902800F40694 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +129,16 @@
 			path = "Data Models";
 			sourceTree = "<group>";
 		};
+		4569AE642443786B009C8CD6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4569AE6524438C0B009C8CD6 /* LoginSvc.swift */,
+				4569AE6724438C47009C8CD6 /* FeedsSvc.swift */,
+				4569AE6B24438C9D009C8CD6 /* ChatsSvc.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		457E5032243B902800F40694 = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +162,7 @@
 			children = (
 				45C1FEBD243BD97E00C7C523 /* loading.json */,
 				4569AE592441452E009C8CD6 /* Data Models */,
+				4569AE642443786B009C8CD6 /* Services */,
 				459A953E243E83E000794C98 /* Custom Cells */,
 				45C5F318243D91AA00D30406 /* Controllers */,
 				457E505A243BC44E00F40694 /* Fonts */,
@@ -152,6 +171,7 @@
 				457E5044243B902800F40694 /* Main.storyboard */,
 				457E5047243B902A00F40694 /* Assets.xcassets */,
 				457E5049243B902A00F40694 /* LaunchScreen.storyboard */,
+				4569AE6D24439FF2009C8CD6 /* GoogleService-Info.plist */,
 				457E504C243B902A00F40694 /* Info.plist */,
 			);
 			path = "Camplus-IOS";
@@ -296,6 +316,7 @@
 				45C5F328243E304300D30406 /* SF Pro Text medium.ttf in Resources */,
 				459A9537243E825300794C98 /* Proxima Nova Extrabold.otf in Resources */,
 				459A9534243E825300794C98 /* Proxima Nova Black.otf in Resources */,
+				4569AE6E24439FF2009C8CD6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,8 +382,11 @@
 				45C1FEC0243CC31100C7C523 /* HomeVC.swift in Sources */,
 				459A953B243E830200794C98 /* ChatVC.swift in Sources */,
 				459A9548244025B200794C98 /* LeftChatCell.swift in Sources */,
+				4569AE6624438C0B009C8CD6 /* LoginSvc.swift in Sources */,
+				4569AE6824438C47009C8CD6 /* FeedsSvc.swift in Sources */,
 				4569AE5B24414541009C8CD6 /* ChatMessages.swift in Sources */,
 				45C5F322243E2BA800D30406 /* AddPostVC.swift in Sources */,
+				4569AE6C24438C9D009C8CD6 /* ChatsSvc.swift in Sources */,
 				457E503F243B902800F40694 /* AppDelegate.swift in Sources */,
 				457E5041243B902800F40694 /* SceneDelegate.swift in Sources */,
 			);

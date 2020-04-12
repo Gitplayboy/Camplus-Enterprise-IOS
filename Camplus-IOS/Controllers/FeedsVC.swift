@@ -15,8 +15,8 @@ class FeedsVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSo
         super.viewDidLoad()
         // Mock data
         feedsData.append(FeedsData(postTxt: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",postImgName: nil))
-        feedsData.append(FeedsData(postTxt: "I am great khali",postImgName: "justin_trudeau"))
-        feedsData.append(FeedsData(postTxt: nil ,postImgName: "justin_trudeau"))
+        feedsData.append(FeedsData(postTxt: "I am great khali",postImgName: "vibin"))
+        feedsData.append(FeedsData(postTxt: nil ,postImgName: "vibin"))
         
         addPost.layer.cornerRadius = addPost.frame.size.width/2
         addPost.layer.masksToBounds = true
@@ -34,6 +34,8 @@ class FeedsVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSo
         cell.postTxtView?.text = feedsData[indexPath.row].postTxt
         if feedsData[indexPath.row].postImgName != nil {
             cell.postImgView?.image = UIImage(named: feedsData[indexPath.row].postImgName!)
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+            cell.postImgView.addGestureRecognizer(gesture)
         }
         cell.profilePic?.layer.cornerRadius = (cell.profilePic?.layer.bounds.width)! / 2
         return cell
@@ -63,5 +65,25 @@ class FeedsVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSo
             return CGSize(width: collectionView.frame.size.width, height: actualsize.height)
         }
     }
+    
+    @objc func imageTapped(_ sender: UITapGestureRecognizer) {
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: UIView.AnimationOptions.transitionFlipFromBottom, animations: {
+            let imageView = sender.view as! UIImageView
+            let newImageView = UIImageView(image: imageView.image)
+            
+            newImageView.frame = UIScreen.main.bounds
+            newImageView.backgroundColor = .black
+            newImageView.contentMode = .scaleAspectFit
+            newImageView.isUserInteractionEnabled = true
+            let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissFullscreenImage))
+            newImageView.addGestureRecognizer(tap)
+            self.view.addSubview(newImageView)
+        }, completion: nil)
+    }
 
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
+    }
 }

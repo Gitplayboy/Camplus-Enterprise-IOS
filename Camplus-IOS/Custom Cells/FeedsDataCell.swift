@@ -15,4 +15,5 @@ class FeedsDataCell: UICollectionViewCell{
     @IBOutlet weak var postedDateLbl: UILabel!
     @IBOutlet weak var postedByLbl: UILabel!
     @IBOutlet weak var postImgView: UIImageView!
+    
 }
