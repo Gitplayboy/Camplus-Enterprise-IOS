@@ -16,6 +16,9 @@
 		4569AE6824438C47009C8CD6 /* FeedsSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE6724438C47009C8CD6 /* FeedsSvc.swift */; };
 		4569AE6C24438C9D009C8CD6 /* ChatsSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE6B24438C9D009C8CD6 /* ChatsSvc.swift */; };
 		4569AE6E24439FF2009C8CD6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4569AE6D24439FF2009C8CD6 /* GoogleService-Info.plist */; };
+		4569AE722444F6EF009C8CD6 /* GroupChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE712444F6EE009C8CD6 /* GroupChatCell.swift */; };
+		4569AE7424455AF6009C8CD6 /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE7324455AF6009C8CD6 /* UserDetails.swift */; };
+		4569AE7624457C59009C8CD6 /* GroupMembersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE7524457C59009C8CD6 /* GroupMembersCell.swift */; };
 		457E503F243B902800F40694 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E503E243B902800F40694 /* AppDelegate.swift */; };
 		457E5041243B902800F40694 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E5040243B902800F40694 /* SceneDelegate.swift */; };
 		457E5046243B902800F40694 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 457E5044243B902800F40694 /* Main.storyboard */; };
@@ -60,6 +63,9 @@
 		4569AE6724438C47009C8CD6 /* FeedsSvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedsSvc.swift; path = "Camplus-IOS/Controllers/FeedsSvc.swift"; sourceTree = SOURCE_ROOT; };
 		4569AE6B24438C9D009C8CD6 /* ChatsSvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatsSvc.swift; path = "Camplus-IOS/Controllers/ChatsSvc.swift"; sourceTree = SOURCE_ROOT; };
 		4569AE6D24439FF2009C8CD6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4569AE712444F6EE009C8CD6 /* GroupChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatCell.swift; sourceTree = "<group>"; };
+		4569AE7324455AF6009C8CD6 /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
+		4569AE7524457C59009C8CD6 /* GroupMembersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersCell.swift; sourceTree = "<group>"; };
 		457E503B243B902800F40694 /* Camplus-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Camplus-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		457E503E243B902800F40694 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		457E5040243B902800F40694 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +131,7 @@
 			children = (
 				4569AE602441A409009C8CD6 /* FeedsData.swift */,
 				4569AE5A24414541009C8CD6 /* ChatMessages.swift */,
+				4569AE7324455AF6009C8CD6 /* UserDetails.swift */,
 			);
 			path = "Data Models";
 			sourceTree = "<group>";
@@ -207,6 +214,8 @@
 				459A953F243E86AF00794C98 /* FeedsDataCell.swift */,
 				459A9547244025B200794C98 /* LeftChatCell.swift */,
 				459A9549244025C400794C98 /* RightChatCell.swift */,
+				4569AE712444F6EE009C8CD6 /* GroupChatCell.swift */,
+				4569AE7524457C59009C8CD6 /* GroupMembersCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -370,12 +379,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4569AE612441A409009C8CD6 /* FeedsData.swift in Sources */,
+				4569AE722444F6EF009C8CD6 /* GroupChatCell.swift in Sources */,
 				459A954A244025C400794C98 /* RightChatCell.swift in Sources */,
 				459A9546243EF46500794C98 /* ChatMessageVC.swift in Sources */,
 				4569AE5D2441A1A8009C8CD6 /* ChatGroupVC.swift in Sources */,
 				4569AE63244214EB009C8CD6 /* ChatGroupMembersVC.swift in Sources */,
 				459A9541243E86B000794C98 /* FeedsDataCell.swift in Sources */,
 				459A9542243E86B000794C98 /* ChatsDataCell.swift in Sources */,
+				4569AE7624457C59009C8CD6 /* GroupMembersCell.swift in Sources */,
 				45C5F320243DA28F00D30406 /* FeedsVC.swift in Sources */,
 				45C5F31E243D945B00D30406 /* ViewController.swift in Sources */,
 				45C5F31C243D944400D30406 /* LoginVC.swift in Sources */,
@@ -385,6 +396,7 @@
 				4569AE6624438C0B009C8CD6 /* LoginSvc.swift in Sources */,
 				4569AE6824438C47009C8CD6 /* FeedsSvc.swift in Sources */,
 				4569AE5B24414541009C8CD6 /* ChatMessages.swift in Sources */,
+				4569AE7424455AF6009C8CD6 /* UserDetails.swift in Sources */,
 				45C5F322243E2BA800D30406 /* AddPostVC.swift in Sources */,
 				4569AE6C24438C9D009C8CD6 /* ChatsSvc.swift in Sources */,
 				457E503F243B902800F40694 /* AppDelegate.swift in Sources */,

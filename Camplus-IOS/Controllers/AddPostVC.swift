@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseStorage
 
-class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var imgTitle: UILabel!
     @IBOutlet weak var imgDescription: UILabel!
@@ -18,6 +18,8 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
     @IBOutlet weak var uploadImgView: UIView!
     @IBOutlet weak var deleteImgBtn: UIButton!
     @IBOutlet weak var publishPostBtn: UIButton!
+    
+    let feedsSvcImpl = FeedsSvcImpl()
     
     var imageReference:StorageReference {
         return Storage.storage().reference().child("images")
@@ -71,10 +73,19 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
                 print(snapshot.progress!)
             }
             uploadTask.resume()
+            feedsSvcImpl.saveNewPost(feedPostedBy: "vibin", feedTitle: imgTitle.text!, feedText: postDescription.text!, feedImageUrl: fileName)
+        } else {
+            feedsSvcImpl.saveNewPost(feedPostedBy: "vibin", feedTitle: imgTitle.text!, feedText: postDescription.text!, feedImageUrl: nil)
         }
+        
         let alert = UIAlertController(title: "Publish Post", message: "Post Published Successfully", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     //Pictures loading code
@@ -103,7 +114,6 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
             }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in}
-        
         
         photoSourceRequestController.addAction(cameraAction)
         photoSourceRequestController.addAction(photoLibraryAction)

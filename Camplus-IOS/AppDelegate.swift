@@ -12,13 +12,11 @@ import FirebaseStorage
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    var userDetails =  UserDetails()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        let storage = Storage.storage()
         //storage.
         return true
     }

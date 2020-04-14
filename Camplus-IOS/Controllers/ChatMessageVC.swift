@@ -9,7 +9,8 @@
 import UIKit
 
 class ChatMessageVC: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
-
+    
+    @IBOutlet weak var chatHeaderLbl: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var textFieldBtmConstraint: NSLayoutConstraint!
@@ -17,6 +18,13 @@ class ChatMessageVC: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     var initialTxtFieldPos:CGFloat?
     var chatMessages = [ChatMessages]()
     var isGroupChat = false
+    let chatSvc = ChatsSvcImpl()
+    var messageId:String?
+    var groupName:String?
+    var groupId:String?
+    var receiverName:String?
+    var receiverId:String?
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         sendTxtField.delegate = self
@@ -33,20 +41,43 @@ class ChatMessageVC: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         self.navigationController?.navigationBar.topItem?.title = " "
         if isGroupChat {
             navigationItem.rightBarButtonItem?.customView?.isHidden = false
+            if messageId != nil {
+                //Service call to fetch group chat info
+                chatSvc.fetchGroupChatMessages(userId: (appDelegate.userDetails.userId)!, messageId: messageId!, success: {(chatMsgs) in
+                    self.chatMessages = chatMsgs
+                    self.chatTableView.reloadData()
+                    self.scrollToBottom()
+                    if self.groupName != nil {
+                        self.chatHeaderLbl.text = self.groupName!
+                    }
+                }, failure: {(error) in
+                    print(error)
+                })
+            }
         } else {
             navigationItem.rightBarButtonItem?.customView?.isHidden = true
+            
+            if messageId != nil {
+                // service call to fetch data
+                chatSvc.fetchActiveChatMessages(messageId: messageId!, userId: (appDelegate.userDetails.userId)!, success: {(chatMsgsArr) in
+                    self.chatMessages = chatMsgsArr
+                    self.chatTableView.reloadData()
+                    self.scrollToBottom()
+                    if self.receiverName != nil {
+                        self.chatHeaderLbl.text = self.receiverName!
+                    }
+                    
+                }, failure: {(error) in
+                    print(error)
+                })
+            } else {
+                //check if there are any old chats associated with the receiver and fetch the message id
+                
+                if self.receiverName != nil {
+                    self.chatHeaderLbl.text = self.receiverName!
+                }
+            }
         }
-        
-        // Mock data
-        chatMessages.append(ChatMessages.SenderChatMsgs(chatMessage: "Please check the instructions on Moodle on how to log in to Adobe Connect.",chatDate: nil))
-        chatMessages.append(ChatMessages.SenderChatMsgs(chatMessage: "The link for today’s class is on Moodle.",chatDate: nil))
-        chatMessages.append(ChatMessages.RecieverChatMsgs(chatMessage: "Hey am not working today",chatDate: nil))
-        chatMessages.append(ChatMessages.RecieverChatMsgs(chatMessage: "Hey am not working today",chatDate: nil))
-        chatMessages.append(ChatMessages.SenderChatMsgs(chatMessage: "Hey am not working today",chatDate: nil))
-        chatMessages.append(ChatMessages.RecieverChatMsgs(chatMessage: "Hey am not working today",chatDate: nil))
-        chatMessages.append(ChatMessages.RecieverChatMsgs(chatMessage: "Hey am not working today",chatDate: nil))
-        chatMessages.append(ChatMessages.SenderChatMsgs(chatMessage: "Hey am not working today",chatDate: nil))
-        chatMessages.append(ChatMessages.SenderChatMsgs(chatMessage: "Hey am not working today",chatDate: nil))
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -86,11 +117,13 @@ class ChatMessageVC: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         if let sender = chatMessages[indexPath.row] as? ChatMessages.SenderChatMsgs {
             cell = tableView.dequeueReusableCell(withIdentifier: "LeftChat") as! LeftChatCell
             (cell as! LeftChatCell).chatTxtLbl.text! = sender.chatMessage!
-            (cell as! LeftChatCell).chatTxtLbl.font = UIFont(name: "ProximaNova-Regular", size: 14)
+            (cell as! LeftChatCell).chatTxtLbl.font = UIFont(name: "ProximaNova-Regular", size: 16)
+            (cell as! LeftChatCell).senderName.text! = sender.senderName!
+            (cell as! LeftChatCell).previewName.text! = String(sender.senderName!.prefix(2)).uppercased()
         } else if let receiever = chatMessages[indexPath.row] as? ChatMessages.RecieverChatMsgs {
             cell = tableView.dequeueReusableCell(withIdentifier: "RightChat") as! RightChatCell
             (cell as! RightChatCell).chatTxtLbl.text! = receiever.chatMessage!
-            (cell as! RightChatCell).chatTxtLbl.font = UIFont(name: "ProximaNova-Regular", size: 14)
+            (cell as! RightChatCell).chatTxtLbl.font = UIFont(name: "ProximaNova-Regular", size: 16)
             (cell as! RightChatCell).chatTxtLbl.textColor = UIColor.white
         }
         return cell!
@@ -103,7 +136,7 @@ class ChatMessageVC: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         } else if let receiever = chatMessages[indexPath.row] as? ChatMessages.RecieverChatMsgs {
             message = receiever.chatMessage
         }
-        let height = heightForView(text: message!, font: UIFont(name: "ProximaNova-Regular", size: 14)!)
+        let height = heightForView(text: message!, font: UIFont(name: "ProximaNova-Regular", size: 16)!)
         return height + 80
     }
     
@@ -113,12 +146,53 @@ class ChatMessageVC: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.font = font
         label.text = text
-
+        
         label.sizeToFit()
         return label.frame.height
     }
     
     @objc func checkGroupMembers() {
         performSegue(withIdentifier: "showGroupMembers", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showGroupMembers" {
+            let destination = segue.destination as! ChatGroupMembersVC
+            destination.groupId = groupId!
+            destination.groupName = groupName!
+        }
+    }
+    
+    @IBAction func sendMessage() {
+        if sendTxtField.text != nil && !sendTxtField.text!.isEmpty {
+            // When already a chat exists with a message id
+            if messageId != nil {
+                chatSvc.sendDirectMessage(messageId: messageId!, userId: (appDelegate.userDetails.userId)!, messageText: sendTxtField.text!, senderName: appDelegate.userDetails.userName!)
+            } else {
+                // When user navigates from group members --> membername --> new chat
+                if receiverId != nil {
+                    chatSvc.sendNewDirectMessage(receiverId: receiverId!, receiverName: receiverName!, messageText: sendTxtField.text!,success: {(chatMsgs,messageId) in
+                        self.chatMessages = chatMsgs
+                        self.messageId = messageId
+                        self.chatTableView.reloadData()
+                        self.scrollToBottom()
+                    }, failure: {(error) in
+                        print(error)
+                    })
+                }
+            }
+            
+            sendTxtField.resignFirstResponder()
+            sendTxtField.text! = ""
+        }
+    }
+    
+    func scrollToBottom(){
+        DispatchQueue.main.async {
+            if self.chatMessages.count > 0 {
+                let indexPath = IndexPath(row: self.chatMessages.count-1, section: 0)
+                self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            }
+        }
     }
 }

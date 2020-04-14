@@ -9,17 +9,44 @@
 import UIKit
 
 class FeedsVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     var feedsData = [FeedsData]()
+    let feedsService = FeedsSvcImpl()
     @IBOutlet weak var addPost:UIButton!
+    @IBOutlet weak var feedsCollecView: UICollectionView!
+    var refresher = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Mock data
-        feedsData.append(FeedsData(postTxt: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",postImgName: nil))
-        feedsData.append(FeedsData(postTxt: "I am great khali",postImgName: "vibin"))
-        feedsData.append(FeedsData(postTxt: nil ,postImgName: "vibin"))
         
+        self.feedsCollecView!.alwaysBounceVertical = true
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(self.refreshStream), for: .valueChanged)
+	
+        self.feedsCollecView!.refreshControl = refresher
+        feedsCollecView!.addSubview(self.feedsCollecView!.refreshControl!)
+        
+        // Call service
+        feedsService.fetchActiveFeeds(success: { (feedsArr) in
+            self.feedsData = feedsArr
+            self.feedsCollecView.reloadData()
+        }) { (error) in
+            print(error)
+        }
         addPost.layer.cornerRadius = addPost.frame.size.width/2
         addPost.layer.masksToBounds = true
+    }
+    
+
+    @objc func refreshStream() {
+        // Call service
+        feedsService.fetchActiveFeeds(success: { (feedsArr) in
+            self.feedsData = feedsArr
+            self.feedsCollecView.reloadData()
+            self.feedsCollecView!.refreshControl?.endRefreshing()
+        }) { (error) in
+            print(error)
+        }
     }
 
     // MARK: UICollectionViewDataSource
@@ -31,43 +58,63 @@ class FeedsVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSo
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "feedCell", for: indexPath) as! FeedsDataCell
-        cell.postTxtView?.text = feedsData[indexPath.row].postTxt
+        cell.postTxtView?.text = feedsData[indexPath.row].postDescription
+        cell.postTxtView?.sizeToFit()
         if feedsData[indexPath.row].postImgName != nil {
-            cell.postImgView?.image = UIImage(named: feedsData[indexPath.row].postImgName!)
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
-            cell.postImgView.addGestureRecognizer(gesture)
+            feedsService.downloadImages(filename: feedsData[indexPath.row].postImgName!,success: { (imageData) in
+                cell.postImgView?.image = imageData
+                let gesture = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped))
+                cell.postImgView.addGestureRecognizer(gesture)
+            }) { (error) in
+                print(error)
+            }
+        } else {
+            if cell.postImgView != nil {
+                cell.postImgView.removeFromSuperview()
+            }
         }
+        if feedsData[indexPath.row].postDescription == nil && cell.postTxtView != nil{
+            cell.postTxtView.removeFromSuperview()
+        }
+        cell.postedByLbl.text = "Posted by \(String(describing: feedsData[indexPath.row].postByUser!))"
+        cell.postTitle.text = feedsData[indexPath.row].postTitle
         cell.profilePic?.layer.cornerRadius = (cell.profilePic?.layer.bounds.width)! / 2
         return cell
     }
     
      func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var actualsize = CGSize()
-        let textview = UITextView()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "feedCell", for: indexPath) as! FeedsDataCell
+        cell.postTxtView?.text = feedsData[indexPath.row].postDescription
 
-        textview.text = feedsData[indexPath.row].postTxt
-        textview.font = UIFont(name:"Proxima Nova Reg",size:14)
+        let textview = UITextView()
         
-        
-        actualsize = textview.sizeThatFits(CGSize(width: collectionView.frame.size.width, height: CGFloat.greatestFiniteMagnitude))
+        if feedsData[indexPath.row].postDescription != nil {
+            textview.text = feedsData[indexPath.row].postDescription!
+            textview.font = UIFont(name:"Proxima Nova Reg",size:16)
+            
+            if cell.postTxtView != nil {
+                actualsize = cell.postTxtView.sizeThatFits(cell.postTxtView.bounds.size)
+            }
+        }
         
         //BOTH IMAGE AND TEXT ARE AVAILABLE
-        if feedsData[indexPath.row].postImgName != nil && feedsData[indexPath.row].postTxt != nil{
-            return CGSize(width: collectionView.frame.size.width - 30, height: actualsize.height + 230)
-        } else if feedsData[indexPath.row].postImgName == nil && feedsData[indexPath.row].postTxt != nil {
+        if feedsData[indexPath.row].postImgName != nil && feedsData[indexPath.row].postDescription != nil{
+            return CGSize(width: collectionView.frame.size.width - 30, height: actualsize.height + 300)
+        } else if feedsData[indexPath.row].postImgName == nil && feedsData[indexPath.row].postDescription != nil {
             // Only text available
-            return CGSize(width: collectionView.frame.size.width - 30, height: actualsize.height + 90)
-        } else if feedsData[indexPath.row].postImgName != nil && feedsData[indexPath.row].postTxt == nil {
+            return CGSize(width: collectionView.frame.size.width - 30, height: actualsize.height + 80)
+        } else if feedsData[indexPath.row].postImgName != nil && feedsData[indexPath.row].postDescription == nil {
             // Only image is available
-            return CGSize(width: collectionView.frame.size.width - 30, height: actualsize.height + 200)
+            return CGSize(width: collectionView.frame.size.width - 30, height: actualsize.height + 300)
         } else {
             // Both nil
-            return CGSize(width: collectionView.frame.size.width, height: actualsize.height)
+            return CGSize(width: collectionView.frame.size.width - 30, height: actualsize.height)
         }
     }
     
     @objc func imageTapped(_ sender: UITapGestureRecognizer) {
-        UIView.animate(withDuration: 0.3, delay: 0.0, options: UIView.AnimationOptions.transitionFlipFromBottom, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
             let imageView = sender.view as! UIImageView
             let newImageView = UIImageView(image: imageView.image)
             

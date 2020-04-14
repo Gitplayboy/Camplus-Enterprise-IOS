@@ -9,10 +9,12 @@
 import UIKit
 import Lottie
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController,UITextFieldDelegate {
     
+    @IBOutlet weak var signInBtn: UIButton!
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
+    let loginSvc = LoginServiceImpl()
     override func viewDidLoad() {
         super.viewDidLoad()
         userName.layer.cornerRadius = 8
@@ -31,5 +33,31 @@ class LoginVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if !userName.text!.isEmpty && !password.text!.isEmpty {
+            signInBtn.isEnabled = true
+            signInBtn.alpha = 1.0
+        } else {
+            signInBtn.isEnabled = false
+            signInBtn.alpha = 0.5
+        }
+    }
+    
+    @IBAction func onLogin() {
+        loginSvc.verifyUserLogin(userId: userName.text!,password: password.text!,success: {(success) in
+            self.performSegue(withIdentifier: "loginSB", sender: self)
+            
+        },failure: {(error) in
+            let alert = UIAlertController(title: "Invalid Login", message: "Login Failed Please check the credentials", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        })
     }
 }

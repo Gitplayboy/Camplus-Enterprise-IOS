@@ -9,11 +9,15 @@
 import Foundation
 
 class FeedsData {
-    var postTxt:String?
+    var postDescription:String?
     var postImgName:String?
+    var postByUser:String?
+    var postTitle:String?
     
-    init(postTxt:String?, postImgName:String?) {
-        self.postTxt = postTxt
+    init(postDescription:String?, postImgName:String?,postByUser:String?,postTitle:String?) {
+        self.postDescription = postDescription
         self.postImgName = postImgName
+        self.postByUser = postByUser
+        self.postTitle = postTitle
     }
 }

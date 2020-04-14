@@ -9,8 +9,10 @@
 import UIKit
 
 class LeftChatCell: UITableViewCell {
+    @IBOutlet weak var previewName: UILabel!
     @IBOutlet weak var senderProfileImgView: UIView!
     @IBOutlet weak var chatTxtLbl: UILabel!
+    @IBOutlet weak var senderName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         senderProfileImgView.layer.cornerRadius = senderProfileImgView.frame.size.width/2

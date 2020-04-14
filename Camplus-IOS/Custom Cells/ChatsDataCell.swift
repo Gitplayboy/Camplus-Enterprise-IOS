@@ -10,8 +10,15 @@ import UIKit
 
 class ChatsDataCell: UITableViewCell {
     
-    @IBOutlet weak var chatDp: UIImageView!
+    @IBOutlet weak var chatDpName: UILabel!
     @IBOutlet weak var chatName: UILabel!
     @IBOutlet weak var chatMsgPreview: UILabel!
+    @IBOutlet weak var chatPreviewBorder: UIView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        chatPreviewBorder.layer.cornerRadius = chatPreviewBorder.frame.size.width/2
+        chatPreviewBorder.layer.masksToBounds = true
+    }
     
 }

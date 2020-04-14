@@ -10,19 +10,64 @@ import UIKit
 
 class ChatGroupMembersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var batchMembersCount: UILabel!
+    var groupName:String?
+    var groupId:String?
+    let chatSvc = ChatsSvcImpl()
+    var userDetailsArr = [UserDetails]()
+    var targetUserMsgId:String?
+    var targetUserId:String?
+    var targetUserName:String?
+    @IBOutlet weak var groupMembersTable: UITableView!
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = " "
+        if groupId != nil {
+            chatSvc.fetchGroupMembers(groupId: groupId!, success: {(userDetailsArr) in
+                self.userDetailsArr = userDetailsArr
+                self.groupMembersTable.reloadData()
+                self.batchMembersCount.text = "Batch Members (\(userDetailsArr.count))"
+            }, failure: {(error) in
+                print(error)
+            })
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return userDetailsArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "groupMembersCell")
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "groupMembersCell") as! GroupMembersCell
+        cell.groupMemberName.text = userDetailsArr[indexPath.row].userName
+        return cell
     }
     
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if userDetailsArr[indexPath.row].userId != appDelegate.userDetails.userId {
+            targetUserName = userDetailsArr[indexPath.row].userName
+            targetUserId = userDetailsArr[indexPath.row].userId
+            chatSvc.fetchMessageId(targetUserId: userDetailsArr[indexPath.row].userId!, success: {(messageId) in
+                self.targetUserMsgId = messageId
+                self.performSegue(withIdentifier: "directChatSB", sender: self)
+            }, failure: {(error) in
+                print(error)
+                self.performSegue(withIdentifier: "directChatSB", sender: self)
+            })
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "directChatSB" {
+            let destination = segue.destination as! ChatMessageVC
+            destination.isGroupChat = false
+            destination.messageId = targetUserMsgId
+            destination.receiverName = targetUserName!
+            destination.receiverId = targetUserId!
+        }
+        targetUserMsgId = ""
+    }
+    
 }
