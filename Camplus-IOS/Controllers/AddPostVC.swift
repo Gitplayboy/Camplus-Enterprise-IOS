@@ -10,14 +10,15 @@ import UIKit
 import FirebaseStorage
 
 class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate {
-    
-    @IBOutlet weak var imgTitle: UILabel!
+    @IBOutlet weak var postTitle: UITextField!
+    //@IBOutlet weak var imgTitle: UILabel!
     @IBOutlet weak var imgDescription: UILabel!
     @IBOutlet weak var uploadedImg: UIImageView!
     @IBOutlet weak var postDescription: UITextField!
     @IBOutlet weak var uploadImgView: UIView!
     @IBOutlet weak var deleteImgBtn: UIButton!
     @IBOutlet weak var publishPostBtn: UIButton!
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     let feedsSvcImpl = FeedsSvcImpl()
     
@@ -57,7 +58,7 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
     }
     
     @IBAction func onPublishPost() {
-        if uploadedImg != nil {
+        if uploadedImg != nil && uploadedImg.image != nil{
             let fileName = "IMG\(generateRandomNumber(numDigits: 3)).jpg"
             //Save image to Firebase storage
             guard let image = uploadedImg.image else {return}
@@ -73,9 +74,9 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
                 print(snapshot.progress!)
             }
             uploadTask.resume()
-            feedsSvcImpl.saveNewPost(feedPostedBy: "vibin", feedTitle: imgTitle.text!, feedText: postDescription.text!, feedImageUrl: fileName)
+            feedsSvcImpl.saveNewPost(feedPostedBy: appDelegate.userDetails.userName!, feedTitle: postTitle.text!, feedText: postDescription.text!, feedImageUrl: fileName)
         } else {
-            feedsSvcImpl.saveNewPost(feedPostedBy: "vibin", feedTitle: imgTitle.text!, feedText: postDescription.text!, feedImageUrl: nil)
+            feedsSvcImpl.saveNewPost(feedPostedBy: appDelegate.userDetails.userName!, feedTitle: postTitle.text!, feedText: postDescription.text!, feedImageUrl: nil)
         }
         
         let alert = UIAlertController(title: "Publish Post", message: "Post Published Successfully", preferredStyle: UIAlertController.Style.alert)

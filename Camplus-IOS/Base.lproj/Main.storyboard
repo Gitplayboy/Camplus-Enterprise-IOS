@@ -353,7 +353,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" editable="NO" textAlignment="natural" id="2kf-WN-JYD">
-                                                    <rect key="frame" x="7" y="72" width="320" height="13"/>
+                                                    <rect key="frame" x="6.9999999999999609" y="62" width="320" height="13"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <color key="textColor" red="0.0087371906269999994" green="0.1557027996" blue="0.20392915610000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -361,7 +361,7 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aUT-3T-XqO">
-                                                    <rect key="frame" x="8" y="100" width="320" height="239"/>
+                                                    <rect key="frame" x="8" y="90" width="320" height="249"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="168" id="Z8c-pn-Qxq"/>
@@ -581,8 +581,8 @@
                     <connections>
                         <outlet property="deleteImgBtn" destination="y1B-9Q-Cpe" id="LSw-4x-qgN"/>
                         <outlet property="imgDescription" destination="C1e-K5-vDs" id="ZeF-PK-Ava"/>
-                        <outlet property="imgTitle" destination="A6t-fz-fTt" id="SEe-Ul-hsN"/>
                         <outlet property="postDescription" destination="Kos-oY-u97" id="Cgp-kY-5nG"/>
+                        <outlet property="postTitle" destination="PhU-tl-X7z" id="qn2-ii-TEM"/>
                         <outlet property="publishPostBtn" destination="mhp-6c-Qiz" id="cx5-3k-WPw"/>
                         <outlet property="uploadImgView" destination="54d-at-Tuv" id="e6n-YQ-GNw"/>
                         <outlet property="uploadedImg" destination="5Ac-1S-Pfp" id="5aa-3P-0LQ"/>
