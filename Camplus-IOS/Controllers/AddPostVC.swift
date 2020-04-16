@@ -40,12 +40,15 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
         postDescription.layer.cornerRadius = 8
         postDescription.layer.borderWidth = 1.0
         let myColor : UIColor = UIColor.gray
+        postDescription.bounds.inset(by: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0))
         postDescription.layer.borderColor = myColor.cgColor
         postDescription.layer.masksToBounds = true
+        postDescription.setLeftPaddingPoints(10)
+        postTitle.setLeftPaddingPoints(10)
         let gesture = UITapGestureRecognizer(target: self, action: #selector(onImageUpload))
         uploadImgView.addGestureRecognizer(gesture)
         
-        self.navigationController?.navigationBar.topItem?.title = " "
+        setupNavigationbar()
         
         publishPostBtn.layer.cornerRadius = 8
     }
@@ -55,6 +58,16 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
     @IBAction func onImageDeletion(_ sender: UIButton) {
         uploadedImg.image = nil
         deleteImgBtn.isHidden = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if InternetConnectionManager.isConnectedToNetwork() {
+            print("connected")
+        } else{
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
+            navigationController?.pushViewController(noInternetVC, animated: true)
+        }
     }
     
     @IBAction func onPublishPost() {
@@ -80,7 +93,9 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
         }
         
         let alert = UIAlertController(title: "Publish Post", message: "Post Published Successfully", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(success) in
+            self.navigationController?.popViewController(animated: true)
+        }))
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -145,5 +160,15 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
             finalNumber += Int(randomNumber) * place
         }
         return finalNumber
+    }
+    
+    func setupNavigationbar() {
+        self.navigationController?.navigationBar.topItem?.title = " "
+        let backBTN = UIBarButtonItem(image: UIImage(named: "back"),
+                                      style: .plain,
+                                      target: navigationController,
+                                      action: #selector(UINavigationController.popViewController(animated:)))
+        backBTN.tintColor = UIColor.white
+        navigationItem.leftBarButtonItem = backBTN
     }
 }

@@ -29,16 +29,7 @@ class ChatMessageVC: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         super.viewDidLoad()
         sendTxtField.delegate = self
         initialTxtFieldPos = textFieldBtmConstraint.constant
-        let button: UIButton = UIButton(type: UIButton.ButtonType.custom)
-        //set image for button
-        button.setImage(UIImage(named: "people"), for: .normal)
-        //add function for button
-        button.addTarget(self, action: #selector(self.checkGroupMembers), for: UIControl.Event.touchUpInside)
-        //set frame
-        button.frame = CGRect(x: 0, y: 0, width: 53, height: 31)
-        let add = UIBarButtonItem(customView: button)
-        navigationItem.rightBarButtonItems = [add]
-        self.navigationController?.navigationBar.topItem?.title = " "
+        setupNavigationbar()
         if isGroupChat {
             navigationItem.rightBarButtonItem?.customView?.isHidden = false
             if messageId != nil {
@@ -80,14 +71,21 @@ class ChatMessageVC: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if InternetConnectionManager.isConnectedToNetwork() {
+            print("connected")
+        } else{
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
+            navigationController?.pushViewController(noInternetVC, animated: true)
+        }
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     
@@ -194,5 +192,24 @@ class ChatMessageVC: UIViewController, UITextFieldDelegate, UITableViewDataSourc
                 self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
             }
         }
+    }
+    
+    func setupNavigationbar() {
+        let button: UIButton = UIButton(type: UIButton.ButtonType.custom)
+        //set image for button
+        button.setImage(UIImage(named: "people"), for: .normal)
+        //add function for button
+        button.addTarget(self, action: #selector(self.checkGroupMembers), for: UIControl.Event.touchUpInside)
+        //set frame
+        button.frame = CGRect(x: 0, y: 0, width: 53, height: 31)
+        let add = UIBarButtonItem(customView: button)
+        navigationItem.rightBarButtonItems = [add]
+        self.navigationController?.navigationBar.topItem?.title = " "
+        let backBTN = UIBarButtonItem(image: UIImage(named: "back"),
+                                      style: .plain,
+                                      target: navigationController,
+                                      action: #selector(UINavigationController.popViewController(animated:)))
+        backBTN.tintColor = UIColor.white
+        navigationItem.leftBarButtonItem = backBTN
     }
 }

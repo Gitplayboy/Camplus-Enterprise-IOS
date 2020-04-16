@@ -23,7 +23,7 @@ class ChatGroupMembersVC: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.topItem?.title = " "
+        setupNavigationbar()
         if groupId != nil {
             chatSvc.fetchGroupMembers(groupId: groupId!, success: {(userDetailsArr) in
                 self.userDetailsArr = userDetailsArr
@@ -32,6 +32,16 @@ class ChatGroupMembersVC: UIViewController, UITableViewDataSource, UITableViewDe
             }, failure: {(error) in
                 print(error)
             })
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if InternetConnectionManager.isConnectedToNetwork() {
+            print("connected")
+        } else{
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
+            navigationController?.pushViewController(noInternetVC, animated: true)
         }
     }
     
@@ -68,6 +78,16 @@ class ChatGroupMembersVC: UIViewController, UITableViewDataSource, UITableViewDe
             destination.receiverId = targetUserId!
         }
         targetUserMsgId = ""
+    }
+    
+    func setupNavigationbar() {
+        self.navigationController?.navigationBar.topItem?.title = " "
+        let backBTN = UIBarButtonItem(image: UIImage(named: "back"),
+                                      style: .plain,
+                                      target: navigationController,
+                                      action: #selector(UINavigationController.popViewController(animated:)))
+        backBTN.tintColor = UIColor.white
+        navigationItem.leftBarButtonItem = backBTN
     }
     
 }

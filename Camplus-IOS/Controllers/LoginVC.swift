@@ -11,6 +11,7 @@ import Lottie
 
 class LoginVC: UIViewController,UITextFieldDelegate {
     
+    @IBOutlet weak var rememberUsername: UISwitch!
     @IBOutlet weak var signInBtn: UIButton!
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -52,6 +53,14 @@ class LoginVC: UIViewController,UITextFieldDelegate {
     
     @IBAction func onLogin() {
         loginSvc.verifyUserLogin(userId: userName.text!,password: password.text!,success: {(success) in
+            //save username and password to userdefaults
+            if self.rememberUsername.isOn {
+                let defaults = UserDefaults.standard
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                defaults.set(self.userName.text!, forKey: "username")
+                defaults.set(appDelegate.userDetails.userId, forKey: "userId")
+                defaults.set(appDelegate.userDetails.userType, forKey: "userType")
+            }
             self.performSegue(withIdentifier: "loginSB", sender: self)
             
         },failure: {(error) in
@@ -60,4 +69,5 @@ class LoginVC: UIViewController,UITextFieldDelegate {
             self.present(alert, animated: true, completion: nil)
         })
     }
+    
 }

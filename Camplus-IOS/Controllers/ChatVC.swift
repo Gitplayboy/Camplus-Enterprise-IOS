@@ -8,14 +8,16 @@
 
 import UIKit
 
-class ChatVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
+class ChatVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     @IBOutlet weak var classGroupContainerView: UIView!
+    @IBOutlet weak var searchChatsTxt: UITextField!
     @IBOutlet weak var addChatBtn: UIButton!
     @IBOutlet weak var classGroupsLbl: UILabel!
     @IBOutlet weak var directMsgLbl: UILabel!
     let chatSvc = ChatsSvcImpl()
     var chatPreviewArr = [ChatPreviewMsgs]()
+    var filteredChats = [ChatPreviewMsgs]()
     @IBOutlet weak var chatPreviewTable: UITableView!
     var receiverName:String?
     var messageId:String?
@@ -36,28 +38,31 @@ class ChatVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
         //Service call
         chatSvc.fetchDirectMessageChats(userId: (appDelegate.userDetails.userId)!, success: {(chatPreviewMsgs) in
             self.chatPreviewArr = chatPreviewMsgs
+            self.filteredChats = chatPreviewMsgs
             self.chatPreviewTable.reloadData()
         }, failure: {(error) in
             print(error)
         })
+        
+        searchChatsTxt.setLeftPaddingPoints(30)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chatPreviewArr.count
+        return filteredChats.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell") as! ChatsDataCell
-        cell.chatDpName.text = chatPreviewArr[indexPath.row].senderDpName
-        cell.chatName.text = chatPreviewArr[indexPath.row].senderName
-        cell.chatMsgPreview.text = chatPreviewArr[indexPath.row].lastMsg
+        cell.chatDpName.text = filteredChats[indexPath.row].senderDpName
+        cell.chatName.text = filteredChats[indexPath.row].senderName
+        cell.chatMsgPreview.text = filteredChats[indexPath.row].lastMsg
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        receiverName = chatPreviewArr[indexPath.row].senderName
-        messageId = chatPreviewArr[indexPath.row].messageId
+        receiverName = filteredChats[indexPath.row].senderName
+        messageId = filteredChats[indexPath.row].messageId
         performSegue(withIdentifier: "directChatMsgs", sender: self)
     }
     
@@ -93,6 +98,33 @@ class ChatVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
         classGroupContainerView.isHidden = true
         directMsgLbl.textColor = UIColor.systemOrange
         classGroupsLbl.textColor = UIColor.white
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        var isFound = false
+        if searchChatsTxt.text != nil && !searchChatsTxt.text!.isEmpty {
+            filteredChats = []
+            for chats in chatPreviewArr {
+                if chats.senderName!.lowercased().contains(searchChatsTxt!.text!.lowercased()) {
+                    filteredChats.append(chats)
+                    isFound = true
+                }
+            }
+            if isFound {
+                chatPreviewTable.reloadData()
+            } else {
+                chatPreviewTable.reloadData()
+                //NotesNotFoundVC.isHidden = false
+            }
+            
+        } else {
+            filteredChats = chatPreviewArr
+            chatPreviewTable.reloadData()
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
     }
     
 }

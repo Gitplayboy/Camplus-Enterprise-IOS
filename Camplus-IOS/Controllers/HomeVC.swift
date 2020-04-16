@@ -28,6 +28,16 @@ class HomeVC: UIViewController {
         chatContainer.isHidden = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if InternetConnectionManager.isConnectedToNetwork() {
+            print("connected")
+        } else{
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
+            navigationController?.pushViewController(noInternetVC, animated: true)
+        }
+    }
+    
     func setupNavigationBar() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()

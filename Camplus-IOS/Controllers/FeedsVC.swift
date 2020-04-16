@@ -18,14 +18,6 @@ class FeedsVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.feedsCollecView!.alwaysBounceVertical = true
-        let refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(self.refreshStream), for: .valueChanged)
-	
-        self.feedsCollecView!.refreshControl = refresher
-        feedsCollecView!.addSubview(self.feedsCollecView!.refreshControl!)
-        
         // Call service
         feedsService.fetchActiveFeeds(success: { (feedsArr) in
             self.feedsData = feedsArr
@@ -37,34 +29,43 @@ class FeedsVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSo
         addPost.layer.masksToBounds = true
     }
     
-
+    
     @objc func refreshStream() {
         // Call service
         feedsService.fetchActiveFeeds(success: { (feedsArr) in
+            // This code will hide refresh controller
+            DispatchQueue.main.async {
+                self.feedsCollecView!.refreshControl?.endRefreshing()
+            }
             self.feedsData = feedsArr
             self.feedsCollecView.reloadData()
-            self.feedsCollecView!.refreshControl?.endRefreshing()
+            
         }) { (error) in
             print(error)
         }
     }
-
+    
     // MARK: UICollectionViewDataSource
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return feedsData.count
     }
-
-
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "feedCell", for: indexPath) as! FeedsDataCell
-        cell.postTxtView?.text = feedsData[indexPath.row].postDescription
-        cell.postTxtView?.sizeToFit()
+        cell.postTxtView?.text = feedsData[indexPath.row].postDescription!
+        //cell.postTxtView.sizeToFit()
+        
+        
+        
         if feedsData[indexPath.row].postImgName != nil {
             feedsService.downloadImages(filename: feedsData[indexPath.row].postImgName!,success: { (imageData) in
                 cell.postImgView?.image = imageData
                 let gesture = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped))
-                cell.postImgView.addGestureRecognizer(gesture)
+                if cell.postImgView != nil {
+                    cell.postImgView.addGestureRecognizer(gesture)
+                }
             }) { (error) in
                 print(error)
             }
@@ -82,11 +83,11 @@ class FeedsVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
-     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var actualsize = CGSize()
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "feedCell", for: indexPath) as! FeedsDataCell
         cell.postTxtView?.text = feedsData[indexPath.row].postDescription
-
+        
         let textview = UITextView()
         
         if feedsData[indexPath.row].postDescription != nil {
@@ -96,11 +97,15 @@ class FeedsVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSo
             if cell.postTxtView != nil {
                 actualsize = cell.postTxtView.sizeThatFits(cell.postTxtView.bounds.size)
             }
+            
+            print("text is \(textview.text!)")
+            print("width is \(actualsize.width)")
+            print("height is \(actualsize.height)")
         }
         
         //BOTH IMAGE AND TEXT ARE AVAILABLE
         if feedsData[indexPath.row].postImgName != nil && feedsData[indexPath.row].postDescription != nil{
-            return CGSize(width: collectionView.frame.size.width - 30, height: actualsize.height + 300)
+            return CGSize(width: collectionView.frame.size.width - 30, height: actualsize.height + 250)
         } else if feedsData[indexPath.row].postImgName == nil && feedsData[indexPath.row].postDescription != nil {
             // Only text available
             return CGSize(width: collectionView.frame.size.width - 30, height: actualsize.height + 80)
@@ -127,7 +132,7 @@ class FeedsVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSo
             self.view.addSubview(newImageView)
         }, completion: nil)
     }
-
+    
     @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = false
