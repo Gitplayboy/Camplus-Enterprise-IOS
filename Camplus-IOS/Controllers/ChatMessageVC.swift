@@ -118,11 +118,13 @@ class ChatMessageVC: UIViewController, UITextFieldDelegate, UITableViewDataSourc
             (cell as! LeftChatCell).chatTxtLbl.font = UIFont(name: "ProximaNova-Regular", size: 16)
             (cell as! LeftChatCell).senderName.text! = sender.senderName!
             (cell as! LeftChatCell).previewName.text! = String(sender.senderName!.prefix(2)).uppercased()
+            (cell as! LeftChatCell).chatDate.text! = String(sender.chatDate!)
         } else if let receiever = chatMessages[indexPath.row] as? ChatMessages.RecieverChatMsgs {
             cell = tableView.dequeueReusableCell(withIdentifier: "RightChat") as! RightChatCell
             (cell as! RightChatCell).chatTxtLbl.text! = receiever.chatMessage!
             (cell as! RightChatCell).chatTxtLbl.font = UIFont(name: "ProximaNova-Regular", size: 16)
             (cell as! RightChatCell).chatTxtLbl.textColor = UIColor.white
+            (cell as! RightChatCell).chatDate.text! = String(receiever.chatDate!)
         }
         return cell!
     }

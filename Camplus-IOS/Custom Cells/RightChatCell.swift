@@ -11,6 +11,7 @@ import UIKit
 class RightChatCell: UITableViewCell {
 
     @IBOutlet weak var chatTxtLbl: UILabel!
+    @IBOutlet weak var chatDate: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         chatTxtLbl.layer.cornerRadius = 8

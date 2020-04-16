@@ -13,11 +13,13 @@ class FeedsData {
     var postImgName:String?
     var postByUser:String?
     var postTitle:String?
+    var postTime:String?
     
-    init(postDescription:String?, postImgName:String?,postByUser:String?,postTitle:String?) {
+    init(postDescription:String?, postImgName:String?,postByUser:String?,postTitle:String?,postTime:String?) {
         self.postDescription = postDescription
         self.postImgName = postImgName
         self.postByUser = postByUser
         self.postTitle = postTitle
+        self.postTime = postTime
     }
 }

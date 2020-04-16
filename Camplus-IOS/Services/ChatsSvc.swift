@@ -35,9 +35,9 @@ class ChatsSvcImpl: ChatsSvc {
                             for index in 0..<messages.count {
                                 if let msgField = messages[index] as? [String : Any] {
                                     if msgField["sender_id"] as? String == userId {
-                                        chatMsgs.append(ChatMessages.RecieverChatMsgs(chatMessage: msgField["message_text"] as? String, chatDate: nil,senderName: msgField["sender_name"] as? String))
+                                        chatMsgs.append(ChatMessages.RecieverChatMsgs(chatMessage: msgField["message_text"] as? String, chatDate: self.getDateTimestamp(fromTimeStamp: (msgField["message_time"] as! TimeInterval)),senderName: msgField["sender_name"] as? String))
                                     } else {
-                                        chatMsgs.append(ChatMessages.SenderChatMsgs(chatMessage: msgField["message_text"] as? String, chatDate: nil,senderName: msgField["sender_name"] as? String))
+                                        chatMsgs.append(ChatMessages.SenderChatMsgs(chatMessage: msgField["message_text"] as? String, chatDate: self.getDateTimestamp(fromTimeStamp: (msgField["message_time"] as! TimeInterval)),senderName: msgField["sender_name"] as? String))
                                     }
                                 }
                             }
@@ -48,8 +48,6 @@ class ChatsSvcImpl: ChatsSvc {
                 success(chatMsgs)
             }
         }
-        
-        
     }
     
     func fetchDirectMessageChats(userId: String,success:@escaping (_ chatMsgsArr:[ChatPreviewMsgs])->(),failure:@escaping (_ error:Error)->()) {
@@ -113,10 +111,12 @@ class ChatsSvcImpl: ChatsSvc {
                         let messages = document.data()["message_map"]! as! [AnyObject]
                         for index in 0..<messages.count {
                             let msgField = messages[index] as? [String : Any]
-                            if msgField!["sender_id"] as? String == userId {
-                                chatMsgs.append(ChatMessages.RecieverChatMsgs(chatMessage: msgField!["message_text"] as? String, chatDate: nil,senderName: msgField!["sender_name"] as? String))
-                            } else {
-                                chatMsgs.append(ChatMessages.SenderChatMsgs(chatMessage: msgField!["message_text"] as? String, chatDate: nil,senderName: msgField!["sender_name"] as? String))
+                            if msgField!["sender_id"] != nil {
+                                if msgField!["sender_id"] as? String == userId {
+                                    chatMsgs.append(ChatMessages.RecieverChatMsgs(chatMessage: msgField!["message_text"] as? String, chatDate: self.getDateTimestamp(fromTimeStamp: (msgField!["message_time"] as? TimeInterval)!),senderName: msgField!["sender_name"] as? String))
+                                } else {
+                                    chatMsgs.append(ChatMessages.SenderChatMsgs(chatMessage: msgField!["message_text"] as? String, chatDate: self.getDateTimestamp(fromTimeStamp: (msgField!["message_time"] as? TimeInterval)!),senderName: msgField!["sender_name"] as? String))
+                                }
                             }
                         }
                         break
@@ -128,10 +128,11 @@ class ChatsSvcImpl: ChatsSvc {
     }
     
     func sendDirectMessage(messageId:String, userId:String, messageText:String, senderName:String) {
-        var msgField = [String:String]()
+        var msgField = [String:Any]()
         msgField["message_text"] = messageText
         msgField["sender_id"] = userId
         msgField["sender_name"] = senderName
+        msgField["message_time"] = Date().timeIntervalSince1970
         
         let messageRef = self.db.collection("messages").document(messageId)
         messageRef.setData(["last_msg":messageText], merge: true)
@@ -150,7 +151,7 @@ class ChatsSvcImpl: ChatsSvc {
         messageDocument["receiver_name"] = receiverName
         messageDocument["sender_name"] = appDelegate.userDetails.userName
         messageDocument["sender_id"] = appDelegate.userDetails.userId
-        messageDocument["message_map"] = [["message_text" : messageText, "sender_id" : appDelegate.userDetails.userId, "sender_name" : appDelegate.userDetails.userName]]
+        messageDocument["message_map"] = [["message_text" : messageText, "sender_id" : appDelegate.userDetails.userId, "sender_name" : appDelegate.userDetails.userName, "message_time": Date().timeIntervalSince1970]]
         let documentId = db.collection("messages").addDocument(data: messageDocument).documentID
         fetchActiveChatMessages(messageId: documentId, userId: appDelegate.userDetails.userId!, success: {(chatMsgs) in
             success(chatMsgs,documentId)
@@ -211,7 +212,11 @@ class ChatsSvcImpl: ChatsSvc {
         })
     }
     
-    func checkIfActiveChatsAvailable() {
-        
+    func getDateTimestamp(fromTimeStamp timestamp: TimeInterval) -> String {
+        let dayTimePeriodFormatter = DateFormatter()
+        dayTimePeriodFormatter.timeZone = TimeZone.current
+        dayTimePeriodFormatter.dateFormat = "MMM dd YYYY hh:MM a"
+        print(dayTimePeriodFormatter.string(from: Date(timeIntervalSince1970: timestamp)))
+        return dayTimePeriodFormatter.string(from: Date(timeIntervalSince1970: timestamp))
     }
 }

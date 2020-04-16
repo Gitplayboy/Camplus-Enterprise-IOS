@@ -51,6 +51,9 @@
 		45C5F32A243E33AE00D30406 /* Proxima Nova Reg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45C5F329243E33AE00D30406 /* Proxima Nova Reg.ttf */; };
 		45EED7252447D10100B235C8 /* InternetConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EED7242447D10100B235C8 /* InternetConnectionManager.swift */; };
 		45EED7272447DFC300B235C8 /* NoInternetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EED7262447DFC200B235C8 /* NoInternetVC.swift */; };
+		45EED72C2447FB0800B235C8 /* LoginSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EED7292447F95100B235C8 /* LoginSvc.swift */; };
+		45EED72D2447FB0800B235C8 /* ChatsSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EED72A2447F95100B235C8 /* ChatsSvc.swift */; };
+		45EED72E2447FB0800B235C8 /* FeedsSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EED72B2447F95100B235C8 /* FeedsSvc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -381,6 +384,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45EED72C2447FB0800B235C8 /* LoginSvc.swift in Sources */,
+				45EED72D2447FB0800B235C8 /* ChatsSvc.swift in Sources */,
+				45EED72E2447FB0800B235C8 /* FeedsSvc.swift in Sources */,
 				4569AE612441A409009C8CD6 /* FeedsData.swift in Sources */,
 				4569AE722444F6EF009C8CD6 /* GroupChatCell.swift in Sources */,
 				45EED7272447DFC300B235C8 /* NoInternetVC.swift in Sources */,

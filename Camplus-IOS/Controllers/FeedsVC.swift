@@ -18,6 +18,14 @@ class FeedsVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.feedsCollecView!.alwaysBounceVertical = true
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(self.refreshStream), for: .valueChanged)
+
+        self.feedsCollecView!.refreshControl = refresher
+        feedsCollecView!.addSubview(self.feedsCollecView!.refreshControl!)
+
         // Call service
         feedsService.fetchActiveFeeds(success: { (feedsArr) in
             self.feedsData = feedsArr
@@ -55,9 +63,7 @@ class FeedsVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "feedCell", for: indexPath) as! FeedsDataCell
         cell.postTxtView?.text = feedsData[indexPath.row].postDescription!
-        //cell.postTxtView.sizeToFit()
-        
-        
+        cell.postedDateLbl.text = feedsData[indexPath.row].postTime!
         
         if feedsData[indexPath.row].postImgName != nil {
             feedsService.downloadImages(filename: feedsData[indexPath.row].postImgName!,success: { (imageData) in

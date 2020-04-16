@@ -11,9 +11,9 @@ import UIKit
 class ChatMessages {
     class SenderChatMsgs:ChatMessages {
         var chatMessage:String?
-        var chatDate:Date?
+        var chatDate:String?
         var senderName:String?
-        init (chatMessage:String?,chatDate:Date?,senderName:String?) {
+        init (chatMessage:String?,chatDate:String?,senderName:String?) {
             self.chatMessage = chatMessage
             self.chatDate = chatDate
             self.senderName = senderName
@@ -22,9 +22,9 @@ class ChatMessages {
     
     class RecieverChatMsgs: ChatMessages{
         var chatMessage:String?
-        var chatDate:Date?
+        var chatDate:String?
         var senderName:String?
-        init (chatMessage:String?,chatDate:Date?,senderName:String?) {
+        init (chatMessage:String?,chatDate:String?,senderName:String?) {
             self.chatMessage = chatMessage
             self.chatDate = chatDate
             self.senderName = senderName

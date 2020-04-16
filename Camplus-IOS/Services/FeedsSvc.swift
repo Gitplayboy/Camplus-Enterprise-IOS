@@ -36,8 +36,9 @@ class FeedsSvcImpl:FeedsSvc {
                     }
                     let feedTitle = document.get("feed_title") as! String
                     let userName = document.get("feed_user_name") as! String
+                    let postTime = ChatsSvcImpl().getDateTimestamp(fromTimeStamp: document.get("feed_post_time") as! TimeInterval)
                     
-                    let feedsData = FeedsData(postDescription:feedDescription, postImgName:feedImgUrl,postByUser:userName,postTitle:feedTitle)
+                    let feedsData = FeedsData(postDescription:feedDescription, postImgName:feedImgUrl,postByUser:userName,postTitle:feedTitle,postTime:postTime)
                     
                     feedsArr.append(feedsData)
                 }
@@ -49,10 +50,12 @@ class FeedsSvcImpl:FeedsSvc {
     func saveNewPost(feedPostedBy: String, feedTitle: String, feedText: String, feedImageUrl: String?) {
         if let imgUrl = feedImageUrl {
             db.collection("feeds").document().setData(["feed_description":feedText,"feed_image_url":imgUrl,
-                                                       "feed_title":feedTitle, "feed_user_name":feedPostedBy])
+                                                       "feed_title":feedTitle, "feed_user_name":feedPostedBy
+                ,"feed_post_time":Date().timeIntervalSince1970])
         } else {
             db.collection("feeds").document().setData(["feed_description":feedText,
-            "feed_title":feedTitle, "feed_user_name":feedPostedBy])
+            "feed_title":feedTitle, "feed_user_name":feedPostedBy
+            ,"feed_post_time":Date().timeIntervalSince1970])
         }
         
     }

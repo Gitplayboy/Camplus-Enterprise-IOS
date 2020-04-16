@@ -13,6 +13,7 @@ class LeftChatCell: UITableViewCell {
     @IBOutlet weak var senderProfileImgView: UIView!
     @IBOutlet weak var chatTxtLbl: UILabel!
     @IBOutlet weak var senderName: UILabel!
+    @IBOutlet weak var chatDate: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         senderProfileImgView.layer.cornerRadius = senderProfileImgView.frame.size.width/2
