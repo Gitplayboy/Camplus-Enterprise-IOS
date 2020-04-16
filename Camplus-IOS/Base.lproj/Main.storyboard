@@ -718,7 +718,6 @@
                                                     <rect key="frame" x="309" y="16" width="32" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="13" id="9wd-wk-uDK"/>
-                                                        <constraint firstAttribute="width" constant="32" id="fMR-Fa-iua"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -765,6 +764,7 @@
                                             <outlet property="chatMsgPreview" destination="Bkq-LE-cwZ" id="RT4-tJ-ohV"/>
                                             <outlet property="chatName" destination="FFO-95-9ln" id="z3V-si-8M4"/>
                                             <outlet property="chatPreviewBorder" destination="ukT-Zy-flU" id="azg-E9-woP"/>
+                                            <outlet property="lastChatTime" destination="WlB-v4-E3C" id="6gt-St-WKd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

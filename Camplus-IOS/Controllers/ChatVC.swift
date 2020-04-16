@@ -57,6 +57,7 @@ class ChatVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UITex
         cell.chatDpName.text = filteredChats[indexPath.row].senderDpName
         cell.chatName.text = filteredChats[indexPath.row].senderName
         cell.chatMsgPreview.text = filteredChats[indexPath.row].lastMsg
+        cell.lastChatTime.text = filteredChats[indexPath.row].lastMsgTime
         return cell
     }
     

@@ -58,9 +58,9 @@ class ChatsSvcImpl: ChatsSvc {
                 print("Error getting documents: \(err)")
             } else {
                 for document in snapshot!.documents {
-                    if (document.get("sender_id") as? String == userId) {                        chatPreview.append(ChatPreviewMsgs(senderName: document.get("receiver_name") as? String, senderDpName: String(((document.get("receiver_name") as? String)?.prefix(2))!).uppercased(), lastMsg: document.get("last_msg") as? String, messageId: document.documentID))
+                    if (document.get("sender_id") as? String == userId) {                        chatPreview.append(ChatPreviewMsgs(senderName: document.get("receiver_name") as? String, senderDpName: String(((document.get("receiver_name") as? String)?.prefix(2))!).uppercased(), lastMsg: document.get("last_msg") as? String, messageId: document.documentID, lastMsgTime: self.getLastTime(fromTimeStamp: (document.get("last_msg_time") as? TimeInterval)!)))
                     } else if (document.get("receiver_id") as? String == userId) {
-                        chatPreview.append(ChatPreviewMsgs(senderName: document.get("sender_name") as? String, senderDpName: String(((document.get("sender_name") as? String)?.prefix(2))!).uppercased(), lastMsg: document.get("last_msg") as? String, messageId: document.documentID))
+                        chatPreview.append(ChatPreviewMsgs(senderName: document.get("sender_name") as? String, senderDpName: String(((document.get("sender_name") as? String)?.prefix(2))!).uppercased(), lastMsg: document.get("last_msg") as? String, messageId: document.documentID, lastMsgTime: self.getLastTime(fromTimeStamp: (document.get("last_msg_time") as? TimeInterval)!) ))
                     }
                 }
                 success(chatPreview)
@@ -136,6 +136,7 @@ class ChatsSvcImpl: ChatsSvc {
         
         let messageRef = self.db.collection("messages").document(messageId)
         messageRef.setData(["last_msg":messageText], merge: true)
+        messageRef.setData(["message_time":Date().timeIntervalSince1970], merge: true)
         messageRef.updateData([
             "message_map": FieldValue.arrayUnion([msgField])
         ])
@@ -151,6 +152,7 @@ class ChatsSvcImpl: ChatsSvc {
         messageDocument["receiver_name"] = receiverName
         messageDocument["sender_name"] = appDelegate.userDetails.userName
         messageDocument["sender_id"] = appDelegate.userDetails.userId
+        messageDocument["message_time"] = Date().timeIntervalSince1970
         messageDocument["message_map"] = [["message_text" : messageText, "sender_id" : appDelegate.userDetails.userId, "sender_name" : appDelegate.userDetails.userName, "message_time": Date().timeIntervalSince1970]]
         let documentId = db.collection("messages").addDocument(data: messageDocument).documentID
         fetchActiveChatMessages(messageId: documentId, userId: appDelegate.userDetails.userId!, success: {(chatMsgs) in
@@ -215,8 +217,19 @@ class ChatsSvcImpl: ChatsSvc {
     func getDateTimestamp(fromTimeStamp timestamp: TimeInterval) -> String {
         let dayTimePeriodFormatter = DateFormatter()
         dayTimePeriodFormatter.timeZone = TimeZone.current
-        dayTimePeriodFormatter.dateFormat = "MMM dd YYYY hh:MM a"
-        print(dayTimePeriodFormatter.string(from: Date(timeIntervalSince1970: timestamp)))
+        dayTimePeriodFormatter.dateFormat = "MMM dd YYYY hh:mm a"
         return dayTimePeriodFormatter.string(from: Date(timeIntervalSince1970: timestamp))
+    }
+    
+    func getLastTime(fromTimeStamp timestamp: TimeInterval) -> String {
+        let dayTimePeriodFormatter = DateFormatter()
+        dayTimePeriodFormatter.timeZone = TimeZone.current
+        dayTimePeriodFormatter.dateFormat = "mm"
+        let timeSince = dayTimePeriodFormatter.string(from: Date(timeIntervalSinceNow: timestamp))
+        var timeStr = "\(timeSince) mins ago"
+        if Int(timeSince)! > 60 {
+            timeStr = "1 hour +"
+        }
+        return timeStr
     }
 }

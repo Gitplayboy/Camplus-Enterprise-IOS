@@ -19,7 +19,7 @@ class FeedsSvcImpl:FeedsSvc {
     let db = Firestore.firestore()
     
     func fetchActiveFeeds(success:@escaping (_ dataArr:[FeedsData])->(),failure:@escaping (_ error:Error)->()) {
-        db.collection("feeds").addSnapshotListener {(snapshot, err) in
+        db.collection("feeds").order(by: "feed_post_time", descending: true).addSnapshotListener {(snapshot, err) in
             var feedsArr = [FeedsData]()
             if let err = err {
                 print("Error getting documents: \(err)")

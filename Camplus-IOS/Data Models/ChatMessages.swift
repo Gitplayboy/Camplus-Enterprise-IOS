@@ -37,12 +37,14 @@ class ChatPreviewMsgs {
     var senderDpName:String?
     var lastMsg:String?
     var messageId:String?
+    var lastMsgTime:String?
     
-    init(senderName: String?, senderDpName: String?, lastMsg: String?, messageId:String?) {
+    init(senderName: String?, senderDpName: String?, lastMsg: String?, messageId:String?,lastMsgTime:String?) {
         self.senderName = senderName
         self.senderDpName = senderDpName
         self.lastMsg = lastMsg
         self.messageId = messageId
+        self.lastMsgTime = lastMsgTime
     }
 }
 

@@ -14,6 +14,7 @@ class ChatsDataCell: UITableViewCell {
     @IBOutlet weak var chatName: UILabel!
     @IBOutlet weak var chatMsgPreview: UILabel!
     @IBOutlet weak var chatPreviewBorder: UIView!
+    @IBOutlet weak var lastChatTime: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

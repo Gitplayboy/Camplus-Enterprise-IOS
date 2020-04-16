@@ -57,7 +57,7 @@ class LoginVC: UIViewController,UITextFieldDelegate {
             if self.rememberUsername.isOn {
                 let defaults = UserDefaults.standard
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                defaults.set(self.userName.text!, forKey: "username")
+                defaults.set(appDelegate.userDetails.userName, forKey: "username")
                 defaults.set(appDelegate.userDetails.userId, forKey: "userId")
                 defaults.set(appDelegate.userDetails.userType, forKey: "userType")
             }
