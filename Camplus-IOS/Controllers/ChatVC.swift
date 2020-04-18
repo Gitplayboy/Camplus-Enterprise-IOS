@@ -25,7 +25,7 @@ class ChatVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UITex
     override func viewDidLoad() {
         super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        setupNavigationBar()
+        //setupNavigationBar()
         addChatBtn.layer.cornerRadius = addChatBtn.frame.size.width/2
         addChatBtn.layer.masksToBounds = true
         
@@ -87,6 +87,7 @@ class ChatVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UITex
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.topItem?.hidesBackButton = true
         navigationItem.hidesBackButton = true
+        self.tabBarController!.navigationItem.rightBarButtonItem?.customView?.isHidden = true
     }
     
     @objc func onClassGroupsClick() {
@@ -126,6 +127,10 @@ class ChatVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UITex
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController!.navigationItem.rightBarButtonItem?.customView?.isHidden = true
     }
     
 }

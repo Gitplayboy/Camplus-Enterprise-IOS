@@ -8,8 +8,9 @@
 
 import UIKit
 
-class ChatGroupMembersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ChatGroupMembersVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
+    @IBOutlet weak var searchMembers: UITextField!
     @IBOutlet weak var batchMembersCount: UILabel!
     var groupName:String?
     var groupId:String?
@@ -24,6 +25,7 @@ class ChatGroupMembersVC: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationbar()
+        searchMembers.setLeftPaddingPoints(30)
         if groupId != nil {
             chatSvc.fetchGroupMembers(groupId: groupId!, success: {(userDetailsArr) in
                 self.userDetailsArr = userDetailsArr
@@ -88,6 +90,10 @@ class ChatGroupMembersVC: UIViewController, UITableViewDataSource, UITableViewDe
                                       action: #selector(UINavigationController.popViewController(animated:)))
         backBTN.tintColor = UIColor.white
         navigationItem.leftBarButtonItem = backBTN
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
     }
     
 }

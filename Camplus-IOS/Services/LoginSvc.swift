@@ -27,6 +27,11 @@ class LoginServiceImpl: LoginSvc {
                         appDelegate.userDetails.userId = userId
                         appDelegate.userDetails.userName = (data["username"] as! String)
                         appDelegate.userDetails.userType = (data["user_type"] as! String)
+                        appDelegate.userDetails.gender = (data["gender"] as! String)
+                        appDelegate.userDetails.phone = (data["phone"] as! String)
+                        appDelegate.userDetails.emailId = (data["email"] as! String)
+                        appDelegate.userDetails.firstName = (data["first_name"] as! String)
+                        appDelegate.userDetails.lastName = (data["last_name"] as! String)
                         success("Success")
                     } else {
                         isFound = true

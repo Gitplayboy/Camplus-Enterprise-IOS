@@ -9,6 +9,19 @@
 import UIKit
 import Lottie
 
+extension UITextField {
+    func setLeftPaddingPoints(_ amount:CGFloat){
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.leftView = paddingView
+        self.leftViewMode = .always
+    }
+    func setRightPaddingPoints(_ amount:CGFloat) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.rightView = paddingView
+        self.rightViewMode = .always
+    }
+}
+
 class LoginVC: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var rememberUsername: UISwitch!
@@ -25,15 +38,17 @@ class LoginVC: UIViewController,UITextFieldDelegate {
         password.layer.cornerRadius = 8
         password.layer.borderWidth = 0.7
         password.layer.masksToBounds = true
+        
+        //setupNavigationBar()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        //navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        //navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -60,14 +75,32 @@ class LoginVC: UIViewController,UITextFieldDelegate {
                 defaults.set(appDelegate.userDetails.userName, forKey: "username")
                 defaults.set(appDelegate.userDetails.userId, forKey: "userId")
                 defaults.set(appDelegate.userDetails.userType, forKey: "userType")
+                defaults.set(appDelegate.userDetails.gender, forKey: "gender")
+                defaults.set(appDelegate.userDetails.firstName, forKey: "firstName")
+                defaults.set(appDelegate.userDetails.lastName, forKey: "lastName")
+                defaults.set(appDelegate.userDetails.phone, forKey: "phone")
+                defaults.set(appDelegate.userDetails.emailId, forKey: "email")
             }
-            self.performSegue(withIdentifier: "loginSB", sender: self)
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "homePageSB") 
+            let sceneDelegate = self.view.window!.windowScene!.delegate as! SceneDelegate
+            sceneDelegate.window?.rootViewController = homeViewController
             
         },failure: {(error) in
             let alert = UIAlertController(title: "Invalid Login", message: "Login Failed Please check the credentials", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: nil))
             self.present(alert, animated: true, completion: nil)
         })
+    }
+    
+    func setupNavigationBar() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.backgroundColor = UIColor.clear
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.topItem?.hidesBackButton = true
+        navigationItem.hidesBackButton = true
     }
     
 }

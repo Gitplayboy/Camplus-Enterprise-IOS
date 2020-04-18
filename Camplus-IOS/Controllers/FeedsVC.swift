@@ -7,17 +7,27 @@
 //
 
 import UIKit
+import Lottie
 
 class FeedsVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    @IBOutlet weak var userWelcomeLbl: UILabel!
     var feedsData = [FeedsData]()
     let feedsService = FeedsSvcImpl()
     @IBOutlet weak var addPost:UIButton!
     @IBOutlet weak var feedsCollecView: UICollectionView!
     var refresher = UIRefreshControl()
     
+    @IBOutlet weak var loadingAnimView: AnimationView!
+    var timer = Timer()
+    var blurEffectView:UIVisualEffectView?
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(stopAnimation), userInfo: nil, repeats: false)
+        userWelcomeLbl.text = "Welcome \(String(describing: appDelegate.userDetails.userName!))"
+        startAnimation()
+        setupNavigationBar()
         
         self.feedsCollecView!.alwaysBounceVertical = true
         let refresher = UIRefreshControl()
@@ -143,5 +153,57 @@ class FeedsVC: UIViewController,UICollectionViewDelegate, UICollectionViewDataSo
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = false
         sender.view?.removeFromSuperview()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if InternetConnectionManager.isConnectedToNetwork() {
+            print("connected")
+        } else {
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
+            navigationController?.pushViewController(noInternetVC, animated: true)
+        }
+        self.tabBarController!.navigationItem.rightBarButtonItem?.customView?.isHidden = true
+    }
+    
+    func setupNavigationBar() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.backgroundColor = UIColor.clear
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.topItem?.hidesBackButton = true
+        navigationItem.hidesBackButton = true
+        self.tabBarController!.navigationItem.rightBarButtonItem?.customView?.isHidden = true
+    }
+    
+    func startAnimation() {
+        showAnimate()
+        loadingAnimView.isHidden = false
+        let loadingAnimation = Animation.named("loading")
+        loadingAnimView.animation = loadingAnimation
+        loadingAnimView.loopMode = LottieLoopMode.loop
+        loadingAnimView.play()
+        self.view.addSubview(loadingAnimView)
+    }
+    
+    @objc func stopAnimation() {
+        loadingAnimView.stop()
+        loadingAnimView.isHidden = true
+        removeBlurEffectView()
+    }
+    func showAnimate() {
+        makeBlurEffectView()
+    }
+    func makeBlurEffectView() {
+        let effect: UIBlurEffect = UIBlurEffect(style: UIBlurEffect.Style.regular)
+        blurEffectView = UIVisualEffectView(effect: effect)
+        blurEffectView!.frame = CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width,height:UIScreen.main.bounds.size.height)
+        self.view.addSubview(blurEffectView!)
+    }
+    func removeBlurEffectView() {
+        if blurEffectView != nil {
+            self.blurEffectView!.removeFromSuperview()
+        }
     }
 }

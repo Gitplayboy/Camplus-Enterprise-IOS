@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3CD7E4EE07EA27695D4205F8 /* Pods_Camplus_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C423D205949767900D92C7C /* Pods_Camplus_IOS.framework */; };
+		455BC9B9244A1EDB00F8B225 /* ChangePwdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BC9B8244A1EDB00F8B225 /* ChangePwdVC.swift */; };
 		4569AE5B24414541009C8CD6 /* ChatMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE5A24414541009C8CD6 /* ChatMessages.swift */; };
 		4569AE5D2441A1A8009C8CD6 /* ChatGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE5C2441A1A8009C8CD6 /* ChatGroupVC.swift */; };
 		4569AE612441A409009C8CD6 /* FeedsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE602441A409009C8CD6 /* FeedsData.swift */; };
@@ -38,11 +39,12 @@
 		459A9548244025B200794C98 /* LeftChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459A9547244025B200794C98 /* LeftChatCell.swift */; };
 		459A954A244025C400794C98 /* RightChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459A9549244025C400794C98 /* RightChatCell.swift */; };
 		45C1FEBE243BD97E00C7C523 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 45C1FEBD243BD97E00C7C523 /* loading.json */; };
-		45C1FEC0243CC31100C7C523 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C1FEBF243CC31100C7C523 /* HomeVC.swift */; };
+		45C51726244A8B9F00B8B89C /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45C51725244A8B9F00B8B89C /* Storyboard.storyboard */; };
+		45C5172C244AB48B00B8B89C /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5172B244AB48B00B8B89C /* SettingsVC.swift */; };
+		45C5172E244AB93500B8B89C /* SettingsInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5172D244AB93500B8B89C /* SettingsInfoVC.swift */; };
 		45C5F315243D8D9800D30406 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45C5F314243D8D9800D30406 /* Montserrat-Bold.ttf */; };
 		45C5F317243D8DF900D30406 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45C5F316243D8DF900D30406 /* Montserrat-Regular.ttf */; };
 		45C5F31C243D944400D30406 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5F31B243D944300D30406 /* LoginVC.swift */; };
-		45C5F31E243D945B00D30406 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5F31D243D945B00D30406 /* ViewController.swift */; };
 		45C5F320243DA28F00D30406 /* FeedsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5F31F243DA28F00D30406 /* FeedsVC.swift */; };
 		45C5F322243E2BA800D30406 /* AddPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5F321243E2BA800D30406 /* AddPostVC.swift */; };
 		45C5F324243E2EF700D30406 /* SFProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45C5F323243E2EF700D30406 /* SFProDisplay-Bold.ttf */; };
@@ -54,9 +56,12 @@
 		45EED72C2447FB0800B235C8 /* LoginSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EED7292447F95100B235C8 /* LoginSvc.swift */; };
 		45EED72D2447FB0800B235C8 /* ChatsSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EED72A2447F95100B235C8 /* ChatsSvc.swift */; };
 		45EED72E2447FB0800B235C8 /* FeedsSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EED72B2447F95100B235C8 /* FeedsSvc.swift */; };
+		45EED7302448A31F00B235C8 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EED72F2448A31E00B235C8 /* ProfileVC.swift */; };
+		45EED7322448B24B00B235C8 /* ProfileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EED7312448B24B00B235C8 /* ProfileInfoVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		455BC9B8244A1EDB00F8B225 /* ChangePwdVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePwdVC.swift; sourceTree = "<group>"; };
 		4569AE5A24414541009C8CD6 /* ChatMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessages.swift; sourceTree = "<group>"; };
 		4569AE5C2441A1A8009C8CD6 /* ChatGroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroupVC.swift; sourceTree = "<group>"; };
 		4569AE602441A409009C8CD6 /* FeedsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsData.swift; sourceTree = "<group>"; };
@@ -89,11 +94,12 @@
 		459A9547244025B200794C98 /* LeftChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftChatCell.swift; sourceTree = "<group>"; };
 		459A9549244025C400794C98 /* RightChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightChatCell.swift; sourceTree = "<group>"; };
 		45C1FEBD243BD97E00C7C523 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
-		45C1FEBF243CC31100C7C523 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		45C51725244A8B9F00B8B89C /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		45C5172B244AB48B00B8B89C /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		45C5172D244AB93500B8B89C /* SettingsInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInfoVC.swift; sourceTree = "<group>"; };
 		45C5F314243D8D9800D30406 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		45C5F316243D8DF900D30406 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		45C5F31B243D944300D30406 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		45C5F31D243D945B00D30406 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		45C5F31F243DA28F00D30406 /* FeedsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsVC.swift; sourceTree = "<group>"; };
 		45C5F321243E2BA800D30406 /* AddPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostVC.swift; sourceTree = "<group>"; };
 		45C5F323243E2EF700D30406 /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.ttf"; sourceTree = "<group>"; };
@@ -105,6 +111,8 @@
 		45EED7292447F95100B235C8 /* LoginSvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSvc.swift; sourceTree = "<group>"; };
 		45EED72A2447F95100B235C8 /* ChatsSvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsSvc.swift; sourceTree = "<group>"; };
 		45EED72B2447F95100B235C8 /* FeedsSvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsSvc.swift; sourceTree = "<group>"; };
+		45EED72F2448A31E00B235C8 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		45EED7312448B24B00B235C8 /* ProfileInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoVC.swift; sourceTree = "<group>"; };
 		8C423D205949767900D92C7C /* Pods_Camplus_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Camplus_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A36551E18A88233C92A518 /* Pods-Camplus-IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camplus-IOS.debug.xcconfig"; path = "Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E8DF366D97E8DED604987869 /* Pods-Camplus-IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camplus-IOS.release.xcconfig"; path = "Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +179,7 @@
 				457E503E243B902800F40694 /* AppDelegate.swift */,
 				457E5040243B902800F40694 /* SceneDelegate.swift */,
 				457E5044243B902800F40694 /* Main.storyboard */,
+				45C51725244A8B9F00B8B89C /* Storyboard.storyboard */,
 				457E5047243B902A00F40694 /* Assets.xcassets */,
 				457E5049243B902A00F40694 /* LaunchScreen.storyboard */,
 				4569AE6D24439FF2009C8CD6 /* GoogleService-Info.plist */,
@@ -219,8 +228,6 @@
 			isa = PBXGroup;
 			children = (
 				45C5F31B243D944300D30406 /* LoginVC.swift */,
-				45C5F31D243D945B00D30406 /* ViewController.swift */,
-				45C1FEBF243CC31100C7C523 /* HomeVC.swift */,
 				45C5F31F243DA28F00D30406 /* FeedsVC.swift */,
 				45C5F321243E2BA800D30406 /* AddPostVC.swift */,
 				459A953A243E830200794C98 /* ChatVC.swift */,
@@ -228,6 +235,11 @@
 				4569AE5C2441A1A8009C8CD6 /* ChatGroupVC.swift */,
 				4569AE62244214EB009C8CD6 /* ChatGroupMembersVC.swift */,
 				45EED7262447DFC200B235C8 /* NoInternetVC.swift */,
+				45EED72F2448A31E00B235C8 /* ProfileVC.swift */,
+				45EED7312448B24B00B235C8 /* ProfileInfoVC.swift */,
+				455BC9B8244A1EDB00F8B225 /* ChangePwdVC.swift */,
+				45C5172B244AB48B00B8B89C /* SettingsVC.swift */,
+				45C5172D244AB93500B8B89C /* SettingsInfoVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -312,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				459A9536243E825300794C98 /* Proxima Nova Alt Light.otf in Resources */,
+				45C51726244A8B9F00B8B89C /* Storyboard.storyboard in Resources */,
 				45C5F324243E2EF700D30406 /* SFProDisplay-Bold.ttf in Resources */,
 				459A9535243E825300794C98 /* Proxima Nova Bold.otf in Resources */,
 				45C5F317243D8DF900D30406 /* Montserrat-Regular.ttf in Resources */,
@@ -385,6 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45EED72C2447FB0800B235C8 /* LoginSvc.swift in Sources */,
+				45C5172E244AB93500B8B89C /* SettingsInfoVC.swift in Sources */,
 				45EED72D2447FB0800B235C8 /* ChatsSvc.swift in Sources */,
 				45EED72E2447FB0800B235C8 /* FeedsSvc.swift in Sources */,
 				4569AE612441A409009C8CD6 /* FeedsData.swift in Sources */,
@@ -392,6 +406,8 @@
 				45EED7272447DFC300B235C8 /* NoInternetVC.swift in Sources */,
 				459A954A244025C400794C98 /* RightChatCell.swift in Sources */,
 				459A9546243EF46500794C98 /* ChatMessageVC.swift in Sources */,
+				45C5172C244AB48B00B8B89C /* SettingsVC.swift in Sources */,
+				45EED7302448A31F00B235C8 /* ProfileVC.swift in Sources */,
 				4569AE5D2441A1A8009C8CD6 /* ChatGroupVC.swift in Sources */,
 				4569AE63244214EB009C8CD6 /* ChatGroupMembersVC.swift in Sources */,
 				45EED7252447D10100B235C8 /* InternetConnectionManager.swift in Sources */,
@@ -399,15 +415,15 @@
 				459A9542243E86B000794C98 /* ChatsDataCell.swift in Sources */,
 				4569AE7624457C59009C8CD6 /* GroupMembersCell.swift in Sources */,
 				45C5F320243DA28F00D30406 /* FeedsVC.swift in Sources */,
-				45C5F31E243D945B00D30406 /* ViewController.swift in Sources */,
+				45EED7322448B24B00B235C8 /* ProfileInfoVC.swift in Sources */,
 				45C5F31C243D944400D30406 /* LoginVC.swift in Sources */,
-				45C1FEC0243CC31100C7C523 /* HomeVC.swift in Sources */,
 				459A953B243E830200794C98 /* ChatVC.swift in Sources */,
 				459A9548244025B200794C98 /* LeftChatCell.swift in Sources */,
 				4569AE5B24414541009C8CD6 /* ChatMessages.swift in Sources */,
 				4569AE7424455AF6009C8CD6 /* UserDetails.swift in Sources */,
 				45C5F322243E2BA800D30406 /* AddPostVC.swift in Sources */,
 				457E503F243B902800F40694 /* AppDelegate.swift in Sources */,
+				455BC9B9244A1EDB00F8B225 /* ChangePwdVC.swift in Sources */,
 				457E5041243B902800F40694 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -52,7 +52,7 @@ class ChatsSvcImpl: ChatsSvc {
     
     func fetchDirectMessageChats(userId: String,success:@escaping (_ chatMsgsArr:[ChatPreviewMsgs])->(),failure:@escaping (_ error:Error)->()) {
         
-        db.collection("messages").addSnapshotListener {(snapshot, err) in
+        db.collection("messages").order(by: "last_msg_time", descending: true).addSnapshotListener {(snapshot, err) in
             var chatPreview = [ChatPreviewMsgs]()
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -136,7 +136,7 @@ class ChatsSvcImpl: ChatsSvc {
         
         let messageRef = self.db.collection("messages").document(messageId)
         messageRef.setData(["last_msg":messageText], merge: true)
-        messageRef.setData(["message_time":Date().timeIntervalSince1970], merge: true)
+        messageRef.setData(["last_msg_time":Date().timeIntervalSince1970], merge: true)
         messageRef.updateData([
             "message_map": FieldValue.arrayUnion([msgField])
         ])
@@ -152,7 +152,7 @@ class ChatsSvcImpl: ChatsSvc {
         messageDocument["receiver_name"] = receiverName
         messageDocument["sender_name"] = appDelegate.userDetails.userName
         messageDocument["sender_id"] = appDelegate.userDetails.userId
-        messageDocument["message_time"] = Date().timeIntervalSince1970
+        messageDocument["last_msg_time"] = Date().timeIntervalSince1970
         messageDocument["message_map"] = [["message_text" : messageText, "sender_id" : appDelegate.userDetails.userId, "sender_name" : appDelegate.userDetails.userName, "message_time": Date().timeIntervalSince1970]]
         let documentId = db.collection("messages").addDocument(data: messageDocument).documentID
         fetchActiveChatMessages(messageId: documentId, userId: appDelegate.userDetails.userId!, success: {(chatMsgs) in
@@ -215,20 +215,39 @@ class ChatsSvcImpl: ChatsSvc {
     }
     
     func getDateTimestamp(fromTimeStamp timestamp: TimeInterval) -> String {
+        var timeStr = "1 day +"
+        let calendar = Calendar.current
         let dayTimePeriodFormatter = DateFormatter()
         dayTimePeriodFormatter.timeZone = TimeZone.current
-        dayTimePeriodFormatter.dateFormat = "MMM dd YYYY hh:mm a"
-        return dayTimePeriodFormatter.string(from: Date(timeIntervalSince1970: timestamp))
+        if calendar.isDateInToday(Date(timeIntervalSince1970: timestamp)) {
+            dayTimePeriodFormatter.dateFormat = "hh:mm a"
+            let dayTimestamp = dayTimePeriodFormatter.string(from: Date(timeIntervalSince1970: timestamp))
+            timeStr = "Today \(dayTimestamp)"
+        } else if calendar.isDateInYesterday(Date(timeIntervalSince1970: timestamp)) {
+            dayTimePeriodFormatter.dateFormat = "hh:mm a"
+            let dayTimestamp = dayTimePeriodFormatter.string(from: Date(timeIntervalSince1970: timestamp))
+            timeStr = "Yesterday \(dayTimestamp)"
+        } else {
+            dayTimePeriodFormatter.dateFormat = "MMM dd YYYY hh:mm a"
+            let dayTimestamp = dayTimePeriodFormatter.string(from: Date(timeIntervalSince1970: timestamp))
+            timeStr = dayTimestamp
+        }
+        return timeStr
     }
     
     func getLastTime(fromTimeStamp timestamp: TimeInterval) -> String {
-        let dayTimePeriodFormatter = DateFormatter()
-        dayTimePeriodFormatter.timeZone = TimeZone.current
-        dayTimePeriodFormatter.dateFormat = "mm"
-        let timeSince = dayTimePeriodFormatter.string(from: Date(timeIntervalSinceNow: timestamp))
-        var timeStr = "\(timeSince) mins ago"
-        if Int(timeSince)! > 60 {
-            timeStr = "1 hour +"
+        var timeStr = "1 day +"
+        let calendar = Calendar.current
+        let hoursFormatter = DateFormatter()
+        hoursFormatter.timeZone = TimeZone.current
+        hoursFormatter.dateFormat = "hh:mm a"
+        let hoursSince = hoursFormatter.string(from: Date(timeIntervalSince1970: timestamp))
+        if calendar.isDateInToday(Date(timeIntervalSince1970: timestamp)) {
+            timeStr = "Today \(hoursSince)"
+        } else if calendar.isDateInYesterday(Date(timeIntervalSince1970: timestamp)) {
+            timeStr = "Yesterday \(hoursSince)"
+        } else {
+            timeStr = "1+ day ago"
         }
         return timeStr
     }

@@ -13,4 +13,9 @@ class UserDetails {
     var userName:String?
     var userImg:UIImage?
     var userType:String?
+    var firstName:String?
+    var emailId:String?
+    var lastName:String?
+    var gender:String?
+    var phone:String?
 }

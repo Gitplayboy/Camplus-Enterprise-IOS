@@ -26,8 +26,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             appDelegate.userDetails.userId = defaults.string(forKey: "userId")!
             appDelegate.userDetails.userName = defaults.string(forKey: "username")!
             appDelegate.userDetails.userType = defaults.string(forKey: "userType")!
+            appDelegate.userDetails.gender = defaults.string(forKey: "gender")!
+            appDelegate.userDetails.firstName = defaults.string(forKey: "firstName")!
+            appDelegate.userDetails.lastName = defaults.string(forKey: "lastName")!
+            appDelegate.userDetails.emailId = defaults.string(forKey: "email")!
+            appDelegate.userDetails.phone = defaults.string(forKey: "phone")!
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+            let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "homePageSB")
             let navigationController = UINavigationController(rootViewController: homeViewController)
             self.window!.rootViewController = navigationController
         }

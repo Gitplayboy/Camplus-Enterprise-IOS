@@ -21,7 +21,6 @@ class NoInternetVC: UIViewController {
         } else {
             print("Not Connected")
         }
-        
     }
     
     func setupNavigationBar() {

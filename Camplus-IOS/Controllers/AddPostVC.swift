@@ -9,12 +9,26 @@
 import UIKit
 import FirebaseStorage
 
-class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate {
+extension UITextView {
+
+    func addDoneButton(title: String, target: Any, selector: Selector) {
+
+        let toolBar = UIToolbar(frame: CGRect(x: 0.0,
+                                              y: 0.0,
+                                              width: UIScreen.main.bounds.size.width,
+                                              height: 44.0))//
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let barButton = UIBarButtonItem(title: title, style: .plain, target: target, action: selector)
+        toolBar.setItems([flexible, barButton], animated: false)
+        self.inputAccessoryView = toolBar
+    }
+}
+
+class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate {
     @IBOutlet weak var postTitle: UITextField!
-    //@IBOutlet weak var imgTitle: UILabel!
     @IBOutlet weak var imgDescription: UILabel!
     @IBOutlet weak var uploadedImg: UIImageView!
-    @IBOutlet weak var postDescription: UITextField!
+    @IBOutlet weak var postDescription: UITextView!
     @IBOutlet weak var uploadImgView: UIView!
     @IBOutlet weak var deleteImgBtn: UIButton!
     @IBOutlet weak var publishPostBtn: UIButton!
@@ -39,11 +53,16 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
         deleteImgBtn.layer.masksToBounds = true
         postDescription.layer.cornerRadius = 8
         postDescription.layer.borderWidth = 1.0
-        let myColor : UIColor = UIColor.gray
-        postDescription.bounds.inset(by: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0))
-        postDescription.layer.borderColor = myColor.cgColor
+        postDescription.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
+        let textColor : UIColor = UIColor.lightGray
+        
+        postDescription.text = "Description"
+        postDescription.textColor = textColor
+        
+        postDescription.bounds.inset(by: UIEdgeInsets(top: 15, left: 10, bottom: 0, right: 0))
+        postDescription.layer.borderColor = UIColor.gray.cgColor
         postDescription.layer.masksToBounds = true
-        postDescription.setLeftPaddingPoints(10)
+        //postDescription.setLeftPaddingPoints(10)
         postTitle.setLeftPaddingPoints(10)
         let gesture = UITapGestureRecognizer(target: self, action: #selector(onImageUpload))
         uploadImgView.addGestureRecognizer(gesture)
@@ -68,6 +87,10 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
             let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
             navigationController?.pushViewController(noInternetVC, animated: true)
         }
+    }
+    
+    @objc func tapDone(sender: Any) {
+        self.postDescription.endEditing(true)
     }
     
     @IBAction func onPublishPost() {
@@ -170,5 +193,12 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
                                       action: #selector(UINavigationController.popViewController(animated:)))
         backBTN.tintColor = UIColor.white
         navigationItem.leftBarButtonItem = backBTN
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.gray
+        }
     }
 }
