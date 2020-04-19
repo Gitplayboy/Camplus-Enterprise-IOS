@@ -24,31 +24,37 @@ extension UITextField {
 
 class LoginVC: UIViewController,UITextFieldDelegate {
     
+    @IBOutlet weak var forgotPwdLbl: UILabel!
     @IBOutlet weak var rememberUsername: UISwitch!
     @IBOutlet weak var signInBtn: UIButton!
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
     let loginSvc = LoginServiceImpl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         userName.layer.cornerRadius = 8
         userName.layer.borderWidth = 0.7
         userName.layer.masksToBounds = true
+        userName.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
         
         password.layer.cornerRadius = 8
         password.layer.borderWidth = 0.7
         password.layer.masksToBounds = true
+        password.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
         
-        //setupNavigationBar()
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(onForgotPwdClick))
+        forgotPwdLbl.addGestureRecognizer(gesture)
+        setupNavigationBar()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -56,7 +62,7 @@ class LoginVC: UIViewController,UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    @objc func editingChanged(){
         if !userName.text!.isEmpty && !password.text!.isEmpty {
             signInBtn.isEnabled = true
             signInBtn.alpha = 1.0
@@ -80,11 +86,13 @@ class LoginVC: UIViewController,UITextFieldDelegate {
                 defaults.set(appDelegate.userDetails.lastName, forKey: "lastName")
                 defaults.set(appDelegate.userDetails.phone, forKey: "phone")
                 defaults.set(appDelegate.userDetails.emailId, forKey: "email")
+                defaults.set(appDelegate.userDetails.userPwd, forKey: "userPwd")
             }
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "homePageSB") 
             let sceneDelegate = self.view.window!.windowScene!.delegate as! SceneDelegate
-            sceneDelegate.window?.rootViewController = homeViewController
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "homePageSB")
+            let navigationController = UINavigationController(rootViewController: homeViewController)
+            sceneDelegate.window?.rootViewController = navigationController
             
         },failure: {(error) in
             let alert = UIAlertController(title: "Invalid Login", message: "Login Failed Please check the credentials", preferredStyle: UIAlertController.Style.alert)
@@ -101,6 +109,10 @@ class LoginVC: UIViewController,UITextFieldDelegate {
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.topItem?.hidesBackButton = true
         navigationItem.hidesBackButton = true
+    }
+    
+    @objc func onForgotPwdClick() {
+        performSegue(withIdentifier: "forgotPwdSB", sender: self)
     }
     
 }

@@ -13,7 +13,6 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var profileNameLbl: UILabel!
     @IBOutlet weak var usernameLbl: UILabel!
     @IBOutlet weak var changePwdBtn: UIButton!
-    @IBOutlet weak var settingsBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate

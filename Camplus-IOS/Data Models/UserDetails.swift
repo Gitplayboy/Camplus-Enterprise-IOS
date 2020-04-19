@@ -18,4 +18,5 @@ class UserDetails {
     var lastName:String?
     var gender:String?
     var phone:String?
+    var userPwd:String?
 }

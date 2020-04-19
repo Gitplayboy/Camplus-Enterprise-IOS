@@ -30,7 +30,6 @@ class SettingsInfoVC: UITableViewController {
                 let domain = Bundle.main.bundleIdentifier!
                 UserDefaults.standard.removePersistentDomain(forName: domain)
                 UserDefaults.standard.synchronize()
-                print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
                 
                 let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
                 let sceneDelegate = self.view.window!.windowScene!.delegate as! SceneDelegate

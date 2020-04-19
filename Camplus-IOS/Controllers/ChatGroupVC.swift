@@ -21,6 +21,7 @@ class ChatGroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.groupChatTable.tableFooterView = UIView()
         chatSvc.fetchActiveGroups(userId: (appDelegate.userDetails.userId)!, success: {(groupChatMsgs) in
             self.groupChatPreviewArr = groupChatMsgs
             self.filteredChats = self.groupChatPreviewArr

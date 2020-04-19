@@ -32,6 +32,7 @@ class LoginServiceImpl: LoginSvc {
                         appDelegate.userDetails.emailId = (data["email"] as! String)
                         appDelegate.userDetails.firstName = (data["first_name"] as! String)
                         appDelegate.userDetails.lastName = (data["last_name"] as! String)
+                        appDelegate.userDetails.userPwd = (data["user_password"] as? String)
                         success("Success")
                     } else {
                         isFound = true
@@ -45,5 +46,26 @@ class LoginServiceImpl: LoginSvc {
                 failure("Incorrect UserId")
             }
         })
+    }
+    
+    func changePassword(userId:String, oldPwd:String, newPwd:String,success:@escaping (_ successMsg:  String)->(),failure:@escaping (_ error:String)->()) {
+        var isUpdated = false
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.db.collection("tbl_user").whereField("user_id", isEqualTo: userId).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    isUpdated = true
+                    self.db.collection("tbl_user").document(document.documentID).updateData(["user_password":newPwd])
+                }
+                if isUpdated {
+                    let defaults = UserDefaults.standard
+                    appDelegate.userDetails.userPwd = newPwd
+                    defaults.set(newPwd, forKey: "userPwd")
+                    success("updated password")
+                }
+            }
+        }
     }
 }

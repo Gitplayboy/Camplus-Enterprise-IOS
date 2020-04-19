@@ -18,9 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
-        
+        var homeViewController:UIViewController?
         let defaults = UserDefaults.standard
-        
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if defaults.string(forKey: "username") != nil {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.userDetails.userId = defaults.string(forKey: "userId")!
@@ -31,11 +31,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             appDelegate.userDetails.lastName = defaults.string(forKey: "lastName")!
             appDelegate.userDetails.emailId = defaults.string(forKey: "email")!
             appDelegate.userDetails.phone = defaults.string(forKey: "phone")!
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "homePageSB")
-            let navigationController = UINavigationController(rootViewController: homeViewController)
-            self.window!.rootViewController = navigationController
+            appDelegate.userDetails.userPwd = defaults.string(forKey: "userPwd")
+            homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "homePageSB")
+        } else {
+            homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC")
         }
+        let navigationController = UINavigationController(rootViewController: homeViewController!)
+        self.window!.rootViewController = navigationController
         
     }
     

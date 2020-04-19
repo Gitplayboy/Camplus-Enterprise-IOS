@@ -187,12 +187,7 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
     
     func setupNavigationbar() {
         self.navigationController?.navigationBar.topItem?.title = " "
-        let backBTN = UIBarButtonItem(image: UIImage(named: "back"),
-                                      style: .plain,
-                                      target: navigationController,
-                                      action: #selector(UINavigationController.popViewController(animated:)))
-        backBTN.tintColor = UIColor.white
-        navigationItem.leftBarButtonItem = backBTN
+        self.navigationController?.navigationBar.tintColor = .white
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {

@@ -42,6 +42,7 @@
 		45C51726244A8B9F00B8B89C /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45C51725244A8B9F00B8B89C /* Storyboard.storyboard */; };
 		45C5172C244AB48B00B8B89C /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5172B244AB48B00B8B89C /* SettingsVC.swift */; };
 		45C5172E244AB93500B8B89C /* SettingsInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5172D244AB93500B8B89C /* SettingsInfoVC.swift */; };
+		45C51730244C878500B8B89C /* ForgotPwdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5172F244C878500B8B89C /* ForgotPwdVC.swift */; };
 		45C5F315243D8D9800D30406 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45C5F314243D8D9800D30406 /* Montserrat-Bold.ttf */; };
 		45C5F317243D8DF900D30406 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45C5F316243D8DF900D30406 /* Montserrat-Regular.ttf */; };
 		45C5F31C243D944400D30406 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5F31B243D944300D30406 /* LoginVC.swift */; };
@@ -97,6 +98,7 @@
 		45C51725244A8B9F00B8B89C /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		45C5172B244AB48B00B8B89C /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		45C5172D244AB93500B8B89C /* SettingsInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInfoVC.swift; sourceTree = "<group>"; };
+		45C5172F244C878500B8B89C /* ForgotPwdVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPwdVC.swift; sourceTree = "<group>"; };
 		45C5F314243D8D9800D30406 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		45C5F316243D8DF900D30406 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		45C5F31B243D944300D30406 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				455BC9B8244A1EDB00F8B225 /* ChangePwdVC.swift */,
 				45C5172B244AB48B00B8B89C /* SettingsVC.swift */,
 				45C5172D244AB93500B8B89C /* SettingsInfoVC.swift */,
+				45C5172F244C878500B8B89C /* ForgotPwdVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				45C5172E244AB93500B8B89C /* SettingsInfoVC.swift in Sources */,
 				45EED72D2447FB0800B235C8 /* ChatsSvc.swift in Sources */,
 				45EED72E2447FB0800B235C8 /* FeedsSvc.swift in Sources */,
+				45C51730244C878500B8B89C /* ForgotPwdVC.swift in Sources */,
 				4569AE612441A409009C8CD6 /* FeedsData.swift in Sources */,
 				4569AE722444F6EF009C8CD6 /* GroupChatCell.swift in Sources */,
 				45EED7272447DFC300B235C8 /* NoInternetVC.swift in Sources */,

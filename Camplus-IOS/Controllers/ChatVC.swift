@@ -10,7 +10,9 @@ import UIKit
 
 class ChatVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
+    @IBOutlet weak var noChatFound: UIView!
     @IBOutlet weak var classGroupContainerView: UIView!
+    @IBOutlet weak var noResultFound: UIView!
     @IBOutlet weak var searchChatsTxt: UITextField!
     @IBOutlet weak var addChatBtn: UIButton!
     @IBOutlet weak var classGroupsLbl: UILabel!
@@ -24,6 +26,7 @@ class ChatVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UITex
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.chatPreviewTable.tableFooterView = UIView()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         //setupNavigationBar()
         addChatBtn.layer.cornerRadius = addChatBtn.frame.size.width/2
@@ -48,6 +51,11 @@ class ChatVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UITex
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if filteredChats.count == 0 {
+            noChatFound.isHidden = true
+        } else {
+            noChatFound.isHidden = true
+        }
         return filteredChats.count
     }
     
@@ -113,13 +121,15 @@ class ChatVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UITex
                 }
             }
             if isFound {
+                noResultFound.isHidden = true
                 chatPreviewTable.reloadData()
             } else {
                 chatPreviewTable.reloadData()
-                //NotesNotFoundVC.isHidden = false
+                noResultFound.isHidden = false
             }
             
         } else {
+            noResultFound.isHidden = true
             filteredChats = chatPreviewArr
             chatPreviewTable.reloadData()
         }
