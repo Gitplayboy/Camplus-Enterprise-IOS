@@ -11,6 +11,7 @@ import UIKit
 class ChatGroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     @IBOutlet weak var searchChatTxt:UITextField!
+    @IBOutlet weak var searchNotFoundVC: UIView!
     @IBOutlet weak var groupChatTable: UITableView!
     let chatSvc = ChatsSvcImpl()
     var groupChatPreviewArr = [GroupChatMsgs]()
@@ -71,9 +72,10 @@ class ChatGroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
             if isFound {
                 groupChatTable.reloadData()
+                searchNotFoundVC.isHidden = true
             } else {
                 groupChatTable.reloadData()
-                //NotesNotFoundVC.isHidden = false
+                searchNotFoundVC.isHidden = false
             }
             
         } else {

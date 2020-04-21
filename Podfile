@@ -8,7 +8,6 @@ target 'Camplus-IOS' do
   # Pods for Camplus-IOS
 pod 'paper-onboarding'
 pod 'lottie-ios'
-pod 'ReadMoreTextView'
 
 # add the Firebase pod for Google Analytics
 pod 'Firebase/Analytics'

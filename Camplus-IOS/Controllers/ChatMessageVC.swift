@@ -42,7 +42,13 @@ class ChatMessageVC: UIViewController, UITextFieldDelegate, UITableViewDataSourc
                         self.chatHeaderLbl.text = self.groupName!
                     }
                 }, failure: {(error) in
-                    print(error)
+                    if InternetConnectionManager.isConnectedToNetwork() {
+                        print("connected")
+                    } else {
+                        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
+                        self.navigationController?.pushViewController(noInternetVC, animated: true)
+                    }
                 })
             }
         } else {
@@ -59,7 +65,13 @@ class ChatMessageVC: UIViewController, UITextFieldDelegate, UITableViewDataSourc
                     }
                     
                 }, failure: {(error) in
-                    print(error)
+                    if InternetConnectionManager.isConnectedToNetwork() {
+                        print("connected")
+                    } else {
+                        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
+                        self.navigationController?.pushViewController(noInternetVC, animated: true)
+                    }
                 })
             } else {
                 //check if there are any old chats associated with the receiver and fetch the message id
@@ -207,11 +219,6 @@ class ChatMessageVC: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         let add = UIBarButtonItem(customView: button)
         navigationItem.rightBarButtonItems = [add]
         self.navigationController?.navigationBar.topItem?.title = " "
-        let backBTN = UIBarButtonItem(image: UIImage(named: "back"),
-                                      style: .plain,
-                                      target: navigationController,
-                                      action: #selector(UINavigationController.popViewController(animated:)))
-        backBTN.tintColor = UIColor.white
-        navigationItem.leftBarButtonItem = backBTN
+        self.navigationController?.navigationBar.tintColor = .white
     }
 }

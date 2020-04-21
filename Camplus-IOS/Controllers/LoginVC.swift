@@ -95,9 +95,19 @@ class LoginVC: UIViewController,UITextFieldDelegate {
             sceneDelegate.window?.rootViewController = navigationController
             
         },failure: {(error) in
-            let alert = UIAlertController(title: "Invalid Login", message: "Login Failed Please check the credentials", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            if error.elementsEqual("Incorrect UserId") {
+                let alert = UIAlertController(title: "Invalid Login", message: "Login Failed Please check the credentials", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                if InternetConnectionManager.isConnectedToNetwork() {
+                    print("connected")
+                } else {
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
+                    self.navigationController?.pushViewController(noInternetVC, animated: true)
+                }
+            }
         })
     }
     

@@ -95,7 +95,7 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
     
     @IBAction func onPublishPost() {
         if uploadedImg != nil && uploadedImg.image != nil{
-            let fileName = "IMG\(generateRandomNumber(numDigits: 3)).jpg"
+            let fileName = "IMG\(String(describing: appDelegate.userDetails.userId))_\(generateRandomNumber(numDigits: 3)).jpg"
             //Save image to Firebase storage
             guard let image = uploadedImg.image else {return}
             guard let imageData = image.jpegData(compressionQuality: 1) else { return }
@@ -110,9 +110,25 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
                 print(snapshot.progress!)
             }
             uploadTask.resume()
-            feedsSvcImpl.saveNewPost(feedPostedBy: appDelegate.userDetails.userName!, feedTitle: postTitle.text!, feedText: postDescription.text!, feedImageUrl: fileName)
+            feedsSvcImpl.saveNewPost(feedPostedBy: appDelegate.userDetails.userName!, feedTitle: postTitle.text!, feedText: postDescription.text!, feedImageUrl: fileName,failure: {(failure) in
+                if InternetConnectionManager.isConnectedToNetwork() {
+                    print("connected")
+                } else {
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
+                    self.navigationController?.pushViewController(noInternetVC, animated: true)
+                }
+            })
         } else {
-            feedsSvcImpl.saveNewPost(feedPostedBy: appDelegate.userDetails.userName!, feedTitle: postTitle.text!, feedText: postDescription.text!, feedImageUrl: nil)
+            feedsSvcImpl.saveNewPost(feedPostedBy: appDelegate.userDetails.userName!, feedTitle: postTitle.text!, feedText: postDescription.text!, feedImageUrl: nil,failure: {(failure) in
+                if InternetConnectionManager.isConnectedToNetwork() {
+                    print("connected")
+                } else {
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
+                    self.navigationController?.pushViewController(noInternetVC, animated: true)
+                }
+            })
         }
         
         let alert = UIAlertController(title: "Publish Post", message: "Post Published Successfully", preferredStyle: UIAlertController.Style.alert)

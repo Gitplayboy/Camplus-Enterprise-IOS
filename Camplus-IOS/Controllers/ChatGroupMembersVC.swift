@@ -25,6 +25,7 @@ class ChatGroupMembersVC: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationbar()
+        self.groupMembersTable.tableFooterView = UIView()
         searchMembers.setLeftPaddingPoints(30)
         if groupId != nil {
             chatSvc.fetchGroupMembers(groupId: groupId!, success: {(userDetailsArr) in
@@ -84,12 +85,7 @@ class ChatGroupMembersVC: UIViewController, UITableViewDataSource, UITableViewDe
     
     func setupNavigationbar() {
         self.navigationController?.navigationBar.topItem?.title = " "
-        let backBTN = UIBarButtonItem(image: UIImage(named: "back"),
-                                      style: .plain,
-                                      target: navigationController,
-                                      action: #selector(UINavigationController.popViewController(animated:)))
-        backBTN.tintColor = UIColor.white
-        navigationItem.leftBarButtonItem = backBTN
+        self.navigationController?.navigationBar.tintColor = .white
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

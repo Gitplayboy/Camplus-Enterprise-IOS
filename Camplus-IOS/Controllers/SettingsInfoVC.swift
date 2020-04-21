@@ -9,7 +9,7 @@
 import UIKit
 
 class SettingsInfoVC: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView()
@@ -18,7 +18,7 @@ class SettingsInfoVC: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }
@@ -37,7 +37,9 @@ class SettingsInfoVC: UITableViewController {
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+        }  else if indexPath.row == 4 {
+            let contactVC = self.storyboard!.instantiateViewController(withIdentifier: "ContactVC") as! ContactUsVC
+            self.navigationController?.pushViewController(contactVC, animated: true)
         }
     }
-
 }

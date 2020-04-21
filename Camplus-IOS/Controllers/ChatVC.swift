@@ -50,9 +50,31 @@ class ChatVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UITex
         searchChatsTxt.setLeftPaddingPoints(30)
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+            -> UISwipeActionsConfiguration? {
+            let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
+                let alert = UIAlertController(title: "Delete Chat", message: "Are you sure you want to delete chat?", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: {(success) in
+                    self.filteredChats.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    
+                    if self.filteredChats.count == 0 {
+                        self.noChatFound.isHidden = false
+                    }
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                completionHandler(true)
+            }
+            deleteAction.image = UIImage(systemName: "trash")
+            deleteAction.backgroundColor = .systemRed
+            let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+            return configuration
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if filteredChats.count == 0 {
-            noChatFound.isHidden = true
+            noChatFound.isHidden = false
         } else {
             noChatFound.isHidden = true
         }
@@ -102,12 +124,15 @@ class ChatVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UITex
         classGroupContainerView.isHidden = false
         directMsgLbl.textColor = UIColor.white
         classGroupsLbl.textColor = UIColor.systemOrange
+        noChatFound.isHidden = true
+        noResultFound.isHidden = true
     }
     
     @objc func onDirectMsgClick() {
         classGroupContainerView.isHidden = true
         directMsgLbl.textColor = UIColor.systemOrange
         classGroupsLbl.textColor = UIColor.white
+        chatPreviewTable.reloadData()
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {

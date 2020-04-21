@@ -6,7 +6,7 @@
 //  Copyright © 2020 vibin joby. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class FeedsData {
     var postDescription:String?
@@ -14,6 +14,7 @@ class FeedsData {
     var postByUser:String?
     var postTitle:String?
     var postTime:String?
+    var postImgView:UIImage?
     
     init(postDescription:String?, postImgName:String?,postByUser:String?,postTitle:String?,postTime:String?) {
         self.postDescription = postDescription

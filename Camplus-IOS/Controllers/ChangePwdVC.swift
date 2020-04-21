@@ -24,12 +24,7 @@ class ChangePwdVC: UIViewController, UITextFieldDelegate {
     }
     func setupNavigationbar() {
         self.navigationController?.navigationBar.topItem?.title = " "
-        let backBTN = UIBarButtonItem(image: UIImage(named: "back"),
-                                      style: .plain,
-                                      target: navigationController,
-                                      action: #selector(UINavigationController.popViewController(animated:)))
-        backBTN.tintColor = UIColor.white
-        navigationItem.leftBarButtonItem = backBTN
+        self.navigationController?.navigationBar.tintColor = .white
         
         let currentPwdLine = CALayer()
         currentPwdLine.frame = CGRect(x: 0.0, y: currentPwdTxt.frame.height - 1, width: currentPwdTxt.frame.width - 40, height: 1.5)

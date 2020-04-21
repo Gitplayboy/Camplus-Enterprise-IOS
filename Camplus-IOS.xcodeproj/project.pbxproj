@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3CD7E4EE07EA27695D4205F8 /* Pods_Camplus_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C423D205949767900D92C7C /* Pods_Camplus_IOS.framework */; };
+		4510E4A7244DE15900166CC5 /* ContactUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4510E4A6244DE15900166CC5 /* ContactUsVC.swift */; };
 		455BC9B9244A1EDB00F8B225 /* ChangePwdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BC9B8244A1EDB00F8B225 /* ChangePwdVC.swift */; };
 		4569AE5B24414541009C8CD6 /* ChatMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE5A24414541009C8CD6 /* ChatMessages.swift */; };
 		4569AE5D2441A1A8009C8CD6 /* ChatGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE5C2441A1A8009C8CD6 /* ChatGroupVC.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4510E4A6244DE15900166CC5 /* ContactUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsVC.swift; sourceTree = "<group>"; };
 		455BC9B8244A1EDB00F8B225 /* ChangePwdVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePwdVC.swift; sourceTree = "<group>"; };
 		4569AE5A24414541009C8CD6 /* ChatMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessages.swift; sourceTree = "<group>"; };
 		4569AE5C2441A1A8009C8CD6 /* ChatGroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroupVC.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				45C5172B244AB48B00B8B89C /* SettingsVC.swift */,
 				45C5172D244AB93500B8B89C /* SettingsInfoVC.swift */,
 				45C5172F244C878500B8B89C /* ForgotPwdVC.swift */,
+				4510E4A6244DE15900166CC5 /* ContactUsVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45EED72C2447FB0800B235C8 /* LoginSvc.swift in Sources */,
+				4510E4A7244DE15900166CC5 /* ContactUsVC.swift in Sources */,
 				45C5172E244AB93500B8B89C /* SettingsInfoVC.swift in Sources */,
 				45EED72D2447FB0800B235C8 /* ChatsSvc.swift in Sources */,
 				45EED72E2447FB0800B235C8 /* FeedsSvc.swift in Sources */,

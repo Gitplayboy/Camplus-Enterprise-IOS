@@ -12,14 +12,14 @@ import FirebaseFirestore
 
 protocol FeedsSvc {
     func fetchActiveFeeds(success:@escaping (_ dataArr:[FeedsData])->(),failure:@escaping (_ error:Error)->())
-    func saveNewPost(feedPostedBy:String, feedTitle:String, feedText:String, feedImageUrl: String?)
+    func saveNewPost(feedPostedBy: String, feedTitle: String, feedText: String, feedImageUrl: String?,failure:@escaping (_ error:String)->())
 }
 
 class FeedsSvcImpl:FeedsSvc {
     let db = Firestore.firestore()
     
     func fetchActiveFeeds(success:@escaping (_ dataArr:[FeedsData])->(),failure:@escaping (_ error:Error)->()) {
-        db.collection("feeds").order(by: "feed_post_time", descending: true).addSnapshotListener {(snapshot, err) in
+        db.collection("feeds").order(by: "feed_post_time", descending: true).getDocuments {(snapshot, err) in
             var feedsArr = [FeedsData]()
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -47,15 +47,19 @@ class FeedsSvcImpl:FeedsSvc {
         }
     }
     
-    func saveNewPost(feedPostedBy: String, feedTitle: String, feedText: String, feedImageUrl: String?) {
+    func saveNewPost(feedPostedBy: String, feedTitle: String, feedText: String, feedImageUrl: String?,failure:@escaping (_ error:String)->()) {
         if let imgUrl = feedImageUrl {
-            db.collection("feeds").document().setData(["feed_description":feedText,"feed_image_url":imgUrl,
-                                                       "feed_title":feedTitle, "feed_user_name":feedPostedBy
-                ,"feed_post_time":Date().timeIntervalSince1970])
+            do {
+                try db.collection("feeds").document().setData(["feed_description":feedText,"feed_image_url":imgUrl,
+                                                               "feed_title":feedTitle, "feed_user_name":feedPostedBy
+                    ,"feed_post_time":Date().timeIntervalSince1970])
+            } catch {
+                failure("error")
+            }
         } else {
             db.collection("feeds").document().setData(["feed_description":feedText,
-            "feed_title":feedTitle, "feed_user_name":feedPostedBy
-            ,"feed_post_time":Date().timeIntervalSince1970])
+                                                       "feed_title":feedTitle, "feed_user_name":feedPostedBy
+                ,"feed_post_time":Date().timeIntervalSince1970])
         }
         
     }
@@ -69,10 +73,13 @@ class FeedsSvcImpl:FeedsSvc {
                 failure(_error)
             } else {
                 if let _data  = data {
-                    let myImage:UIImage! = UIImage(data: _data)
-                    success(myImage)
+                    DispatchQueue.main.async {
+                        let myImage:UIImage! = UIImage(data: _data)
+                        success(myImage)
+                    }
                 }
             }
         }
+        
     }
 }

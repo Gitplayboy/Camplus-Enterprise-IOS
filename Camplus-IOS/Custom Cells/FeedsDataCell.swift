@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedsDataCell: UICollectionViewCell{
+class FeedsDataCell: UITableViewCell{
     @IBOutlet weak var postTitle: UILabel!
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var postTxtView: UITextView!
@@ -16,4 +16,5 @@ class FeedsDataCell: UICollectionViewCell{
     @IBOutlet weak var postedByLbl: UILabel!
     @IBOutlet weak var postImgView: UIImageView!
     
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
 }
