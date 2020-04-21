@@ -10,12 +10,14 @@ import UIKit
 
 class ChatGroupMembersVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
+    @IBOutlet weak var noResultFoundVC: UIView!
     @IBOutlet weak var searchMembers: UITextField!
     @IBOutlet weak var batchMembersCount: UILabel!
     var groupName:String?
     var groupId:String?
     let chatSvc = ChatsSvcImpl()
     var userDetailsArr = [UserDetails]()
+    var filteredUserDetails = [UserDetails]()
     var targetUserMsgId:String?
     var targetUserId:String?
     var targetUserName:String?
@@ -30,6 +32,7 @@ class ChatGroupMembersVC: UIViewController, UITableViewDataSource, UITableViewDe
         if groupId != nil {
             chatSvc.fetchGroupMembers(groupId: groupId!, success: {(userDetailsArr) in
                 self.userDetailsArr = userDetailsArr
+                self.filteredUserDetails = userDetailsArr
                 self.groupMembersTable.reloadData()
                 self.batchMembersCount.text = "Batch Members (\(userDetailsArr.count))"
             }, failure: {(error) in
@@ -49,20 +52,20 @@ class ChatGroupMembersVC: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userDetailsArr.count
+        return filteredUserDetails.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "groupMembersCell") as! GroupMembersCell
-        cell.groupMemberName.text = userDetailsArr[indexPath.row].userName
+        cell.groupMemberName.text = filteredUserDetails[indexPath.row].userName
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if userDetailsArr[indexPath.row].userId != appDelegate.userDetails.userId {
-            targetUserName = userDetailsArr[indexPath.row].userName
-            targetUserId = userDetailsArr[indexPath.row].userId
-            chatSvc.fetchMessageId(targetUserId: userDetailsArr[indexPath.row].userId!, success: {(messageId) in
+            targetUserName = filteredUserDetails[indexPath.row].userName
+            targetUserId = filteredUserDetails[indexPath.row].userId
+            chatSvc.fetchMessageId(targetUserId: filteredUserDetails[indexPath.row].userId!, success: {(messageId) in
                 self.targetUserMsgId = messageId
                 self.performSegue(withIdentifier: "directChatSB", sender: self)
             }, failure: {(error) in
@@ -90,6 +93,31 @@ class ChatGroupMembersVC: UIViewController, UITableViewDataSource, UITableViewDe
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        var isFound = false
+        if searchMembers.text != nil && !searchMembers.text!.isEmpty {
+            filteredUserDetails = []
+            for users in userDetailsArr {
+                if users.userName!.lowercased().contains(searchMembers!.text!.lowercased()) {
+                    filteredUserDetails.append(users)
+                    isFound = true
+                }
+            }
+            if isFound {
+                noResultFoundVC.isHidden = true
+                groupMembersTable.reloadData()
+            } else {
+                groupMembersTable.reloadData()
+                noResultFoundVC.isHidden = false
+            }
+            
+        } else {
+            noResultFoundVC.isHidden = true
+            filteredUserDetails = userDetailsArr
+            groupMembersTable.reloadData()
+        }
     }
     
 }

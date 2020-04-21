@@ -80,6 +80,7 @@ class ChatGroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
         } else {
             filteredChats = groupChatPreviewArr
+            searchNotFoundVC.isHidden = true
             groupChatTable.reloadData()
         }
     }
