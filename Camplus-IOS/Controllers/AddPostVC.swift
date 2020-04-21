@@ -64,6 +64,7 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
         postDescription.layer.masksToBounds = true
         //postDescription.setLeftPaddingPoints(10)
         postTitle.setLeftPaddingPoints(10)
+        postTitle.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
         let gesture = UITapGestureRecognizer(target: self, action: #selector(onImageUpload))
         uploadImgView.addGestureRecognizer(gesture)
         
@@ -110,6 +111,9 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
                 print(snapshot.progress!)
             }
             uploadTask.resume()
+            if postDescription.text!.elementsEqual("Description") {
+                postDescription.text = ""
+            }
             feedsSvcImpl.saveNewPost(feedPostedBy: appDelegate.userDetails.userName!, feedTitle: postTitle.text!, feedText: postDescription.text!, feedImageUrl: fileName,failure: {(failure) in
                 if InternetConnectionManager.isConnectedToNetwork() {
                     print("connected")
@@ -210,6 +214,15 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
             textView.textColor = UIColor.gray
+        }
+    }
+    @objc func editingChanged() {
+        if postTitle.text!.isEmpty {
+            publishPostBtn.isEnabled = true
+            publishPostBtn.alpha = 0.5
+        } else {
+            publishPostBtn.isEnabled = false
+            publishPostBtn.alpha = 1
         }
     }
 }

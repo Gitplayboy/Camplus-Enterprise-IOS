@@ -317,10 +317,13 @@
                                     <outlet property="delegate" destination="95f-2B-cgT" id="HBj-Te-K6N"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilM-nT-P7f">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilM-nT-P7f">
                                 <rect key="frame" x="334" y="745" width="56" height="56"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0087371906269999994" green="0.1557027996" blue="0.20392915610000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="TNW-Fg-jUr"/>
+                                    <constraint firstAttribute="width" constant="56" id="yJW-LR-ErN"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -337,14 +340,20 @@
                                     <constraint firstAttribute="height" constant="128" id="fh2-fz-3uV"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="NewPost" translatesAutoresizingMaskIntoConstraints="NO" id="GIy-6C-bhy">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NewPost" translatesAutoresizingMaskIntoConstraints="NO" id="GIy-6C-bhy">
                                 <rect key="frame" x="347" y="758" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="BzF-zI-tRA"/>
+                                    <constraint firstAttribute="height" constant="30" id="maH-bp-3TM"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="GIy-6C-bhy" firstAttribute="leading" secondItem="ilM-nT-P7f" secondAttribute="trailing" constant="-43" id="1Be-la-NoY"/>
                             <constraint firstItem="gkj-1j-I4l" firstAttribute="leading" secondItem="3Pn-WK-jU3" secondAttribute="leading" id="2bF-l4-pRv"/>
+                            <constraint firstItem="GIy-6C-bhy" firstAttribute="top" secondItem="ilM-nT-P7f" secondAttribute="bottom" constant="-43" id="ACt-c2-ya9"/>
+                            <constraint firstItem="3Pn-WK-jU3" firstAttribute="trailing" secondItem="ilM-nT-P7f" secondAttribute="trailing" constant="24" id="KI3-n5-1T5"/>
                             <constraint firstItem="gkj-1j-I4l" firstAttribute="trailing" secondItem="3Pn-WK-jU3" secondAttribute="trailing" id="Lje-BG-w9L"/>
                             <constraint firstAttribute="bottom" secondItem="gkj-1j-I4l" secondAttribute="bottom" id="Svv-o9-qZP"/>
                             <constraint firstItem="fHe-Va-X5l" firstAttribute="centerY" secondItem="sre-KX-hko" secondAttribute="centerY" id="UWQ-f3-d6x"/>
@@ -352,6 +361,7 @@
                             <constraint firstItem="QGn-ov-FDE" firstAttribute="leading" secondItem="3Pn-WK-jU3" secondAttribute="leading" id="dhK-1r-elN"/>
                             <constraint firstItem="QGn-ov-FDE" firstAttribute="trailing" secondItem="3Pn-WK-jU3" secondAttribute="trailing" id="hrc-Rt-UO9"/>
                             <constraint firstItem="gkj-1j-I4l" firstAttribute="top" secondItem="QGn-ov-FDE" secondAttribute="top" constant="111" id="uVm-KS-Dm7"/>
+                            <constraint firstItem="3Pn-WK-jU3" firstAttribute="bottom" secondItem="ilM-nT-P7f" secondAttribute="bottom" constant="12" id="uar-P8-zD8"/>
                             <constraint firstItem="QGn-ov-FDE" firstAttribute="top" secondItem="sre-KX-hko" secondAttribute="top" id="wgq-YG-Giq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3Pn-WK-jU3"/>
@@ -475,7 +485,7 @@
                                     <constraint firstItem="bgL-rH-iQX" firstAttribute="top" secondItem="54d-at-Tuv" secondAttribute="top" constant="8" id="sfY-qG-Fjj"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhp-6c-Qiz">
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhp-6c-Qiz">
                                 <rect key="frame" x="16" y="690" width="382" height="47"/>
                                 <color key="backgroundColor" red="0.0087371906269999994" green="0.1557027996" blue="0.20392915610000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
