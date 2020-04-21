@@ -28,6 +28,8 @@ class ForgotPwdVC: UIViewController,UITextFieldDelegate {
     func setupNavigationbar() {
         self.navigationController?.navigationBar.topItem?.title = " "
         self.navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.topItem?.hidesBackButton = false
+        navigationItem.hidesBackButton = false
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
