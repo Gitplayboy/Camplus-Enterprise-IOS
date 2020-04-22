@@ -96,13 +96,29 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
     
     @IBAction func onPublishPost() {
         if uploadedImg != nil && uploadedImg.image != nil{
-            let fileName = "IMG\(String(describing: appDelegate.userDetails.userId))_\(generateRandomNumber(numDigits: 3)).jpg"
+            let fileName = "IMG\(String(describing: appDelegate.userDetails.userId!))_\(generateRandomNumber(numDigits: 3)).jpg"
             //Save image to Firebase storage
             guard let image = uploadedImg.image else {return}
             guard let imageData = image.jpegData(compressionQuality: 1) else { return }
             
             let uploadImgRef = imageReference.child(fileName)
             let uploadTask = uploadImgRef.putData(imageData, metadata: nil) { (metadata, error) in
+                
+                uploadImgRef.downloadURL(completion: { (url, error) in
+                    if let urlText = url?.absoluteString {
+                        print(urlText)
+                        self.feedsSvcImpl.saveNewPost(feedPostedBy: self.appDelegate.userDetails.userName!, feedTitle: self.postTitle.text!, feedText: self.postDescription.text!, feedImageUrl: urlText,failure: {(failure) in
+                            if InternetConnectionManager.isConnectedToNetwork() {
+                                print("connected")
+                            } else {
+                                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                                let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
+                                self.navigationController?.pushViewController(noInternetVC, animated: true)
+                            }
+                        })
+                    }
+                })
+                
                 print("upload task finished")
                 print(error ?? "error \(String(describing: error))")
             }
@@ -114,15 +130,7 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
             if postDescription.text!.elementsEqual("Description") {
                 postDescription.text = ""
             }
-            feedsSvcImpl.saveNewPost(feedPostedBy: appDelegate.userDetails.userName!, feedTitle: postTitle.text!, feedText: postDescription.text!, feedImageUrl: fileName,failure: {(failure) in
-                if InternetConnectionManager.isConnectedToNetwork() {
-                    print("connected")
-                } else {
-                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
-                    self.navigationController?.pushViewController(noInternetVC, animated: true)
-                }
-            })
+            
         } else {
             feedsSvcImpl.saveNewPost(feedPostedBy: appDelegate.userDetails.userName!, feedTitle: postTitle.text!, feedText: postDescription.text!, feedImageUrl: nil,failure: {(failure) in
                 if InternetConnectionManager.isConnectedToNetwork() {
@@ -206,7 +214,7 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let maxLength = 30
+        let maxLength = 30 
         let currentString: NSString = textField.text! as NSString
         let newString: NSString =
             currentString.replacingCharacters(in: range, with: string) as NSString

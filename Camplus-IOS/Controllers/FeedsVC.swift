@@ -96,32 +96,30 @@ class FeedsVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UICo
         cell.postTxtView?.text = feedsData[indexPath.row].postDescription!
         cell.postedDateLbl.text = feedsData[indexPath.row].postTime!
         
-        if feedsData[indexPath.row].postImgName != nil {
-            feedsService.downloadImages(filename: feedsData[indexPath.row].postImgName!,success: { (imageData) in
+        if let imageUrl = self.feedsData[indexPath.row].postImgName {
+            for constraint in cell.postImgView.constraints {
                 
+            }
+            cell.heightConstraint.constant = 200
+            let url = URL(string: imageUrl)
+            URLSession.shared.dataTask(with: url!, completionHandler: {(data,response,error) in
+                if error != nil {
+                    print(error)
+                }
                 DispatchQueue.main.async {
-                    if let customCell = tableView.cellForRow(at: indexPath) as? FeedsDataCell {
-                        customCell.postImgView!.image = imageData
-                        customCell.postImgView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+                    cell.postImgView.image = UIImage(data: data!)
+                    let gesture = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped))
+                    
+                    if cell.postImgView != nil {
+                        cell.postImgView.addGestureRecognizer(gesture)
                     }
                 }
-                let gesture = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped))
-                
-                if cell.postImgView != nil {
-                    cell.postImgView.addGestureRecognizer(gesture)
-                }
-            }) { (error) in
-                print(error)
-            }
+                }).resume()
         } else {
-            if cell.postImgView != nil {
-                DispatchQueue.main.async {
-                    if let customCell = tableView.cellForRow(at: indexPath) as? FeedsDataCell {
-                        customCell.postImgView.heightAnchor.constraint(equalToConstant: 0).isActive = true
-                    }
-                }
-            }
+            cell.postImgView.image = nil
+            cell.heightConstraint.constant = 0
         }
+        
         if feedsData[indexPath.row].postDescription == nil && cell.postTxtView != nil {
             cell.postTxtView.bounds.size = CGSize(width: cell.postTxtView.bounds.width, height: 0)
         }
