@@ -205,6 +205,14 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
         return finalNumber
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let maxLength = 30
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
+    }
+    
     func setupNavigationbar() {
         self.navigationController?.navigationBar.topItem?.title = " "
         self.navigationController?.navigationBar.tintColor = .white
@@ -218,10 +226,10 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
     }
     @objc func editingChanged() {
         if postTitle.text!.isEmpty {
-            publishPostBtn.isEnabled = true
+            publishPostBtn.isEnabled = false
             publishPostBtn.alpha = 0.5
         } else {
-            publishPostBtn.isEnabled = false
+            publishPostBtn.isEnabled = true
             publishPostBtn.alpha = 1
         }
     }
