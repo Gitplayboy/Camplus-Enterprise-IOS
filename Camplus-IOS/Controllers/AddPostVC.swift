@@ -95,59 +95,65 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
     }
     
     @IBAction func onPublishPost() {
-        if uploadedImg != nil && uploadedImg.image != nil{
-            let fileName = "IMG\(String(describing: appDelegate.userDetails.userId!))_\(generateRandomNumber(numDigits: 3)).jpg"
-            //Save image to Firebase storage
-            guard let image = uploadedImg.image else {return}
-            guard let imageData = image.jpegData(compressionQuality: 1) else { return }
-            
-            let uploadImgRef = imageReference.child(fileName)
-            let uploadTask = uploadImgRef.putData(imageData, metadata: nil) { (metadata, error) in
+        //If description is empty and image is also not added
+        if postDescription.text.isEmpty && (uploadedImg == nil || uploadedImg.image == nil) {
+            let alert = UIAlertController(title: "Publish Post", message: "Add a description or an image to Post", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            if uploadedImg != nil && uploadedImg.image != nil{
+                let fileName = "IMG\(String(describing: appDelegate.userDetails.userId!))_\(generateRandomNumber(numDigits: 3)).jpg"
+                //Save image to Firebase storage
+                guard let image = uploadedImg.image else {return}
+                guard let imageData = image.jpegData(compressionQuality: 1) else { return }
                 
-                uploadImgRef.downloadURL(completion: { (url, error) in
-                    if let urlText = url?.absoluteString {
-                        print(urlText)
-                        self.feedsSvcImpl.saveNewPost(feedPostedBy: self.appDelegate.userDetails.userName!, feedTitle: self.postTitle.text!, feedText: self.postDescription.text!, feedImageUrl: urlText,failure: {(failure) in
-                            if InternetConnectionManager.isConnectedToNetwork() {
-                                print("connected")
-                            } else {
-                                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                                let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
-                                self.navigationController?.pushViewController(noInternetVC, animated: true)
-                            }
-                        })
+                let uploadImgRef = imageReference.child(fileName)
+                let uploadTask = uploadImgRef.putData(imageData, metadata: nil) { (metadata, error) in
+                    
+                    uploadImgRef.downloadURL(completion: { (url, error) in
+                        if let urlText = url?.absoluteString {
+                            print(urlText)
+                            self.feedsSvcImpl.saveNewPost(feedPostedBy: self.appDelegate.userDetails.userName!, feedTitle: self.postTitle.text!, feedText: self.postDescription.text!, feedImageUrl: urlText,failure: {(failure) in
+                                if InternetConnectionManager.isConnectedToNetwork() {
+                                    print("connected")
+                                } else {
+                                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                                    let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
+                                    self.navigationController?.pushViewController(noInternetVC, animated: true)
+                                }
+                            })
+                        }
+                    })
+                    
+                    print("upload task finished")
+                    print(error ?? "error \(String(describing: error))")
+                }
+                
+                uploadTask.observe(.progress) { (snapshot) in
+                    print(snapshot.progress!)
+                }
+                uploadTask.resume()
+                if postDescription.text!.elementsEqual("Description") {
+                    postDescription.text = ""
+                }
+                
+            } else {
+                feedsSvcImpl.saveNewPost(feedPostedBy: appDelegate.userDetails.userName!, feedTitle: postTitle.text!, feedText: postDescription.text!, feedImageUrl: nil,failure: {(failure) in
+                    if InternetConnectionManager.isConnectedToNetwork() {
+                        print("connected")
+                    } else {
+                        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
+                        self.navigationController?.pushViewController(noInternetVC, animated: true)
                     }
                 })
-                
-                print("upload task finished")
-                print(error ?? "error \(String(describing: error))")
             }
-            
-            uploadTask.observe(.progress) { (snapshot) in
-                print(snapshot.progress!)
-            }
-            uploadTask.resume()
-            if postDescription.text!.elementsEqual("Description") {
-                postDescription.text = ""
-            }
-            
-        } else {
-            feedsSvcImpl.saveNewPost(feedPostedBy: appDelegate.userDetails.userName!, feedTitle: postTitle.text!, feedText: postDescription.text!, feedImageUrl: nil,failure: {(failure) in
-                if InternetConnectionManager.isConnectedToNetwork() {
-                    print("connected")
-                } else {
-                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
-                    self.navigationController?.pushViewController(noInternetVC, animated: true)
-                }
-            })
+            let alert = UIAlertController(title: "Publish Post", message: "Post Published Successfully", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(success) in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
-        
-        let alert = UIAlertController(title: "Publish Post", message: "Post Published Successfully", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(success) in
-            self.navigationController?.popViewController(animated: true)
-        }))
-        self.present(alert, animated: true, completion: nil)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -213,13 +219,13 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
         return finalNumber
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    /*func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let maxLength = 30 
         let currentString: NSString = textField.text! as NSString
         let newString: NSString =
             currentString.replacingCharacters(in: range, with: string) as NSString
         return newString.length <= maxLength
-    }
+    }*/
     
     func setupNavigationbar() {
         self.navigationController?.navigationBar.topItem?.title = " "

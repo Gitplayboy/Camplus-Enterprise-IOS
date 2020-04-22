@@ -73,7 +73,7 @@ class LoginVC: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func onLogin() {
-        loginSvc.verifyUserLogin(userId: userName.text!,password: password.text!,success: {(success) in
+        loginSvc.verifyUserLogin(userId: userName.text!.trimmingCharacters(in: .whitespacesAndNewlines),password: password.text!,success: {(success) in
             //save username and password to userdefaults
             if self.rememberUsername.isOn {
                 let defaults = UserDefaults.standard
@@ -122,7 +122,6 @@ class LoginVC: UIViewController,UITextFieldDelegate {
     }
     
     @objc func onForgotPwdClick() {
-        //performSegue(withIdentifier: "forgotPwdSB", sender: self)
         let forgotPwdVC = self.storyboard!.instantiateViewController(withIdentifier: "forgotPwdSB")
         self.navigationController?.pushViewController(forgotPwdVC, animated: true)
     }
