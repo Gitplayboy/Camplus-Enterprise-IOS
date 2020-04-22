@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ChatMessageVC: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
+class ChatMessageVC: UIViewController, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var chatHeaderLbl: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var textFieldBtmConstraint: NSLayoutConstraint!
-    @IBOutlet weak var sendTxtField: UITextField!
+    @IBOutlet weak var sendTxtField: UITextView!
     var initialTxtFieldPos:CGFloat?
     var chatMessages = [ChatMessages]()
     var isGroupChat = false
@@ -29,7 +29,9 @@ class ChatMessageVC: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         super.viewDidLoad()
         sendTxtField.delegate = self
         initialTxtFieldPos = textFieldBtmConstraint.constant
+        sendTxtField.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         setupNavigationbar()
+        self.sendTxtField.contentInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 5);
         if isGroupChat {
             navigationItem.rightBarButtonItem?.customView?.isHidden = false
             if messageId != nil {
@@ -83,6 +85,10 @@ class ChatMessageVC: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         }
     }
     
+    @objc func tapDone(sender: Any) {
+        self.sendTxtField.endEditing(true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         if InternetConnectionManager.isConnectedToNetwork() {
             print("connected")
@@ -109,7 +115,7 @@ class ChatMessageVC: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     @objc func keyboardWillAppear(_ notification: NSNotification) {
         if ((notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
             if self.textFieldBtmConstraint.constant < 300 {
-                self.textFieldBtmConstraint.constant += 316
+                self.textFieldBtmConstraint.constant += 356
             }
         }
     }
