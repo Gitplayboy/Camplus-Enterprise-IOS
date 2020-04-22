@@ -40,7 +40,6 @@
 		459A9548244025B200794C98 /* LeftChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459A9547244025B200794C98 /* LeftChatCell.swift */; };
 		459A954A244025C400794C98 /* RightChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459A9549244025C400794C98 /* RightChatCell.swift */; };
 		45C1FEBE243BD97E00C7C523 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 45C1FEBD243BD97E00C7C523 /* loading.json */; };
-		45C51726244A8B9F00B8B89C /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45C51725244A8B9F00B8B89C /* Storyboard.storyboard */; };
 		45C5172C244AB48B00B8B89C /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5172B244AB48B00B8B89C /* SettingsVC.swift */; };
 		45C5172E244AB93500B8B89C /* SettingsInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5172D244AB93500B8B89C /* SettingsInfoVC.swift */; };
 		45C51730244C878500B8B89C /* ForgotPwdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5172F244C878500B8B89C /* ForgotPwdVC.swift */; };
@@ -97,7 +96,6 @@
 		459A9547244025B200794C98 /* LeftChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftChatCell.swift; sourceTree = "<group>"; };
 		459A9549244025C400794C98 /* RightChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightChatCell.swift; sourceTree = "<group>"; };
 		45C1FEBD243BD97E00C7C523 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
-		45C51725244A8B9F00B8B89C /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		45C5172B244AB48B00B8B89C /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		45C5172D244AB93500B8B89C /* SettingsInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInfoVC.swift; sourceTree = "<group>"; };
 		45C5172F244C878500B8B89C /* ForgotPwdVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPwdVC.swift; sourceTree = "<group>"; };
@@ -183,7 +181,6 @@
 				457E503E243B902800F40694 /* AppDelegate.swift */,
 				457E5040243B902800F40694 /* SceneDelegate.swift */,
 				457E5044243B902800F40694 /* Main.storyboard */,
-				45C51725244A8B9F00B8B89C /* Storyboard.storyboard */,
 				457E5047243B902A00F40694 /* Assets.xcassets */,
 				457E5049243B902A00F40694 /* LaunchScreen.storyboard */,
 				4569AE6D24439FF2009C8CD6 /* GoogleService-Info.plist */,
@@ -330,7 +327,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				459A9536243E825300794C98 /* Proxima Nova Alt Light.otf in Resources */,
-				45C51726244A8B9F00B8B89C /* Storyboard.storyboard in Resources */,
 				45C5F324243E2EF700D30406 /* SFProDisplay-Bold.ttf in Resources */,
 				459A9535243E825300794C98 /* Proxima Nova Bold.otf in Resources */,
 				45C5F317243D8DF900D30406 /* Montserrat-Regular.ttf in Resources */,

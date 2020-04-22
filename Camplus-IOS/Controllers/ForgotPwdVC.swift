@@ -25,11 +25,14 @@ class ForgotPwdVC: UIViewController,UITextFieldDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     func setupNavigationbar() {
         self.navigationController?.navigationBar.topItem?.title = " "
         self.navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.topItem?.hidesBackButton = false
-        navigationItem.hidesBackButton = false
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

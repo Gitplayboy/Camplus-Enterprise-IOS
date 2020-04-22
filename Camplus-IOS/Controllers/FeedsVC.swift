@@ -97,15 +97,10 @@ class FeedsVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UICo
         cell.postedDateLbl.text = feedsData[indexPath.row].postTime!
         
         if let imageUrl = self.feedsData[indexPath.row].postImgName {
-            for constraint in cell.postImgView.constraints {
-                
-            }
             cell.heightConstraint.constant = 200
             let url = URL(string: imageUrl)
             URLSession.shared.dataTask(with: url!, completionHandler: {(data,response,error) in
-                if error != nil {
-                    print(error)
-                }
+                
                 DispatchQueue.main.async {
                     cell.postImgView.image = UIImage(data: data!)
                     let gesture = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped))
@@ -114,7 +109,7 @@ class FeedsVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UICo
                         cell.postImgView.addGestureRecognizer(gesture)
                     }
                 }
-                }).resume()
+            }).resume()
         } else {
             cell.postImgView.image = nil
             cell.heightConstraint.constant = 0

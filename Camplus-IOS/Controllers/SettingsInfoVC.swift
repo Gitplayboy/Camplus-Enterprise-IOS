@@ -31,9 +31,10 @@ class SettingsInfoVC: UITableViewController {
                 UserDefaults.standard.removePersistentDomain(forName: domain)
                 UserDefaults.standard.synchronize()
                 
-                let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+                let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC")
                 let sceneDelegate = self.view.window!.windowScene!.delegate as! SceneDelegate
-                sceneDelegate.window?.rootViewController = loginVC
+                let navigationController = UINavigationController(rootViewController: loginVC!)
+                sceneDelegate.window?.rootViewController = navigationController
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)

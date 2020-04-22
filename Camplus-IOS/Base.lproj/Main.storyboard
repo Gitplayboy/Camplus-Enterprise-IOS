@@ -45,10 +45,11 @@
         <!--Navigation Controller-->
         <scene sceneID="3sc-pQ-09I">
             <objects>
-                <navigationController id="mo1-qY-Ufb" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="loginNavSB" id="mo1-qY-Ufb" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorImage="back" id="qWV-uG-Hp6">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <connections>
@@ -1476,7 +1477,7 @@
         <!--Forgot PwdVC-->
         <scene sceneID="ZrS-M6-6v4">
             <objects>
-                <viewController extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="fullScreen" id="Fgh-Pb-MU3" customClass="ForgotPwdVC" customModule="Camplus_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="forgotPwdSB" extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="fullScreen" id="Fgh-Pb-MU3" customClass="ForgotPwdVC" customModule="Camplus_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1UI-gO-yAP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

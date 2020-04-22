@@ -122,7 +122,9 @@ class LoginVC: UIViewController,UITextFieldDelegate {
     }
     
     @objc func onForgotPwdClick() {
-        performSegue(withIdentifier: "forgotPwdSB", sender: self)
+        //performSegue(withIdentifier: "forgotPwdSB", sender: self)
+        let forgotPwdVC = self.storyboard!.instantiateViewController(withIdentifier: "forgotPwdSB")
+        self.navigationController?.pushViewController(forgotPwdVC, animated: true)
     }
     
 }
