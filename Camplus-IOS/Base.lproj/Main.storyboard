@@ -393,10 +393,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Th-xE-cdi">
-                                <rect key="frame" x="0.0" y="-47" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="-92" width="414" height="101"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a Post" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFd-4k-z7E">
-                                        <rect key="frame" x="143" y="6" width="139" height="40"/>
+                                        <rect key="frame" x="137.5" y="46" width="139.5" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="KJX-p3-3Qd"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="23"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -404,13 +407,9 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0087371906269999994" green="0.1557027996" blue="0.20392915610000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstItem="XFd-4k-z7E" firstAttribute="centerY" secondItem="0Th-xE-cdi" secondAttribute="centerY" constant="-2" id="QrY-8V-YNo"/>
-                                    <constraint firstItem="XFd-4k-z7E" firstAttribute="centerX" secondItem="0Th-xE-cdi" secondAttribute="centerX" constant="5.5" id="Sgw-aL-7ll"/>
-                                    <constraint firstAttribute="height" constant="56" id="eGK-xb-atu"/>
-                                    <constraint firstAttribute="bottom" secondItem="XFd-4k-z7E" secondAttribute="bottom" constant="10" id="fbr-xa-WrM"/>
-                                    <constraint firstItem="XFd-4k-z7E" firstAttribute="top" secondItem="0Th-xE-cdi" secondAttribute="top" constant="6" id="phv-5n-txl"/>
-                                    <constraint firstAttribute="bottom" secondItem="XFd-4k-z7E" secondAttribute="bottom" constant="10" id="sfT-WV-t33"/>
-                                    <constraint firstItem="XFd-4k-z7E" firstAttribute="top" secondItem="0Th-xE-cdi" secondAttribute="top" constant="6" id="xWO-3m-XpJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="XFd-4k-z7E" secondAttribute="bottom" constant="10" id="Iz9-RK-8hP"/>
+                                    <constraint firstItem="XFd-4k-z7E" firstAttribute="centerX" secondItem="0Th-xE-cdi" secondAttribute="centerX" id="e2J-U2-tVv"/>
+                                    <constraint firstAttribute="height" constant="101" id="eGK-xb-atu"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PhU-tl-X7z">
@@ -527,7 +526,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="KFf-P6-5kE" firstAttribute="leading" secondItem="vHo-uI-ef6" secondAttribute="leading" constant="16" id="1il-m0-P1n"/>
-                            <constraint firstItem="0Th-xE-cdi" firstAttribute="top" secondItem="vHo-uI-ef6" secondAttribute="top" constant="-47" id="6lg-pT-U9S"/>
+                            <constraint firstItem="0Th-xE-cdi" firstAttribute="top" secondItem="vHo-uI-ef6" secondAttribute="top" constant="-92" id="6lg-pT-U9S"/>
                             <constraint firstItem="0Th-xE-cdi" firstAttribute="leading" secondItem="vHo-uI-ef6" secondAttribute="leading" id="7t5-ER-RDe"/>
                             <constraint firstItem="PhU-tl-X7z" firstAttribute="top" secondItem="0Th-xE-cdi" secondAttribute="bottom" constant="22" id="BKX-Vp-fqf"/>
                             <constraint firstItem="vHo-uI-ef6" firstAttribute="trailing" secondItem="mhp-6c-Qiz" secondAttribute="trailing" constant="16" id="DZa-7V-Sqo"/>
@@ -559,7 +558,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NyM-BZ-a3F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2732" y="-521"/>
+            <point key="canvasLocation" x="2730.434782608696" y="-521.65178571428567"/>
         </scene>
         <!--Queue-->
         <scene sceneID="y9m-jc-wn1">
@@ -845,7 +844,7 @@
                                 <rect key="frame" x="0.0" y="-87" width="375" height="91"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0S-CJ-enx">
-                                        <rect key="frame" x="112.5" y="40" width="150" height="40"/>
+                                        <rect key="frame" x="112.5" y="41" width="150" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="0ku-Hb-nbT"/>
                                             <constraint firstAttribute="width" constant="150" id="DWL-th-03o"/>
@@ -860,7 +859,7 @@
                                     <constraint firstItem="Z0S-CJ-enx" firstAttribute="centerX" secondItem="YZy-oM-kUQ" secondAttribute="centerX" id="C9X-mj-biB"/>
                                     <constraint firstAttribute="width" constant="375" id="Wjx-tB-fQk"/>
                                     <constraint firstAttribute="height" constant="91" id="ebd-C0-9ix"/>
-                                    <constraint firstAttribute="bottom" secondItem="Z0S-CJ-enx" secondAttribute="bottom" constant="11" id="lXy-QA-dl7"/>
+                                    <constraint firstAttribute="bottom" secondItem="Z0S-CJ-enx" secondAttribute="bottom" constant="10" id="lXy-QA-dl7"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="176" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f64-gI-uRW">
@@ -1805,7 +1804,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xfL-Cv-EpX" firstAttribute="bottom" secondItem="LAo-Te-6dT" secondAttribute="bottom" constant="40" id="0IV-vn-uOT"/>
                             <constraint firstItem="8DO-Ro-HDV" firstAttribute="leading" secondItem="xfL-Cv-EpX" secondAttribute="leading" constant="20" id="4Xr-28-ezL"/>

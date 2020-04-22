@@ -95,6 +95,9 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
     }
     
     @IBAction func onPublishPost() {
+        if postDescription.text!.elementsEqual("Description") {
+            postDescription.text = ""
+        }
         //If description is empty and image is also not added
         if postDescription.text.isEmpty && (uploadedImg == nil || uploadedImg.image == nil) {
             let alert = UIAlertController(title: "Publish Post", message: "Add a description or an image to Post", preferredStyle: UIAlertController.Style.alert)
