@@ -140,7 +140,7 @@ class ChatVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UITex
         if searchChatsTxt.text != nil && !searchChatsTxt.text!.isEmpty {
             filteredChats = []
             for chats in chatPreviewArr {
-                if chats.senderName!.lowercased().contains(searchChatsTxt!.text!.lowercased()) {
+                if chats.senderName!.lowercased().contains(searchChatsTxt!.text!.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)) {
                     filteredChats.append(chats)
                     isFound = true
                 }

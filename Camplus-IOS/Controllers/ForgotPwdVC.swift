@@ -18,11 +18,19 @@ class ForgotPwdVC: UIViewController,UITextFieldDelegate {
     }
 
     @IBAction func onSubmitClick(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Forgot Password", message: "Password has been sent to your registered Email Id", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(success) in
-            self.navigationController?.popViewController(animated: true)
-        }))
-        self.present(alert, animated: true, completion: nil)
+        
+        let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+        if usernameTxt.text!.rangeOfCharacter(from: characterset.inverted) != nil {
+            let alert = UIAlertController(title: "Forgot Password", message: "Special characters are not allowed", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Forgot Password", message: "Password has been sent to your registered Email Id", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(success) in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -65,7 +65,7 @@ class ChatGroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if searchChatTxt.text != nil && !searchChatTxt.text!.isEmpty {
             filteredChats = []
             for chats in groupChatPreviewArr {
-                if chats.groupName!.lowercased().contains(searchChatTxt!.text!.lowercased()) {
+                if chats.groupName!.lowercased().contains(searchChatTxt!.text!.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)) {
                     filteredChats.append(chats)
                     isFound = true
                 }

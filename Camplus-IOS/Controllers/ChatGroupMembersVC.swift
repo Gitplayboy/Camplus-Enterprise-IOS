@@ -100,7 +100,7 @@ class ChatGroupMembersVC: UIViewController, UITableViewDataSource, UITableViewDe
         if searchMembers.text != nil && !searchMembers.text!.isEmpty {
             filteredUserDetails = []
             for users in userDetailsArr {
-                if users.userName!.lowercased().contains(searchMembers!.text!.lowercased()) {
+                if users.userName!.lowercased().contains(searchMembers!.text!.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)) {
                     filteredUserDetails.append(users)
                     isFound = true
                 }
