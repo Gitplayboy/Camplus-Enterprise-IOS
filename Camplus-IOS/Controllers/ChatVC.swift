@@ -166,6 +166,7 @@ class ChatVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UITex
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController!.navigationItem.rightBarButtonItem?.customView?.isHidden = true
+        self.tabBarController!.navigationController?.navigationBar.topItem?.title = ""
     }
     
 }

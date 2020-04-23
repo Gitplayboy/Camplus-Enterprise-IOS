@@ -115,4 +115,7 @@ extension ForumDetailVC: FirebaseDelegate {
         forumDetails.append(contentsOf: responses)
         tableDetails.reloadData()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController!.navigationItem.rightBarButtonItem?.customView?.isHidden = true
+    }
 }

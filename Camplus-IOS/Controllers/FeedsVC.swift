@@ -154,6 +154,7 @@ class FeedsVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UICo
             let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
             navigationController?.pushViewController(noInternetVC, animated: true)
         }
+        self.tabBarController!.navigationController?.navigationBar.topItem?.title = ""
         self.tabBarController!.navigationItem.rightBarButtonItem?.customView?.isHidden = true
     }
     

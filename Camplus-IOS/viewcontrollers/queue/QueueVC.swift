@@ -26,8 +26,8 @@ class QueueVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupNavigationBar()
+        self.tabBarController!.navigationItem.rightBarButtonItem?.customView?.isHidden = true
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
