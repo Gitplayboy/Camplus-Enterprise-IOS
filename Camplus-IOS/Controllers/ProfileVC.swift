@@ -56,6 +56,7 @@ class ProfileVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController!.navigationItem.rightBarButtonItem?.customView?.isHidden = false
+        self.tabBarController!.navigationController?.navigationBar.topItem?.title = ""
     }
 
 }

@@ -17,6 +17,9 @@ class ForumVC: UIViewController {
     
     @IBOutlet weak var tabBar: UITabBarItem!
     
+    
+    @IBOutlet var viewNoItem: UIView!
+    
     var tempForum: [Forum] = []
     var forums: [Forum] = []
     
@@ -24,6 +27,7 @@ class ForumVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupNavigationBar()
+        self.tabBarController!.navigationItem.rightBarButtonItem?.customView?.isHidden = true
     }
     
     override func viewDidLoad() {
@@ -32,6 +36,7 @@ class ForumVC: UIViewController {
         setupPlus()
         
         setupTableView()
+        setupSearchField()
         
         let firestoreService = FirestoreService()
         firestoreService.getForumsFromDB(serviceId: FirestoreService.SERVICE_ID_GET_FORUMS, firebaseDelegate: self)
@@ -41,8 +46,13 @@ class ForumVC: UIViewController {
         tableForum.delegate = self;
         tableForum.dataSource = self;
         
+        tableForum.backgroundView = viewNoItem
         tableForum.rowHeight = UITableView.automaticDimension
         tableForum.estimatedRowHeight = 200
+    }
+    
+    func setupSearchField() {
+        tfSearchBar.delegate  = self
     }
     
     func setupNavigationBar() {
@@ -58,7 +68,7 @@ class ForumVC: UIViewController {
     }
     
     @IBAction func onTextChanged(_ sender: Any) {
-        let text = tfSearchBar.text!
+        let text = tfSearchBar.text!.trimmingCharacters(in: .whitespaces)
         if text.isEmpty {
             forums.removeAll()
             forums.append(contentsOf: tempForum)
@@ -66,6 +76,13 @@ class ForumVC: UIViewController {
         } else {
             search(searchText: text)
         }
+    }
+}
+
+extension ForumVC: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
     }
 }
 

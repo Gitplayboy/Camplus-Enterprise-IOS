@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3CD7E4EE07EA27695D4205F8 /* Pods_Camplus_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C423D205949767900D92C7C /* Pods_Camplus_IOS.framework */; };
+		126AA1FBECEBD13DCC169E78 /* Pods_Camplus_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45DD2940D4D5C8063DDF125 /* Pods_Camplus_IOS.framework */; };
 		4510E4A7244DE15900166CC5 /* ContactUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4510E4A6244DE15900166CC5 /* ContactUsVC.swift */; };
 		455BC9B9244A1EDB00F8B225 /* ChangePwdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BC9B8244A1EDB00F8B225 /* ChangePwdVC.swift */; };
 		4569AE5B24414541009C8CD6 /* ChatMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569AE5A24414541009C8CD6 /* ChatMessages.swift */; };
@@ -144,8 +144,8 @@
 		45EED72B2447F95100B235C8 /* FeedsSvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsSvc.swift; sourceTree = "<group>"; };
 		45EED72F2448A31E00B235C8 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		45EED7312448B24B00B235C8 /* ProfileInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoVC.swift; sourceTree = "<group>"; };
-		8C423D205949767900D92C7C /* Pods_Camplus_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Camplus_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		90A36551E18A88233C92A518 /* Pods-Camplus-IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camplus-IOS.debug.xcconfig"; path = "Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS.debug.xcconfig"; sourceTree = "<group>"; };
+		67033F108C1EDC425E9DCF2B /* Pods-Camplus-IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camplus-IOS.debug.xcconfig"; path = "Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS.debug.xcconfig"; sourceTree = "<group>"; };
+		A45DD2940D4D5C8063DDF125 /* Pods_Camplus_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Camplus_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8FEA25C24516C7F000A981D /* FirestoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		D8FEA25E24516C89000A981D /* FirebaseDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDelegate.swift; sourceTree = "<group>"; };
 		D8FEA26324516CAB000A981D /* ForumResponseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumResponseCell.swift; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 		D8FEA28324516CAB000A981D /* QueueCreateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueCreateVC.swift; sourceTree = "<group>"; };
 		D8FEA28524516CAB000A981D /* QueueCellInteractionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueCellInteractionDelegate.swift; sourceTree = "<group>"; };
 		D8FEA28624516CAB000A981D /* QueueThankYouVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueThankYouVC.swift; sourceTree = "<group>"; };
-		E8DF366D97E8DED604987869 /* Pods-Camplus-IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camplus-IOS.release.xcconfig"; path = "Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS.release.xcconfig"; sourceTree = "<group>"; };
+		EB520D687337BDE532BAE87F /* Pods-Camplus-IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camplus-IOS.release.xcconfig"; path = "Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,17 +183,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CD7E4EE07EA27695D4205F8 /* Pods_Camplus_IOS.framework in Frameworks */,
+				126AA1FBECEBD13DCC169E78 /* Pods_Camplus_IOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13A7C47A1CEED0D640C62F5B /* Frameworks */ = {
+		1BCC0C69B1732721D422A52F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8C423D205949767900D92C7C /* Pods_Camplus_IOS.framework */,
+				A45DD2940D4D5C8063DDF125 /* Pods_Camplus_IOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -214,8 +214,8 @@
 			children = (
 				457E503D243B902800F40694 /* Camplus-IOS */,
 				457E503C243B902800F40694 /* Products */,
-				956CEF9FE374CBA8BEDAF414 /* Pods */,
-				13A7C47A1CEED0D640C62F5B /* Frameworks */,
+				7BAD9FA0E5E5DCCCD2391AB4 /* Pods */,
+				1BCC0C69B1732721D422A52F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -318,12 +318,13 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		956CEF9FE374CBA8BEDAF414 /* Pods */ = {
+		7BAD9FA0E5E5DCCCD2391AB4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				90A36551E18A88233C92A518 /* Pods-Camplus-IOS.debug.xcconfig */,
-				E8DF366D97E8DED604987869 /* Pods-Camplus-IOS.release.xcconfig */,
+				67033F108C1EDC425E9DCF2B /* Pods-Camplus-IOS.debug.xcconfig */,
+				EB520D687337BDE532BAE87F /* Pods-Camplus-IOS.release.xcconfig */,
 			);
+			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -766,7 +767,7 @@
 		};
 		457E5050243B902A00F40694 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 90A36551E18A88233C92A518 /* Pods-Camplus-IOS.debug.xcconfig */;
+			baseConfigurationReference = 67033F108C1EDC425E9DCF2B /* Pods-Camplus-IOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -786,7 +787,7 @@
 		};
 		457E5051243B902A00F40694 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8DF366D97E8DED604987869 /* Pods-Camplus-IOS.release.xcconfig */;
+			baseConfigurationReference = EB520D687337BDE532BAE87F /* Pods-Camplus-IOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

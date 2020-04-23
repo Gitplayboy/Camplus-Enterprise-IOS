@@ -21,7 +21,7 @@ class QueueCreateVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupNavigationBar()
+        //setupNavigationBar()
         setupUI()
         setupTable()
         getServices()

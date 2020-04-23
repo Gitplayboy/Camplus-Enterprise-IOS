@@ -22,10 +22,40 @@ class QueueThankYouVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigation()
         setupUI()
         
         let firestore = FirestoreService()
         firestore.getTokenDetailsFromDB(serviceId: FirestoreService.SERVICE_ID_GET_PARTICULAR_TOKEN, token: token, firebaseDelegate: self)
+    }
+    
+    func setupNavigation() {
+        if #available(iOS 13.0, *) {
+                   let app = UIApplication.shared
+                   let statusBarHeight: CGFloat = app.statusBarFrame.size.height
+                   
+                   let statusbarView = UIView()
+                   statusbarView.backgroundColor = UIColor(hexa: "#232F34")
+                   view.addSubview(statusbarView)
+                 
+                   statusbarView.translatesAutoresizingMaskIntoConstraints = false
+                   statusbarView.heightAnchor
+                       .constraint(equalToConstant: statusBarHeight).isActive = true
+                   statusbarView.widthAnchor
+                       .constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
+                   statusbarView.topAnchor
+                       .constraint(equalTo: view.topAnchor).isActive = true
+                   statusbarView.centerXAnchor
+                       .constraint(equalTo: view.centerXAnchor).isActive = true
+                 
+               } else {
+                   let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
+                   statusBar?.backgroundColor = UIColor(hexa: "#232F34")
+               }
+        
+        navigationController?.navigationBar.backgroundColor = UIColor(hexa: "#232F34");
+        navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationItem.setHidesBackButton(true, animated: true);
     }
     
     func setupUI() {

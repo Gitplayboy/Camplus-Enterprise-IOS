@@ -26,12 +26,12 @@ class QueueVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupNavigationBar()
+        self.tabBarController!.navigationItem.rightBarButtonItem?.customView?.isHidden = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         setupSegment()
         setupUI()
         getTokens()
@@ -54,6 +54,16 @@ class QueueVC: UIViewController {
         btnBook.layer.cornerRadius = 8
         cvQueues.delegate = self
         cvQueues.dataSource = self
+    }
+    
+    
+    @IBAction func onBookClicked(_ sender: Any) {
+        self.btnBook.isEnabled = false;
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.btnBook.isEnabled = true;
+        }
+        
+        performSegue(withIdentifier: "segue_to_book_appointment", sender: sender)
     }
     
     

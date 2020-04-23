@@ -28,9 +28,38 @@ class ForumCreateVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupNavigation()
         setupTextView()
         setupSubmit()
         getCategoriesFromDB()
+    }
+    
+    func setupNavigation() {
+        if #available(iOS 13.0, *) {
+                   let app = UIApplication.shared
+                   let statusBarHeight: CGFloat = app.statusBarFrame.size.height
+                   
+                   let statusbarView = UIView()
+                   statusbarView.backgroundColor = UIColor(hexa: "#232F34")
+                   view.addSubview(statusbarView)
+                 
+                   statusbarView.translatesAutoresizingMaskIntoConstraints = false
+                   statusbarView.heightAnchor
+                       .constraint(equalToConstant: statusBarHeight).isActive = true
+                   statusbarView.widthAnchor
+                       .constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
+                   statusbarView.topAnchor
+                       .constraint(equalTo: view.topAnchor).isActive = true
+                   statusbarView.centerXAnchor
+                       .constraint(equalTo: view.centerXAnchor).isActive = true
+                 
+               } else {
+                   let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
+                   statusBar?.backgroundColor = UIColor(hexa: "#232F34")
+               }
+        
+        navigationController?.navigationBar.backgroundColor = UIColor(hexa: "#232F34");
+        navigationController?.navigationBar.tintColor = UIColor.white
     }
     
     func setupColletionView() {
@@ -56,15 +85,15 @@ class ForumCreateVC: UIViewController {
     
     @IBAction func onSubmitClicked(_ sender: Any) {
         if !validateData() {
-            let alert = AlertControler.showOKAlert(message: "You need to fill all the fields")
+            let alert = AlertControler.showOKAlert(message: "You need to enter a valid data")
             self.present(alert, animated: true) {
                 
             }
             return
         }
         
-        let title = tfTitle.text
-        let description = tvDescription.text
+        let title = tfTitle.text!.trimmingCharacters(in: .whitespaces)
+        let description = tvDescription.text!.trimmingCharacters(in: .whitespaces)
         let categories = getCategories()
         
         forum = Forum()
@@ -91,11 +120,11 @@ class ForumCreateVC: UIViewController {
     }
     
     func validateData() -> Bool {
-        let title = tfTitle.text
-        let description = tvDescription.text
+        let title = tfTitle.text!.trimmingCharacters(in: .whitespaces)
+        let description = tvDescription.text!.trimmingCharacters(in: .whitespaces)
         let categories = getCategories()
         
-        if let title = title, title.count > 0, let desc = description, desc.count > 0, categories.count > 0 {
+        if title.count > 0, description.count > 0, categories.count > 0 {
             return true
         } else {
             return false
