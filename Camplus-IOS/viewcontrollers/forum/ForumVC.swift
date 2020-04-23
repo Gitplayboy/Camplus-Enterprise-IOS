@@ -48,7 +48,7 @@ class ForumVC: UIViewController {
     func setupNavigationBar() {
         self.navigationController?.navigationBar.topItem?.title = "Public forum"
         self.navigationController?.navigationBar.barStyle = .black
-        let titleTextAttribute = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont(name: "Montserrat-Medium", size: 20)]
+        let titleTextAttribute = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont(name: "ProximaNova-Bold", size: 20)]
         self.navigationController?.navigationBar.titleTextAttributes = titleTextAttribute as [NSAttributedString.Key : Any]
        
     }
@@ -131,12 +131,16 @@ extension ForumVC: FirebaseDelegate {
         print("------------ ForumVC --  read ----------")
         var forums = data as! [Forum]
         if serviceID == FirestoreService.SERVICE_ID_LISTEN_FORUM_UPDATE {
-            print("------ FORUM COUNT -- \(forums.count) ----------")
+            print("------ IF FORUM COUNT -- \(forums.count) ----------")
             checkForumExistance(newForums: forums)
         } else {
-            forums.sort() { (forumX, forumY) in
-                return forumX.timestamp > forumY.timestamp
+            print("------ ELSE FORUM COUNT -- \(forums.count) ----------")
+            if (forums.count > 1) {
+                forums.sort() { (forumX, forumY) in
+                    return forumX.timestamp > forumY.timestamp
+                }
             }
+            
             
             for forum in forums {
                 self.forums.append(forum)
@@ -162,6 +166,7 @@ extension ForumVC: FirebaseDelegate {
             
             if !isExist {
                 forums.insert(forum, at: 0)
+                tempForum.insert(forum, at: 0)
                 
                 tableForum.beginUpdates()
                 let indexPath = IndexPath(row: 0, section: 0)
@@ -194,7 +199,7 @@ extension ForumVC: ForumActionDelegate {
 
 extension ForumVC {
     func showReportAlert() {
-        let alert = AlertControler.showOKAlert(message: "You have successfully reported")
+        let alert = AlertControler.showOKAlert(message: "You have reported")
         self.present(alert, animated: true, completion: nil)
     }
 }

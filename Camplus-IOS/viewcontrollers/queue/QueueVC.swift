@@ -40,7 +40,7 @@ class QueueVC: UIViewController {
     func setupNavigationBar() {
         self.navigationController?.navigationBar.topItem?.title = "Queue"
            self.navigationController?.navigationBar.barStyle = .black
-           let titleTextAttribute = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont(name: "Montserrat-Medium", size: 17)]
+           let titleTextAttribute = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont(name: "ProximaNova-Bold", size: 20)]
            self.navigationController?.navigationBar.titleTextAttributes = titleTextAttribute as [NSAttributedString.Key : Any]
            
     }
@@ -150,9 +150,13 @@ extension QueueVC: FirebaseDelegate {
             if tokens.count > 0 {
                 print("-------------- TOKEN COUNT -- \(tokens.count) ---------")
                 addAppointment(tokens: tokens)
-                let firestoreService = FirestoreService()
-                firestoreService.queueUpdate(serviceId: FirestoreService.SERVICE_ID_LISTEN_TOKEN_UPDATE, userId: appDelegate.userDetails.userId!, firebaseDelegate: self)
+            } else {
+                checkEmpty(which: 0)
             }
+
+            let firestoreService = FirestoreService()
+            firestoreService.queueUpdate(serviceId: FirestoreService.SERVICE_ID_LISTEN_TOKEN_UPDATE, userId: appDelegate.userDetails.userId!, firebaseDelegate: self)
+
         }
     }
     
