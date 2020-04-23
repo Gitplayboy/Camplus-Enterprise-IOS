@@ -59,6 +59,35 @@
 		45EED72E2447FB0800B235C8 /* FeedsSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EED72B2447F95100B235C8 /* FeedsSvc.swift */; };
 		45EED7302448A31F00B235C8 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EED72F2448A31E00B235C8 /* ProfileVC.swift */; };
 		45EED7322448B24B00B235C8 /* ProfileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EED7312448B24B00B235C8 /* ProfileInfoVC.swift */; };
+		D8FEA25D24516C7F000A981D /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA25C24516C7F000A981D /* FirestoreService.swift */; };
+		D8FEA25F24516C89000A981D /* FirebaseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA25E24516C89000A981D /* FirebaseDelegate.swift */; };
+		D8FEA28724516CAB000A981D /* ForumResponseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA26324516CAB000A981D /* ForumResponseCell.swift */; };
+		D8FEA28824516CAB000A981D /* ForumTableHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA26424516CAB000A981D /* ForumTableHeaderCell.swift */; };
+		D8FEA28924516CAB000A981D /* ForumDetailCategoryCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA26524516CAB000A981D /* ForumDetailCategoryCVCell.swift */; };
+		D8FEA28A24516CAB000A981D /* ForumDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA26624516CAB000A981D /* ForumDetailHeaderCell.swift */; };
+		D8FEA28B24516CAB000A981D /* ForumCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA26724516CAB000A981D /* ForumCategoryCell.swift */; };
+		D8FEA28C24516CAB000A981D /* ForumCreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA26824516CAB000A981D /* ForumCreateVC.swift */; };
+		D8FEA28D24516CAB000A981D /* ForumDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA26924516CAB000A981D /* ForumDetailVC.swift */; };
+		D8FEA28E24516CAB000A981D /* Forum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA26B24516CAB000A981D /* Forum.swift */; };
+		D8FEA28F24516CAB000A981D /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA26C24516CAB000A981D /* Response.swift */; };
+		D8FEA29024516CAB000A981D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA26D24516CAB000A981D /* Category.swift */; };
+		D8FEA29124516CAB000A981D /* InteractionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA26F24516CAB000A981D /* InteractionDelegate.swift */; };
+		D8FEA29224516CAB000A981D /* ForumActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA27024516CAB000A981D /* ForumActionDelegate.swift */; };
+		D8FEA29324516CAB000A981D /* ForumTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA27124516CAB000A981D /* ForumTableDelegate.swift */; };
+		D8FEA29424516CAB000A981D /* ForumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA27224516CAB000A981D /* ForumVC.swift */; };
+		D8FEA29524516CAB000A981D /* AlertDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA27424516CAB000A981D /* AlertDialog.swift */; };
+		D8FEA29624516CAB000A981D /* UIAdvancedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA27524516CAB000A981D /* UIAdvancedTextField.swift */; };
+		D8FEA29724516CAB000A981D /* common.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA27624516CAB000A981D /* common.swift */; };
+		D8FEA29A24516CAB000A981D /* QueueCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA27B24516CAB000A981D /* QueueCVCell.swift */; };
+		D8FEA29B24516CAB000A981D /* ServiceTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA27C24516CAB000A981D /* ServiceTVCell.swift */; };
+		D8FEA29C24516CAB000A981D /* QueueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA27D24516CAB000A981D /* QueueVC.swift */; };
+		D8FEA29D24516CAB000A981D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA27F24516CAB000A981D /* Service.swift */; };
+		D8FEA29E24516CAB000A981D /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA28024516CAB000A981D /* Appointment.swift */; };
+		D8FEA29F24516CAB000A981D /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA28124516CAB000A981D /* Token.swift */; };
+		D8FEA2A024516CAB000A981D /* QueueDateTimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA28224516CAB000A981D /* QueueDateTimeVC.swift */; };
+		D8FEA2A124516CAB000A981D /* QueueCreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA28324516CAB000A981D /* QueueCreateVC.swift */; };
+		D8FEA2A224516CAB000A981D /* QueueCellInteractionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA28524516CAB000A981D /* QueueCellInteractionDelegate.swift */; };
+		D8FEA2A324516CAB000A981D /* QueueThankYouVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA28624516CAB000A981D /* QueueThankYouVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,6 +146,35 @@
 		45EED7312448B24B00B235C8 /* ProfileInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoVC.swift; sourceTree = "<group>"; };
 		8C423D205949767900D92C7C /* Pods_Camplus_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Camplus_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A36551E18A88233C92A518 /* Pods-Camplus-IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camplus-IOS.debug.xcconfig"; path = "Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS.debug.xcconfig"; sourceTree = "<group>"; };
+		D8FEA25C24516C7F000A981D /* FirestoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
+		D8FEA25E24516C89000A981D /* FirebaseDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDelegate.swift; sourceTree = "<group>"; };
+		D8FEA26324516CAB000A981D /* ForumResponseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumResponseCell.swift; sourceTree = "<group>"; };
+		D8FEA26424516CAB000A981D /* ForumTableHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumTableHeaderCell.swift; sourceTree = "<group>"; };
+		D8FEA26524516CAB000A981D /* ForumDetailCategoryCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumDetailCategoryCVCell.swift; sourceTree = "<group>"; };
+		D8FEA26624516CAB000A981D /* ForumDetailHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumDetailHeaderCell.swift; sourceTree = "<group>"; };
+		D8FEA26724516CAB000A981D /* ForumCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumCategoryCell.swift; sourceTree = "<group>"; };
+		D8FEA26824516CAB000A981D /* ForumCreateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumCreateVC.swift; sourceTree = "<group>"; };
+		D8FEA26924516CAB000A981D /* ForumDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumDetailVC.swift; sourceTree = "<group>"; };
+		D8FEA26B24516CAB000A981D /* Forum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forum.swift; sourceTree = "<group>"; };
+		D8FEA26C24516CAB000A981D /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		D8FEA26D24516CAB000A981D /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		D8FEA26F24516CAB000A981D /* InteractionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractionDelegate.swift; sourceTree = "<group>"; };
+		D8FEA27024516CAB000A981D /* ForumActionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumActionDelegate.swift; sourceTree = "<group>"; };
+		D8FEA27124516CAB000A981D /* ForumTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumTableDelegate.swift; sourceTree = "<group>"; };
+		D8FEA27224516CAB000A981D /* ForumVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumVC.swift; sourceTree = "<group>"; };
+		D8FEA27424516CAB000A981D /* AlertDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertDialog.swift; sourceTree = "<group>"; };
+		D8FEA27524516CAB000A981D /* UIAdvancedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAdvancedTextField.swift; sourceTree = "<group>"; };
+		D8FEA27624516CAB000A981D /* common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = common.swift; sourceTree = "<group>"; };
+		D8FEA27B24516CAB000A981D /* QueueCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueCVCell.swift; sourceTree = "<group>"; };
+		D8FEA27C24516CAB000A981D /* ServiceTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTVCell.swift; sourceTree = "<group>"; };
+		D8FEA27D24516CAB000A981D /* QueueVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueVC.swift; sourceTree = "<group>"; };
+		D8FEA27F24516CAB000A981D /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		D8FEA28024516CAB000A981D /* Appointment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
+		D8FEA28124516CAB000A981D /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		D8FEA28224516CAB000A981D /* QueueDateTimeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueDateTimeVC.swift; sourceTree = "<group>"; };
+		D8FEA28324516CAB000A981D /* QueueCreateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueCreateVC.swift; sourceTree = "<group>"; };
+		D8FEA28524516CAB000A981D /* QueueCellInteractionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueCellInteractionDelegate.swift; sourceTree = "<group>"; };
+		D8FEA28624516CAB000A981D /* QueueThankYouVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueThankYouVC.swift; sourceTree = "<group>"; };
 		E8DF366D97E8DED604987869 /* Pods-Camplus-IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camplus-IOS.release.xcconfig"; path = "Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,6 +230,7 @@
 		457E503D243B902800F40694 /* Camplus-IOS */ = {
 			isa = PBXGroup;
 			children = (
+				D8FEA26024516CAB000A981D /* viewcontrollers */,
 				45C1FEBD243BD97E00C7C523 /* loading.json */,
 				4569AE592441452E009C8CD6 /* Data Models */,
 				45EED7282447F95100B235C8 /* Services */,
@@ -250,6 +309,8 @@
 		45EED7282447F95100B235C8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D8FEA25E24516C89000A981D /* FirebaseDelegate.swift */,
+				D8FEA25C24516C7F000A981D /* FirestoreService.swift */,
 				45EED7292447F95100B235C8 /* LoginSvc.swift */,
 				45EED72A2447F95100B235C8 /* ChatsSvc.swift */,
 				45EED72B2447F95100B235C8 /* FeedsSvc.swift */,
@@ -266,6 +327,112 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D8FEA26024516CAB000A981D /* viewcontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				D8FEA26124516CAB000A981D /* forum */,
+				D8FEA27324516CAB000A981D /* common */,
+				D8FEA27924516CAB000A981D /* queue */,
+			);
+			path = viewcontrollers;
+			sourceTree = "<group>";
+		};
+		D8FEA26124516CAB000A981D /* forum */ = {
+			isa = PBXGroup;
+			children = (
+				D8FEA26224516CAB000A981D /* cells */,
+				D8FEA26824516CAB000A981D /* ForumCreateVC.swift */,
+				D8FEA26924516CAB000A981D /* ForumDetailVC.swift */,
+				D8FEA26A24516CAB000A981D /* model */,
+				D8FEA26E24516CAB000A981D /* delegates */,
+				D8FEA27224516CAB000A981D /* ForumVC.swift */,
+			);
+			path = forum;
+			sourceTree = "<group>";
+		};
+		D8FEA26224516CAB000A981D /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				D8FEA26324516CAB000A981D /* ForumResponseCell.swift */,
+				D8FEA26424516CAB000A981D /* ForumTableHeaderCell.swift */,
+				D8FEA26524516CAB000A981D /* ForumDetailCategoryCVCell.swift */,
+				D8FEA26624516CAB000A981D /* ForumDetailHeaderCell.swift */,
+				D8FEA26724516CAB000A981D /* ForumCategoryCell.swift */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
+		D8FEA26A24516CAB000A981D /* model */ = {
+			isa = PBXGroup;
+			children = (
+				D8FEA26B24516CAB000A981D /* Forum.swift */,
+				D8FEA26C24516CAB000A981D /* Response.swift */,
+				D8FEA26D24516CAB000A981D /* Category.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		D8FEA26E24516CAB000A981D /* delegates */ = {
+			isa = PBXGroup;
+			children = (
+				D8FEA26F24516CAB000A981D /* InteractionDelegate.swift */,
+				D8FEA27024516CAB000A981D /* ForumActionDelegate.swift */,
+				D8FEA27124516CAB000A981D /* ForumTableDelegate.swift */,
+			);
+			path = delegates;
+			sourceTree = "<group>";
+		};
+		D8FEA27324516CAB000A981D /* common */ = {
+			isa = PBXGroup;
+			children = (
+				D8FEA27424516CAB000A981D /* AlertDialog.swift */,
+				D8FEA27524516CAB000A981D /* UIAdvancedTextField.swift */,
+				D8FEA27624516CAB000A981D /* common.swift */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		D8FEA27924516CAB000A981D /* queue */ = {
+			isa = PBXGroup;
+			children = (
+				D8FEA27A24516CAB000A981D /* cells */,
+				D8FEA27D24516CAB000A981D /* QueueVC.swift */,
+				D8FEA27E24516CAB000A981D /* models */,
+				D8FEA28224516CAB000A981D /* QueueDateTimeVC.swift */,
+				D8FEA28324516CAB000A981D /* QueueCreateVC.swift */,
+				D8FEA28424516CAB000A981D /* protocols */,
+				D8FEA28624516CAB000A981D /* QueueThankYouVC.swift */,
+			);
+			path = queue;
+			sourceTree = "<group>";
+		};
+		D8FEA27A24516CAB000A981D /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				D8FEA27B24516CAB000A981D /* QueueCVCell.swift */,
+				D8FEA27C24516CAB000A981D /* ServiceTVCell.swift */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
+		D8FEA27E24516CAB000A981D /* models */ = {
+			isa = PBXGroup;
+			children = (
+				D8FEA27F24516CAB000A981D /* Service.swift */,
+				D8FEA28024516CAB000A981D /* Appointment.swift */,
+				D8FEA28124516CAB000A981D /* Token.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		D8FEA28424516CAB000A981D /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D8FEA28524516CAB000A981D /* QueueCellInteractionDelegate.swift */,
+			);
+			path = protocols;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -277,7 +444,7 @@
 				457E5037243B902800F40694 /* Sources */,
 				457E5038243B902800F40694 /* Frameworks */,
 				457E5039243B902800F40694 /* Resources */,
-				2DBF3D818352224FAB37E84C /* [CP] Embed Pods Frameworks */,
+				E486ACB5BF2834334F6DA17F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -353,23 +520,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2DBF3D818352224FAB37E84C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6616F06D6B14FBBE48FF6580 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -392,6 +542,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E486ACB5BF2834334F6DA17F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -400,8 +567,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				45EED72C2447FB0800B235C8 /* LoginSvc.swift in Sources */,
+				D8FEA29624516CAB000A981D /* UIAdvancedTextField.swift in Sources */,
 				4510E4A7244DE15900166CC5 /* ContactUsVC.swift in Sources */,
+				D8FEA29224516CAB000A981D /* ForumActionDelegate.swift in Sources */,
 				45C5172E244AB93500B8B89C /* SettingsInfoVC.swift in Sources */,
+				D8FEA2A124516CAB000A981D /* QueueCreateVC.swift in Sources */,
+				D8FEA28A24516CAB000A981D /* ForumDetailHeaderCell.swift in Sources */,
+				D8FEA28B24516CAB000A981D /* ForumCategoryCell.swift in Sources */,
 				45EED72D2447FB0800B235C8 /* ChatsSvc.swift in Sources */,
 				45EED72E2447FB0800B235C8 /* FeedsSvc.swift in Sources */,
 				45C51730244C878500B8B89C /* ForgotPwdVC.swift in Sources */,
@@ -409,26 +581,50 @@
 				4569AE722444F6EF009C8CD6 /* GroupChatCell.swift in Sources */,
 				45EED7272447DFC300B235C8 /* NoInternetVC.swift in Sources */,
 				459A954A244025C400794C98 /* RightChatCell.swift in Sources */,
+				D8FEA29F24516CAB000A981D /* Token.swift in Sources */,
 				459A9546243EF46500794C98 /* ChatMessageVC.swift in Sources */,
+				D8FEA29C24516CAB000A981D /* QueueVC.swift in Sources */,
+				D8FEA2A324516CAB000A981D /* QueueThankYouVC.swift in Sources */,
 				45C5172C244AB48B00B8B89C /* SettingsVC.swift in Sources */,
+				D8FEA25D24516C7F000A981D /* FirestoreService.swift in Sources */,
+				D8FEA29E24516CAB000A981D /* Appointment.swift in Sources */,
+				D8FEA25F24516C89000A981D /* FirebaseDelegate.swift in Sources */,
 				45EED7302448A31F00B235C8 /* ProfileVC.swift in Sources */,
 				4569AE5D2441A1A8009C8CD6 /* ChatGroupVC.swift in Sources */,
 				4569AE63244214EB009C8CD6 /* ChatGroupMembersVC.swift in Sources */,
 				45EED7252447D10100B235C8 /* InternetConnectionManager.swift in Sources */,
+				D8FEA29B24516CAB000A981D /* ServiceTVCell.swift in Sources */,
 				459A9541243E86B000794C98 /* FeedsDataCell.swift in Sources */,
 				459A9542243E86B000794C98 /* ChatsDataCell.swift in Sources */,
 				4569AE7624457C59009C8CD6 /* GroupMembersCell.swift in Sources */,
+				D8FEA28724516CAB000A981D /* ForumResponseCell.swift in Sources */,
 				45C5F320243DA28F00D30406 /* FeedsVC.swift in Sources */,
 				45EED7322448B24B00B235C8 /* ProfileInfoVC.swift in Sources */,
+				D8FEA29724516CAB000A981D /* common.swift in Sources */,
+				D8FEA29124516CAB000A981D /* InteractionDelegate.swift in Sources */,
+				D8FEA28C24516CAB000A981D /* ForumCreateVC.swift in Sources */,
 				45C5F31C243D944400D30406 /* LoginVC.swift in Sources */,
 				459A953B243E830200794C98 /* ChatVC.swift in Sources */,
+				D8FEA29A24516CAB000A981D /* QueueCVCell.swift in Sources */,
 				459A9548244025B200794C98 /* LeftChatCell.swift in Sources */,
+				D8FEA28D24516CAB000A981D /* ForumDetailVC.swift in Sources */,
+				D8FEA28924516CAB000A981D /* ForumDetailCategoryCVCell.swift in Sources */,
+				D8FEA28F24516CAB000A981D /* Response.swift in Sources */,
+				D8FEA2A024516CAB000A981D /* QueueDateTimeVC.swift in Sources */,
 				4569AE5B24414541009C8CD6 /* ChatMessages.swift in Sources */,
+				D8FEA29524516CAB000A981D /* AlertDialog.swift in Sources */,
+				D8FEA29324516CAB000A981D /* ForumTableDelegate.swift in Sources */,
 				4569AE7424455AF6009C8CD6 /* UserDetails.swift in Sources */,
 				45C5F322243E2BA800D30406 /* AddPostVC.swift in Sources */,
 				457E503F243B902800F40694 /* AppDelegate.swift in Sources */,
+				D8FEA28824516CAB000A981D /* ForumTableHeaderCell.swift in Sources */,
 				455BC9B9244A1EDB00F8B225 /* ChangePwdVC.swift in Sources */,
+				D8FEA2A224516CAB000A981D /* QueueCellInteractionDelegate.swift in Sources */,
 				457E5041243B902800F40694 /* SceneDelegate.swift in Sources */,
+				D8FEA28E24516CAB000A981D /* Forum.swift in Sources */,
+				D8FEA29D24516CAB000A981D /* Service.swift in Sources */,
+				D8FEA29424516CAB000A981D /* ForumVC.swift in Sources */,
+				D8FEA29024516CAB000A981D /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,6 +772,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MZ4NR6L53X;
 				INFOPLIST_FILE = "Camplus-IOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -583,7 +780,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ios.Camplus-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -595,6 +792,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MZ4NR6L53X;
 				INFOPLIST_FILE = "Camplus-IOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -602,7 +800,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ios.Camplus-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
