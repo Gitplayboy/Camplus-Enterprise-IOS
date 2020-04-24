@@ -96,26 +96,33 @@ class FeedsVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UICo
         cell.postTxtView?.text = feedsData[indexPath.row].postDescription!
         cell.postedDateLbl.text = feedsData[indexPath.row].postTime!
         
+        
         if let imageUrl = self.feedsData[indexPath.row].postImgName {
             cell.heightConstraint.constant = 200
             let url = URL(string: imageUrl)
             if isInternetAvailable() {
-                URLSession.shared.dataTask(with: url!, completionHandler: {(data,response,error) in
-                    
-                    DispatchQueue.main.async {
-                        cell.postImgView.image = UIImage(data: data!)
-                        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped))
+                if feedsData[indexPath.row].postImgView == nil {
+                    URLSession.shared.dataTask(with: url!, completionHandler: {(data,response,error) in
                         
-                        if cell.postImgView != nil {
-                            cell.postImgView.addGestureRecognizer(gesture)
+                        DispatchQueue.main.async {
+                            cell.postImgView.image = UIImage(data: data!)
+                            self.feedsData[indexPath.row].postImgView = cell.postImgView.image
+                            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped))
+                            
+                            if cell.postImgView != nil {
+                                cell.postImgView.addGestureRecognizer(gesture)
+                            }
                         }
-                    }
-                }).resume()
+                    }).resume()
+                } else {
+                    cell.postImgView.image = self.feedsData[indexPath.row].postImgView
+                }
             }
         } else {
             cell.postImgView.image = nil
             cell.heightConstraint.constant = 0
         }
+        
         
         if feedsData[indexPath.row].postDescription == nil && cell.postTxtView != nil {
             cell.postTxtView.bounds.size = CGSize(width: cell.postTxtView.bounds.width, height: 0)
