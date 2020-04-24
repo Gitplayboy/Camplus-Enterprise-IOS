@@ -41,13 +41,6 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        let imgUploadBorder = CAShapeLayer()
-        imgUploadBorder.strokeColor = UIColor.black.cgColor
-        imgUploadBorder.lineDashPattern = [5, 5]
-        imgUploadBorder.frame = uploadImgView.bounds
-        imgUploadBorder.fillColor = nil
-        imgUploadBorder.path = UIBezierPath(rect: uploadImgView.bounds).cgPath
-        uploadImgView.layer.addSublayer(imgUploadBorder)
         
         deleteImgBtn.layer.cornerRadius = deleteImgBtn.bounds.width / 2
         deleteImgBtn.layer.masksToBounds = true

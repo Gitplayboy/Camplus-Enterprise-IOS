@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mo1-qY-Ufb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mo1-qY-Ufb">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -499,6 +499,11 @@
                                     <constraint firstAttribute="trailing" secondItem="y1B-9Q-Cpe" secondAttribute="trailing" id="rOU-r0-5TL"/>
                                     <constraint firstItem="bgL-rH-iQX" firstAttribute="top" secondItem="54d-at-Tuv" secondAttribute="top" constant="8" id="sfY-qG-Fjj"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhp-6c-Qiz">
                                 <rect key="frame" x="16" y="690" width="382" height="47"/>
@@ -846,7 +851,7 @@
                                 <color key="backgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeftChat" rowHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="jZh-re-N3Q" customClass="LeftChatCell" customModule="Camplus_IOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeftChat" rowHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="jZh-re-N3Q" customClass="LeftChatCell" customModule="Camplus_IOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jZh-re-N3Q" id="GTm-Sb-7Vx">
@@ -1484,13 +1489,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUH-dq-hfe">
-                                <rect key="frame" x="20" y="100.5" width="209.5" height="21"/>
+                                <rect key="frame" x="20" y="100.5" width="209.5" height="17"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.2331810594" green="0.31674921509999998" blue="0.35686963799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4pr-LA-3KK">
-                                <rect key="frame" x="20" y="140.5" width="374" height="34"/>
+                                <rect key="frame" x="20" y="136.5" width="374" height="34"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -1498,7 +1503,7 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We will send you a new password to your registered email id. Please check your email" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPx-lw-Rri">
-                                <rect key="frame" x="20" y="187.5" width="374" height="81"/>
+                                <rect key="frame" x="20" y="183.5" width="374" height="81"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="81" id="G7z-UH-hrh"/>
                                 </constraints>
@@ -1507,7 +1512,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqa-6O-ezi">
-                                <rect key="frame" x="20" y="285.5" width="374" height="55"/>
+                                <rect key="frame" x="20" y="281.5" width="374" height="55"/>
                                 <color key="backgroundColor" red="0.0087371906269999994" green="0.1557027996" blue="0.20392915610000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="3nK-ah-Z9U"/>
@@ -1955,7 +1960,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receive Notification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yF7-fq-QrV">
-                                <rect key="frame" x="20" y="158" width="174.5" height="24.5"/>
+                                <rect key="frame" x="20" y="158" width="174.5" height="20"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="20"/>
                                 <color key="textColor" red="0.0087371906269999994" green="0.1557027996" blue="0.20392915610000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -3824,6 +3829,11 @@
             <point key="canvasLocation" x="170" y="2417"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="xED-Zs-F5T"/>
+        <segue reference="daA-yR-f0e"/>
+    </inferredMetricsTieBreakers>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="About" width="32" height="32"/>
         <image name="Filter_icon" width="22" height="20"/>
@@ -3837,7 +3847,7 @@
         <image name="camplus-icon" width="1870" height="1763"/>
         <image name="chat" width="22" height="22"/>
         <image name="chat-selected" width="24" height="24"/>
-        <image name="chevron.right" catalog="system" width="48" height="64"/>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="contact" width="32" height="32"/>
         <image name="empty_chat" width="107" height="107"/>
         <image name="forgot_password" width="20" height="25.5"/>
@@ -3845,7 +3855,7 @@
         <image name="home-icon" width="22" height="22"/>
         <image name="home-selected" width="24" height="24"/>
         <image name="logout" width="32" height="32"/>
-        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="more-menu" width="22" height="22"/>
         <image name="no_internet_connection" width="243" height="186"/>
         <image name="profile" width="22" height="22"/>
@@ -3871,9 +3881,4 @@
         <image name="user-profile-icon-6" width="512" height="512"/>
         <image name="user_avatar" width="512" height="512"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="xED-Zs-F5T"/>
-        <segue reference="daA-yR-f0e"/>
-    </inferredMetricsTieBreakers>
-    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
