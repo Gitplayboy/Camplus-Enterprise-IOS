@@ -16,8 +16,7 @@ class ForumDetailCategoryCVCell: UICollectionViewCell {
         self.contentView.backgroundColor = UIColor(hexa: "#00000017");
         self.contentView.layer.cornerRadius = 8
         
-        if let cat = category {
-         //self.labelCatName.text = cat
-        }
     }
+    
+    
 }

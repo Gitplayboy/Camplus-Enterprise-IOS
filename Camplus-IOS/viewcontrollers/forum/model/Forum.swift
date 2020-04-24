@@ -20,6 +20,8 @@ public struct Forum: ForumTableDelegate, Codable {
     var user_name: String!
     var user_id: String!
     var reportCount: Int = 0
+    var responseCount: Int = 0
+    var isReport: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case title
@@ -29,5 +31,6 @@ public struct Forum: ForumTableDelegate, Codable {
         case user_name
         case user_id
         case reportCount = "report_count"
+        case responseCount = "response_count"
     }
 }

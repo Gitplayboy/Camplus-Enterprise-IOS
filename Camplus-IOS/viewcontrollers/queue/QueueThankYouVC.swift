@@ -35,7 +35,7 @@ class QueueThankYouVC: UIViewController {
                    let statusBarHeight: CGFloat = app.statusBarFrame.size.height
                    
                    let statusbarView = UIView()
-                   statusbarView.backgroundColor = UIColor(hexa: "#232F34")
+                   statusbarView.backgroundColor = UIColor(hexa: "#022834")
                    view.addSubview(statusbarView)
                  
                    statusbarView.translatesAutoresizingMaskIntoConstraints = false
@@ -50,10 +50,10 @@ class QueueThankYouVC: UIViewController {
                  
                } else {
                    let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
-                   statusBar?.backgroundColor = UIColor(hexa: "#232F34")
+                   statusBar?.backgroundColor = UIColor(hexa: "#022834")
                }
         
-        navigationController?.navigationBar.backgroundColor = UIColor(hexa: "#232F34");
+        navigationController?.navigationBar.backgroundColor = UIColor(hexa: "#022834");
         navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationItem.setHidesBackButton(true, animated: true);
     }

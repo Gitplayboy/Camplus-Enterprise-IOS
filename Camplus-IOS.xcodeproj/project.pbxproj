@@ -59,6 +59,11 @@
 		45EED72E2447FB0800B235C8 /* FeedsSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EED72B2447F95100B235C8 /* FeedsSvc.swift */; };
 		45EED7302448A31F00B235C8 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EED72F2448A31E00B235C8 /* ProfileVC.swift */; };
 		45EED7322448B24B00B235C8 /* ProfileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EED7312448B24B00B235C8 /* ProfileInfoVC.swift */; };
+		D8D905F9245262CE00BF1EF1 /* BoardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D905F8245262CE00BF1EF1 /* BoardingVC.swift */; };
+		D8D905FC245262F400BF1EF1 /* BoardingCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D905FB245262F400BF1EF1 /* BoardingCVCell.swift */; };
+		D8D905FF2452646900BF1EF1 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D905FE2452646900BF1EF1 /* Board.swift */; };
+		D8D906012452BA8200BF1EF1 /* ResponseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D906002452BA8200BF1EF1 /* ResponseDelegate.swift */; };
+		D8D906032452BDFC00BF1EF1 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D906022452BDFC00BF1EF1 /* Report.swift */; };
 		D8FEA25D24516C7F000A981D /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA25C24516C7F000A981D /* FirestoreService.swift */; };
 		D8FEA25F24516C89000A981D /* FirebaseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA25E24516C89000A981D /* FirebaseDelegate.swift */; };
 		D8FEA28724516CAB000A981D /* ForumResponseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEA26324516CAB000A981D /* ForumResponseCell.swift */; };
@@ -146,6 +151,11 @@
 		45EED7312448B24B00B235C8 /* ProfileInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoVC.swift; sourceTree = "<group>"; };
 		67033F108C1EDC425E9DCF2B /* Pods-Camplus-IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camplus-IOS.debug.xcconfig"; path = "Target Support Files/Pods-Camplus-IOS/Pods-Camplus-IOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A45DD2940D4D5C8063DDF125 /* Pods_Camplus_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Camplus_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8D905F8245262CE00BF1EF1 /* BoardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingVC.swift; sourceTree = "<group>"; };
+		D8D905FB245262F400BF1EF1 /* BoardingCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingCVCell.swift; sourceTree = "<group>"; };
+		D8D905FE2452646900BF1EF1 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		D8D906002452BA8200BF1EF1 /* ResponseDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDelegate.swift; sourceTree = "<group>"; };
+		D8D906022452BDFC00BF1EF1 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		D8FEA25C24516C7F000A981D /* FirestoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		D8FEA25E24516C89000A981D /* FirebaseDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDelegate.swift; sourceTree = "<group>"; };
 		D8FEA26324516CAB000A981D /* ForumResponseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumResponseCell.swift; sourceTree = "<group>"; };
@@ -324,13 +334,39 @@
 				67033F108C1EDC425E9DCF2B /* Pods-Camplus-IOS.debug.xcconfig */,
 				EB520D687337BDE532BAE87F /* Pods-Camplus-IOS.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D8D905F72452629E00BF1EF1 /* boarding */ = {
+			isa = PBXGroup;
+			children = (
+				D8D905FD2452645700BF1EF1 /* models */,
+				D8D905FA245262D400BF1EF1 /* cells */,
+				D8D905F8245262CE00BF1EF1 /* BoardingVC.swift */,
+			);
+			path = boarding;
+			sourceTree = "<group>";
+		};
+		D8D905FA245262D400BF1EF1 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				D8D905FB245262F400BF1EF1 /* BoardingCVCell.swift */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
+		D8D905FD2452645700BF1EF1 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				D8D905FE2452646900BF1EF1 /* Board.swift */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 		D8FEA26024516CAB000A981D /* viewcontrollers */ = {
 			isa = PBXGroup;
 			children = (
+				D8D905F72452629E00BF1EF1 /* boarding */,
 				D8FEA26124516CAB000A981D /* forum */,
 				D8FEA27324516CAB000A981D /* common */,
 				D8FEA27924516CAB000A981D /* queue */,
@@ -341,12 +377,12 @@
 		D8FEA26124516CAB000A981D /* forum */ = {
 			isa = PBXGroup;
 			children = (
-				D8FEA26224516CAB000A981D /* cells */,
-				D8FEA26824516CAB000A981D /* ForumCreateVC.swift */,
 				D8FEA26924516CAB000A981D /* ForumDetailVC.swift */,
+				D8FEA26824516CAB000A981D /* ForumCreateVC.swift */,
+				D8FEA27224516CAB000A981D /* ForumVC.swift */,
+				D8FEA26224516CAB000A981D /* cells */,
 				D8FEA26A24516CAB000A981D /* model */,
 				D8FEA26E24516CAB000A981D /* delegates */,
-				D8FEA27224516CAB000A981D /* ForumVC.swift */,
 			);
 			path = forum;
 			sourceTree = "<group>";
@@ -369,6 +405,7 @@
 				D8FEA26B24516CAB000A981D /* Forum.swift */,
 				D8FEA26C24516CAB000A981D /* Response.swift */,
 				D8FEA26D24516CAB000A981D /* Category.swift */,
+				D8D906022452BDFC00BF1EF1 /* Report.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -379,6 +416,7 @@
 				D8FEA26F24516CAB000A981D /* InteractionDelegate.swift */,
 				D8FEA27024516CAB000A981D /* ForumActionDelegate.swift */,
 				D8FEA27124516CAB000A981D /* ForumTableDelegate.swift */,
+				D8D906002452BA8200BF1EF1 /* ResponseDelegate.swift */,
 			);
 			path = delegates;
 			sourceTree = "<group>";
@@ -579,6 +617,7 @@
 				45EED72E2447FB0800B235C8 /* FeedsSvc.swift in Sources */,
 				45C51730244C878500B8B89C /* ForgotPwdVC.swift in Sources */,
 				4569AE612441A409009C8CD6 /* FeedsData.swift in Sources */,
+				D8D905FF2452646900BF1EF1 /* Board.swift in Sources */,
 				4569AE722444F6EF009C8CD6 /* GroupChatCell.swift in Sources */,
 				45EED7272447DFC300B235C8 /* NoInternetVC.swift in Sources */,
 				459A954A244025C400794C98 /* RightChatCell.swift in Sources */,
@@ -597,9 +636,11 @@
 				D8FEA29B24516CAB000A981D /* ServiceTVCell.swift in Sources */,
 				459A9541243E86B000794C98 /* FeedsDataCell.swift in Sources */,
 				459A9542243E86B000794C98 /* ChatsDataCell.swift in Sources */,
+				D8D905F9245262CE00BF1EF1 /* BoardingVC.swift in Sources */,
 				4569AE7624457C59009C8CD6 /* GroupMembersCell.swift in Sources */,
 				D8FEA28724516CAB000A981D /* ForumResponseCell.swift in Sources */,
 				45C5F320243DA28F00D30406 /* FeedsVC.swift in Sources */,
+				D8D906032452BDFC00BF1EF1 /* Report.swift in Sources */,
 				45EED7322448B24B00B235C8 /* ProfileInfoVC.swift in Sources */,
 				D8FEA29724516CAB000A981D /* common.swift in Sources */,
 				D8FEA29124516CAB000A981D /* InteractionDelegate.swift in Sources */,
@@ -620,8 +661,10 @@
 				457E503F243B902800F40694 /* AppDelegate.swift in Sources */,
 				D8FEA28824516CAB000A981D /* ForumTableHeaderCell.swift in Sources */,
 				455BC9B9244A1EDB00F8B225 /* ChangePwdVC.swift in Sources */,
+				D8D905FC245262F400BF1EF1 /* BoardingCVCell.swift in Sources */,
 				D8FEA2A224516CAB000A981D /* QueueCellInteractionDelegate.swift in Sources */,
 				457E5041243B902800F40694 /* SceneDelegate.swift in Sources */,
+				D8D906012452BA8200BF1EF1 /* ResponseDelegate.swift in Sources */,
 				D8FEA28E24516CAB000A981D /* Forum.swift in Sources */,
 				D8FEA29D24516CAB000A981D /* Service.swift in Sources */,
 				D8FEA29424516CAB000A981D /* ForumVC.swift in Sources */,

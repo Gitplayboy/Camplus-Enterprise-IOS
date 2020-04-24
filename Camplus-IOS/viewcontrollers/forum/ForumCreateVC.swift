@@ -40,7 +40,7 @@ class ForumCreateVC: UIViewController {
                    let statusBarHeight: CGFloat = app.statusBarFrame.size.height
                    
                    let statusbarView = UIView()
-                   statusbarView.backgroundColor = UIColor(hexa: "#232F34")
+                   statusbarView.backgroundColor = UIColor(hexa: "#022834")
                    view.addSubview(statusbarView)
                  
                    statusbarView.translatesAutoresizingMaskIntoConstraints = false
@@ -55,17 +55,16 @@ class ForumCreateVC: UIViewController {
                  
                } else {
                    let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
-                   statusBar?.backgroundColor = UIColor(hexa: "#232F34")
+                   statusBar?.backgroundColor = UIColor(hexa: "#022834")
                }
         
-        navigationController?.navigationBar.backgroundColor = UIColor(hexa: "#232F34");
+        navigationController?.navigationBar.backgroundColor = UIColor(hexa: "#022834");
         navigationController?.navigationBar.tintColor = UIColor.white
     }
     
     func setupColletionView() {
         cvCategory.delegate = self
         cvCategory.dataSource = self
-        tvDescription.delegate = self
     }
     
     func setupSubmit() {
@@ -76,6 +75,9 @@ class ForumCreateVC: UIViewController {
         tvDescription.layer.borderColor = UIColor(hexa: "#00000017")?.cgColor
         tvDescription.layer.borderWidth = 0.4
         tvDescription.layer.cornerRadius = 4
+        tvDescription.delegate = self
+        tfTitle.delegate = self
+        addDoneButtonOnKeyboard()
     }
 
     func getCategoriesFromDB() {
@@ -155,6 +157,13 @@ extension ForumCreateVC: FirebaseDelegate {
     
     func writingFailed(serviceID: Int) {
         print("------------ ForumCreateVC -- writingFailed -----------")
+        if InternetConnectionManager.isConnectedToNetwork() {
+            print("connected")
+        } else{
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
+            navigationController?.pushViewController(noInternetVC, animated: true)
+        }
     }
     
     func wrote(serviceID: Int, docId: String) {
@@ -166,6 +175,13 @@ extension ForumCreateVC: FirebaseDelegate {
     
     func readingFailed(serviceID: Int) {
         print("------------ ForumCreateVC -- readingFailed -----------")
+        if InternetConnectionManager.isConnectedToNetwork() {
+            print("connected")
+        } else{
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
+            navigationController?.pushViewController(noInternetVC, animated: true)
+        }
     }
     
     func read(serviceID: Int, data: NSObject) {
@@ -185,6 +201,31 @@ extension ForumCreateVC: UITextViewDelegate {
         }
     }
     
+    func addDoneButtonOnKeyboard(){
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        doneToolbar.barStyle = .default
+
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+
+        tvDescription.inputAccessoryView = doneToolbar
+    }
+
+    @objc func doneButtonAction() {
+        tvDescription.resignFirstResponder()
+    }
+    
+}
+
+extension ForumCreateVC: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        tvDescription.becomeFirstResponder()
+    }
 }
 
 

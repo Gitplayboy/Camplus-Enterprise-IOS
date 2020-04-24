@@ -25,6 +25,9 @@ class FirestoreService {
     public static let SERVICE_ID_UPDATE_REPORT = 1011
     public static let SERVICE_ID_LISTEN_TOKEN_UPDATE = 1012
     public static let SERVICE_ID_LISTEN_FORUM_UPDATE = 1013
+    public static let SERVICE_ID_UPDATE_RESPONSE_COUNT = 1014
+    public static let SERVICE_ID_SEND_REPORT = 1015
+    public static let SERVICE_ID_GET_REPORTS = 1016
    
     func getForumCategories(serviceId: Int, _ delegate: FirebaseDelegate) {
         let db = Firestore.firestore()
@@ -142,6 +145,57 @@ class FirestoreService {
                 }
                 
                 firebaseDelegate.read(serviceID: serviceId, data: responses as NSObject)
+            }
+            
+        }
+    }
+    
+    func sendReport(serviceId: Int, report: Report, firebaseDelegate: FirebaseDelegate) {
+        let database = Firestore.firestore()
+        let reference = database.collection("reports").document()
+        do {
+            let _ = try reference.setData(from: report, encoder: .init()) { err in
+                if let err = err {
+                    print("----------- FirestoreService -- sendReport -- \(err)")
+                    firebaseDelegate.writingFailed(serviceID: serviceId)
+                } else {
+                    print("----------- FirestoreService -- sendReport -- SUCCESS")
+                    firebaseDelegate.wrote(serviceID: serviceId, docId: reference.documentID)
+                }
+            }
+        } catch let err {
+            print("----------- FirestoreService -- sendReport -- catch -- \(err)")
+            firebaseDelegate.writingFailed(serviceID: serviceId)
+        }
+    }
+    
+    
+    func getReportsFromDB(serviceId: Int, userId: String, firebaseDelegate: FirebaseDelegate) {
+        let database = Firestore.firestore()
+        let reference = database.collection("reports").whereField("user_id", isEqualTo: userId)
+        reference.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("------------- FirestoreService -- getReportsFromDB -- FAILED --  \(err)")
+                firebaseDelegate.readingFailed(serviceID: serviceId)
+            } else {
+                print("------------- FirestoreService -- getReportsFromDB -- SUCCESS ")
+                var reports: [Report] = []
+                for document in querySnapshot!.documents {
+                    do {
+                        let report = try document.data(as: Report.self)
+                        if let report = report {
+                            reports.append(report)
+                        }
+                        
+                    } catch let err {
+                        print("------------- FirestoreService -- getReportsFromDB -- catch -- FAILED -- \(err)")
+                        firebaseDelegate.readingFailed(serviceID: serviceId)
+                        
+                        return
+                    }
+                }
+                
+                firebaseDelegate.read(serviceID: serviceId, data: reports as NSObject)
             }
             
         }
@@ -303,6 +357,20 @@ class FirestoreService {
             } else {
                 print("-------------- FirestoreService -- updateReport SUCCESS ------------")
                 firebaseDelegate.wrote(serviceID: serviceId, docId: "")
+            }
+        }
+    }
+    
+    func updateResponseCount(serviceId: Int, forum: Forum, firebaseDelegate: FirebaseDelegate) {
+        let database = Firestore.firestore()
+        let reference = database.collection("forums").document(forum.id)
+        reference.updateData(["response_count": forum.responseCount]) { err in
+            if let err = err {
+                print("-------------- FirestoreService -- updateResponseCount -- ERROR -- \(err) ------------")
+                firebaseDelegate.writingFailed(serviceID: serviceId)
+            } else {
+                print("-------------- FirestoreService -- updateResponseCount SUCCESS ------------")
+                firebaseDelegate.wrote(serviceID: serviceId, docId: forum.id)
             }
         }
     }

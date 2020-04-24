@@ -63,6 +63,14 @@ class ForumTableHeaderCell: UITableViewCell {
             btnSocialMedia.isHidden = true
             btnTechnology.isHidden = true
         }
+        
+        btnResponse.setTitle("\(form.responseCount) Response", for: .normal)
+        
+        if form.isReport {
+            btnReport.setTitle("Reported", for: .normal)
+        } else {
+            btnReport.setTitle("Report", for: .normal)
+        }
     }
     
     @IBAction func onResponseClicked(_ sender: Any) {

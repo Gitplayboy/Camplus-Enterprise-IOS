@@ -19,21 +19,25 @@ class ForumDetailHeaderCell: UITableViewCell {
     @IBOutlet weak var labelQueryTime: UILabel!
     @IBOutlet weak var btnReport: UIButton!
     @IBOutlet weak var cvCategory: UICollectionView!
+    
+    var actionDelegate: ForumActionDelegate!
 
-    func setForum(forum: Forum) {
+    func setForum(forum: Forum, actionDelegate: ForumActionDelegate) {
         labelUserName.text = forum.user_name
         labelQueryTitle.text = forum.title
         labelQueryDescription.text = forum.description
         labelQueryTime.text = Date.toNewFormat(format: "hh:mm a MM/dd/yyyy", milliSecond: forum.timestamp)
         categories = forum.categories
+        self.actionDelegate = actionDelegate
         
-        cvCategory.register(ForumDetailCategoryCVCell.self, forCellWithReuseIdentifier: "cell_forum_detail_category")
-        cvCategory.delegate  = self
-        cvCategory.dataSource = self
-        
-        cvCategory.reloadData()
     }
- 
+    
+    @IBAction func onReportClicked(_ sender: Any) {
+        if let delegate = actionDelegate {
+            delegate.report(index: 0)
+        }
+    }
+    
 }
 
 

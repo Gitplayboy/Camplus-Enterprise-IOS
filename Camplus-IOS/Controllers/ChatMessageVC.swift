@@ -97,6 +97,7 @@ class ChatMessageVC: UIViewController, UITextViewDelegate, UITableViewDataSource
             let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
             navigationController?.pushViewController(noInternetVC, animated: true)
         }
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
     }

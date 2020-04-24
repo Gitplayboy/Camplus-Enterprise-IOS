@@ -76,6 +76,8 @@ class ForumVC: UIViewController {
         } else {
             search(searchText: text)
         }
+        
+        checkEmpty()
     }
 }
 
@@ -103,6 +105,14 @@ extension ForumVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    func checkEmpty() {
+        if forums.count == 0 {
+            viewNoItem.isHidden = false
+        } else {
+            viewNoItem.isHidden = true
+        }
+    }
 }
 
 extension ForumVC: InteractionDelegate {
@@ -122,6 +132,8 @@ extension ForumVC {
             if let indexPath = indexPath {
                 let detailForum = segue.destination as! ForumDetailVC
                 detailForum.forum = forums[indexPath.row]
+                detailForum.rowPosition = indexPath.row
+                detailForum.responseDelegate = self
             }
         }
     }
@@ -146,18 +158,49 @@ extension ForumVC: FirebaseDelegate {
     
     func read(serviceID: Int, data: NSObject) {
         print("------------ ForumVC --  read ----------")
-        var forums = data as! [Forum]
+        
         if serviceID == FirestoreService.SERVICE_ID_LISTEN_FORUM_UPDATE {
             print("------ IF FORUM COUNT -- \(forums.count) ----------")
+            let forums = data as! [Forum]
             checkForumExistance(newForums: forums)
+        } else if serviceID ==  FirestoreService.SERVICE_ID_GET_REPORTS {
+            print("------ FORUM GET REPORTS ----------")
+            let reports = data as! [Report]
+            if reports.count > 0 {
+                for report in reports {
+                    var i = 0
+                    while i < forums.count {
+                        if report.forumId == forums[i].id {
+                            forums[i].isReport = true
+                            
+                            tableForum.beginUpdates()
+                            let indexPath = IndexPath(row: i, section: 0)
+                            tableForum.reloadRows(at: [indexPath], with: .automatic)
+                            tableForum.endUpdates()
+                        }
+                        
+                        i = i + 1
+                    }
+                    
+                    for forum in tempForum {
+                        var form = forum
+                        if report.forumId == forum.id {
+                            form.isReport = true
+                        }
+                    }
+                    
+                }
+                
+                
+            }
         } else {
             print("------ ELSE FORUM COUNT -- \(forums.count) ----------")
+            var forums = data as! [Forum]
             if (forums.count > 1) {
                 forums.sort() { (forumX, forumY) in
                     return forumX.timestamp > forumY.timestamp
                 }
             }
-            
             
             for forum in forums {
                 self.forums.append(forum)
@@ -165,10 +208,17 @@ extension ForumVC: FirebaseDelegate {
             }
             
             tableForum.reloadData()
+            checkEmpty()
             
             let firestoreService = FirestoreService()
             firestoreService.forumUpdate(serviceId: FirestoreService.SERVICE_ID_LISTEN_FORUM_UPDATE, firebaseDelegate: self)
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            firestoreService.getReportsFromDB(serviceId: FirestoreService.SERVICE_ID_GET_REPORTS, userId: appDelegate.userDetails.userId!, firebaseDelegate: self)
+            
         }
+        
+        checkEmpty()
     }
     
     func checkForumExistance(newForums: [Forum]) {
@@ -193,11 +243,12 @@ extension ForumVC: FirebaseDelegate {
         }
     }
     
+    
 }
 
 extension ForumVC {
     func search(searchText: String) {
-        forums = forums.filter() { forum in
+        forums = tempForum.filter() { forum in
             return forum.title.lowercased().contains(searchText.lowercased())
         }
         
@@ -208,15 +259,42 @@ extension ForumVC {
 extension ForumVC: ForumActionDelegate {
     func report(index: Int) {
         var forum = forums[index]
-        forum.reportCount = forum.reportCount + 1
-        let firestoreService = FirestoreService()
-        firestoreService.updateReport(serviceId: FirestoreService.SERVICE_ID_UPDATE_REPORT, forum: forum, firebaseDelegate: self)
+        if (!forum.isReport) {
+            forum.reportCount = forum.reportCount + 1
+            let firestoreService = FirestoreService()
+            firestoreService.updateReport(serviceId: FirestoreService.SERVICE_ID_UPDATE_REPORT, forum: forum, firebaseDelegate: self)
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let report = Report()
+            report.forumId = forum.id
+            report.userId = appDelegate.userDetails.userId!
+            firestoreService.sendReport(serviceId: FirestoreService.SERVICE_ID_SEND_REPORT, report: report, firebaseDelegate: self)
+            
+            forums[index].isReport = true
+            tableForum.beginUpdates()
+            let indexPath = IndexPath(row: index, section: 0)
+            tableForum.reloadRows(at: [indexPath], with: .automatic)
+            tableForum.endUpdates()
+        } else {
+            let alert = AlertControler.showOKAlert(message: "You have already reported")
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
 }
 
 extension ForumVC {
     func showReportAlert() {
-        let alert = AlertControler.showOKAlert(message: "You have reported")
+        let alert = AlertControler.showOKAlert(message: "you have reported an issue")
         self.present(alert, animated: true, completion: nil)
     }
 }
+
+extension ForumVC: ResponseDelegate {
+    func updateCount(row: Int, count: Int) {
+        forums[row].responseCount = count
+        let indexPath = IndexPath(row: row, section: 0)
+        tableForum.reloadRows(at: [indexPath], with: .automatic)
+    }
+}
+
