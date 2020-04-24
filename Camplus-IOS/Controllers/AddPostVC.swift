@@ -41,13 +41,6 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        let imgUploadBorder = CAShapeLayer()
-        imgUploadBorder.strokeColor = UIColor.black.cgColor
-        imgUploadBorder.lineDashPattern = [5, 5]
-        imgUploadBorder.frame = uploadImgView.bounds
-        imgUploadBorder.fillColor = nil
-        imgUploadBorder.path = UIBezierPath(rect: uploadImgView.bounds).cgPath
-        uploadImgView.layer.addSublayer(imgUploadBorder)
         
         deleteImgBtn.layer.cornerRadius = deleteImgBtn.bounds.width / 2
         deleteImgBtn.layer.masksToBounds = true
@@ -99,7 +92,7 @@ class AddPostVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCo
             postDescription.text = ""
         }
         //If description is empty and image is also not added
-        if postDescription.text.isEmpty && (uploadedImg == nil || uploadedImg.image == nil) {
+        if postDescription.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && (uploadedImg == nil || uploadedImg.image == nil) {
             let alert = UIAlertController(title: "Publish Post", message: "Add a description or an image to Post", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)

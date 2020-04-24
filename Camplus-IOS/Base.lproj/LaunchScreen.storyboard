@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+>>>>>>> 4c0dc46c3057d2e98cb5d6336ebda2cf4dd97ea9
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,18 +22,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+<<<<<<< HEAD
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camplus_logo" translatesAutoresizingMaskIntoConstraints="NO" id="sX5-LI-gMe">
                                 <rect key="frame" x="132" y="373" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="5PO-EK-Jdv"/>
                                     <constraint firstAttribute="width" constant="150" id="Gte-Z2-bIb"/>
+=======
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camplus-icon" translatesAutoresizingMaskIntoConstraints="NO" id="LJ3-N1-yQf">
+                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="PaK-dx-vHS"/>
+                                    <constraint firstAttribute="width" constant="240" id="X2r-yv-pNZ"/>
+>>>>>>> 4c0dc46c3057d2e98cb5d6336ebda2cf4dd97ea9
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+<<<<<<< HEAD
                             <constraint firstItem="sX5-LI-gMe" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="NLR-qX-0yT"/>
                             <constraint firstItem="sX5-LI-gMe" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="pmD-8n-hrb"/>
+=======
+                            <constraint firstItem="LJ3-N1-yQf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="NwQ-nw-ygM"/>
+                            <constraint firstItem="LJ3-N1-yQf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="fkj-cF-WzV"/>
+>>>>>>> 4c0dc46c3057d2e98cb5d6336ebda2cf4dd97ea9
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -37,6 +57,10 @@
         </scene>
     </scenes>
     <resources>
+<<<<<<< HEAD
         <image name="camplus_logo" width="110" height="105"/>
+=======
+        <image name="camplus-icon" width="1870" height="1763"/>
+>>>>>>> 4c0dc46c3057d2e98cb5d6336ebda2cf4dd97ea9
     </resources>
 </document>

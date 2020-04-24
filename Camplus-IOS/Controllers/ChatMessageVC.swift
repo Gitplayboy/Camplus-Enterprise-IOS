@@ -100,6 +100,8 @@ class ChatMessageVC: UIViewController, UITextViewDelegate, UITableViewDataSource
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
+        navigationController?.navigationBar.topItem?.hidesBackButton = false
+        navigationItem.hidesBackButton = false
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -183,7 +185,7 @@ class ChatMessageVC: UIViewController, UITextViewDelegate, UITableViewDataSource
     }
     
     @IBAction func sendMessage() {
-        if sendTxtField.text != nil && !sendTxtField.text!.isEmpty {
+        if sendTxtField.text != nil && !sendTxtField.text!.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             // When already a chat exists with a message id
             if messageId != nil {
                 chatSvc.sendDirectMessage(messageId: messageId!, userId: (appDelegate.userDetails.userId)!, messageText: sendTxtField.text!, senderName: appDelegate.userDetails.userName!)

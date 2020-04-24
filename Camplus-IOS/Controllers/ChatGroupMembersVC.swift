@@ -70,6 +70,7 @@ class ChatGroupMembersVC: UIViewController, UITableViewDataSource, UITableViewDe
                 self.performSegue(withIdentifier: "directChatSB", sender: self)
             }, failure: {(error) in
                 print(error)
+                self.targetUserMsgId = nil
                 self.performSegue(withIdentifier: "directChatSB", sender: self)
             })
         }
