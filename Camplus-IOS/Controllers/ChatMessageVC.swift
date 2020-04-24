@@ -182,7 +182,7 @@ class ChatMessageVC: UIViewController, UITextViewDelegate, UITableViewDataSource
     }
     
     @IBAction func sendMessage() {
-        if sendTxtField.text != nil && !sendTxtField.text!.isEmpty {
+        if sendTxtField.text != nil && !sendTxtField.text!.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             // When already a chat exists with a message id
             if messageId != nil {
                 chatSvc.sendDirectMessage(messageId: messageId!, userId: (appDelegate.userDetails.userId)!, messageText: sendTxtField.text!, senderName: appDelegate.userDetails.userName!)
