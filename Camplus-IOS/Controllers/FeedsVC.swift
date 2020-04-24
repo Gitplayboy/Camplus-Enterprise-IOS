@@ -99,17 +99,19 @@ class FeedsVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UICo
         if let imageUrl = self.feedsData[indexPath.row].postImgName {
             cell.heightConstraint.constant = 200
             let url = URL(string: imageUrl)
-            URLSession.shared.dataTask(with: url!, completionHandler: {(data,response,error) in
-                
-                DispatchQueue.main.async {
-                    cell.postImgView.image = UIImage(data: data!)
-                    let gesture = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped))
+            if isInternetAvailable() {
+                URLSession.shared.dataTask(with: url!, completionHandler: {(data,response,error) in
                     
-                    if cell.postImgView != nil {
-                        cell.postImgView.addGestureRecognizer(gesture)
+                    DispatchQueue.main.async {
+                        cell.postImgView.image = UIImage(data: data!)
+                        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped))
+                        
+                        if cell.postImgView != nil {
+                            cell.postImgView.addGestureRecognizer(gesture)
+                        }
                     }
-                }
-            }).resume()
+                }).resume()
+            }
         } else {
             cell.postImgView.image = nil
             cell.heightConstraint.constant = 0
@@ -147,13 +149,7 @@ class FeedsVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UICo
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if InternetConnectionManager.isConnectedToNetwork() {
-            print("connected")
-        } else {
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
-            navigationController?.pushViewController(noInternetVC, animated: true)
-        }
+        let _ = isInternetAvailable()
         self.tabBarController!.navigationController?.navigationBar.topItem?.title = ""
         self.tabBarController!.navigationItem.rightBarButtonItem?.customView?.isHidden = true
     }
@@ -196,6 +192,17 @@ class FeedsVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UICo
     func removeBlurEffectView() {
         if blurEffectView != nil {
             self.blurEffectView!.removeFromSuperview()
+        }
+    }
+    
+    func isInternetAvailable() -> Bool {
+        if InternetConnectionManager.isConnectedToNetwork() {
+            return true
+        } else {
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let noInternetVC = mainStoryboard.instantiateViewController(withIdentifier: "NoInternetVC") as! NoInternetVC
+            navigationController?.pushViewController(noInternetVC, animated: true)
+            return false
         }
     }
 }
