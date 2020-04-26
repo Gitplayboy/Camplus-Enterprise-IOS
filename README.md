@@ -7,4 +7,13 @@ This app also allows students to get tokens for meeting an advisor from student 
 The app would have a dedicated login for administrators to post important updates as a feed or get information about the student service tokens and login for professors to communicate information to their students and login for students as well.
 Themes to choose from to enhance the UI look and feel.
 
-[![Demo Doccou alpha](https://j.gifs.com/L7zOMX.gif)](https://www.youtube.com/watch?v=cZL8Y1VxVDE&list=PL_812iWB_7koNA2idbDDZ90m37GBBRN0o&index=1)
+[![Camplus](https://j.gifs.com/L7zOMX.gif)](https://www.youtube.com/watch?v=cZL8Y1VxVDE&list=PL_812iWB_7koNA2idbDDZ90m37GBBRN0o&index=1)
+
+[![Camplus](https://j.gifs.com/wVwD91.gif)](https://www.youtube.com/watch?v=b-5UVxKzNOw&list=PL_812iWB_7koNA2idbDDZ90m37GBBRN0o&index=2)
+
+[![Camplus](https://j.gifs.com/P7Eom1.gif)](https://www.youtube.com/watch?v=b-5UVxKzNOw&list=PL_812iWB_7koNA2idbDDZ90m37GBBRN0o&index=3)
+
+[![Camplus](https://j.gifs.com/81Nv8g.gif)](https://www.youtube.com/watch?v=b-5UVxKzNOw&list=PL_812iWB_7koNA2idbDDZ90m37GBBRN0o&index=4)
+
+[![Camplus](https://j.gifs.com/QnGpW0.gif)](https://www.youtube.com/watch?v=b-5UVxKzNOw&list=PL_812iWB_7koNA2idbDDZ90m37GBBRN0o&index=5)
+
