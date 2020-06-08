@@ -15,11 +15,5 @@ https://www.youtube.com/playlist?list=PL_812iWB_7koNA2idbDDZ90m37GBBRN0o
 
 [![Camplus](https://j.gifs.com/L7zOMX.gif)](https://www.youtube.com/watch?v=cZL8Y1VxVDE&list=PL_812iWB_7koNA2idbDDZ90m37GBBRN0o&index=1)
 
-[![Camplus](https://j.gifs.com/wVwD91.gif)](https://www.youtube.com/watch?v=b-5UVxKzNOw&list=PL_812iWB_7koNA2idbDDZ90m37GBBRN0o&index=2)
-
 [![Camplus](https://j.gifs.com/P7Eom1.gif)](https://www.youtube.com/watch?v=b-5UVxKzNOw&list=PL_812iWB_7koNA2idbDDZ90m37GBBRN0o&index=3)
-
-[![Camplus](https://j.gifs.com/81Nv8g.gif)](https://www.youtube.com/watch?v=b-5UVxKzNOw&list=PL_812iWB_7koNA2idbDDZ90m37GBBRN0o&index=4)
-
-[![Camplus](https://j.gifs.com/QnGpW0.gif)](https://www.youtube.com/watch?v=b-5UVxKzNOw&list=PL_812iWB_7koNA2idbDDZ90m37GBBRN0o&index=5)
 
